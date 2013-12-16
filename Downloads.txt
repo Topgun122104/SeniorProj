@@ -1,6 +1,9 @@
 Unity Download (Free Version):
 http://unity3d.com/unity/download
 
+Unity Training:
+https://www.udemy.com/3d-video-game-development-with-unity-3d/#dashboard
+
 Unity Manual:
 http://unity3d.com/learn
 
