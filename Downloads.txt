@@ -16,9 +16,6 @@ http://gryllus.net/Blender/PDFTutorials/AllPDFTutorials.html
 Further Unity Training (Mario 2D As well as JavaScript Training)
 https://www.udemy.com/3d-video-game-development-with-unity-3d/?sl=E0IbczFTKnVuFFkoCkA%3D
 
-DirectX SDK
-http://www.microsoft.com/en-us/download/confirmation.aspx?id=6812
-
 Paint.net Download link
 http://www.dotpdn.com/files/Paint.NET.3.5.11.Install.zip
 
