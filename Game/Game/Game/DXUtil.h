@@ -1,7 +1,11 @@
 #pragma once
 #include <d3d11.h>
+#include <DirectXColors.h>
+
 #pragma comment(lib, "d3d11.lib")
 
+// Template functions for some basic memeory
+// management with deletion of pointers and com objects
 namespace Memory
 {
 	template < class T> void SafeDelete(T& t)
