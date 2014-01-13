@@ -29,7 +29,7 @@ DXApp::DXApp(HINSTANCE hInstance)
 	m_AppTitle = "Empty Window";
 	m_WndStyle = WS_OVERLAPPEDWINDOW;
 	g_pApp = this;
-
+	
 	m_pDevice = nullptr;
 	m_pImmediateContext = nullptr;
 	m_pRenderTargetView = nullptr;
