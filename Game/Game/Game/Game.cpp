@@ -25,7 +25,7 @@ void Game::Update(float dt)
 
 
 	// clears and refreshes the window
-	m_pImmediateContext->ClearRenderTargetView(m_pRenderTargetView, DirectX::Colors::CornflowerBlue);
+	m_pImmediateContext->ClearRenderTargetView(m_pRenderTargetView, DirectX::Colors::Green);
 	m_pSwapChain->Present(0, 0);
 
 }
