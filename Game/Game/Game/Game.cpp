@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 Game::Game(HINSTANCE hInstance) : DXApp(hInstance)
 {
 	// Settings for the game window
