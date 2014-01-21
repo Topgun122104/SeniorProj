@@ -1,6 +1,0 @@
-DirectX tutorial:
-http://www.directxtutorial.com/LessonList.aspx?listid=11
-
-Paint.net Download link
-http://www.dotpdn.com/files/Paint.NET.3.5.11.Install.zip
-
