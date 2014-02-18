@@ -59,7 +59,7 @@ namespace RailRoadSignal.CustomControls
 
             // Mouse state and mouse event handler
             m_currMouseState = Mouse.GetState();
-            this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.view_MouseWheel);
+            this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.UpdateMouseWheel);
             lines = new List<Line>();
 
             sampleTrack = new List<Line>();
@@ -159,7 +159,7 @@ namespace RailRoadSignal.CustomControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void view_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void UpdateMouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             // Mouse scroll wheel information (Windows Forms)
             if (e.Delta >= 0)
