@@ -119,10 +119,10 @@ namespace RailRoadSignal.CustomControls
         /// <returns>Matrix of the view</returns>
         public Matrix getTransformation(GraphicsDevice graphicsDevice)
         {
-           m_transform = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
+           m_transform = Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0.0f)) *
                 Matrix.CreateRotationZ(Rotation) *
-                Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) *
-                Matrix.CreateTranslation(new Vector3(m_width * 0.5f, c_height * 0.5f, 0));
+                Matrix.CreateScale(new Vector3(Zoom, Zoom, 1.0f)) *
+                Matrix.CreateTranslation(new Vector3(m_width * 0.5f, c_height * 0.5f, 0.0f));
             return m_transform;
         }
     }

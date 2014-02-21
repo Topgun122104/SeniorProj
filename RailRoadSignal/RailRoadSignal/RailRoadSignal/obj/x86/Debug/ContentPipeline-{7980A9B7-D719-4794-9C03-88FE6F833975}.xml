@@ -7,17 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Fonts\testFont.xnb</Output>
+      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Fonts\testFont.xnb</Output>
       <Time>2014-02-16T13:34:46.3824809-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\BallTest.png</Source>
-      <Name>Textures\BallTest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\BallTest.xnb</Output>
-      <Time>2014-02-16T16:32:48.481802-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\DisplayFont.spritefont</Source>
@@ -25,8 +16,17 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Fonts\DisplayFont.xnb</Output>
+      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Fonts\DisplayFont.xnb</Output>
       <Time>2014-02-16T15:31:29.0344317-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\BallTest.png</Source>
+      <Name>Textures\BallTest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\BallTest.xnb</Output>
+      <Time>2014-02-16T16:32:48.481802-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\2x2White.png</Source>
@@ -34,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\2x2White.xnb</Output>
+      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\2x2White.xnb</Output>
       <Time>2014-02-16T15:54:52.9865744-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -44,10 +44,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignalContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Chad\Desktop\RailRoadSignal TEST\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignalContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

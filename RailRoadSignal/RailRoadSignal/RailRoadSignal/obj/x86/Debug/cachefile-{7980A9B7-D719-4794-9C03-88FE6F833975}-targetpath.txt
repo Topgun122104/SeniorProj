@@ -1,4 +1,4 @@
 Content\Fonts\testFont.xnb
-Content\Textures\BallTest.xnb
 Content\Fonts\DisplayFont.xnb
+Content\Textures\BallTest.xnb
 Content\Textures\2x2White.xnb

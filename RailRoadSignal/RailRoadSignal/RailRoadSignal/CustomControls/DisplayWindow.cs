@@ -27,7 +27,7 @@ namespace RailRoadSignal.CustomControls
         // Mouse position information (XNA)
         private MouseState m_currMouseState;
         private MouseState m_prevMouseState;
-
+        private Ray m_mouseRay;
         // Create a new view camera for the display window
         private View m_view;
 
@@ -95,17 +95,25 @@ namespace RailRoadSignal.CustomControls
         {
             for (int i = -100; i < 100; i++)
             {
-                lines.Add(new Line(new Vector2(m_view.Position.X - 40000, i * 200), new Vector2(m_view.Position.X + 40000, i * 200), 1f, 1.0f));
-                lines.Add(new Line(new Vector2(i * 200, m_view.Position.Y - 4000), new Vector2(i * 200, m_view.Position.Y + 4000), 1f, 1.0f));
+                lines.Add(new Line(new Vector2(m_view.Position.X - 40000, i * 200), new Vector2(m_view.Position.X + 40000, i * 200), 1f, .01f));
+                lines.Add(new Line(new Vector2(i * 200, m_view.Position.Y - 4000), new Vector2(i * 200, m_view.Position.Y + 4000), 1f, .01f));
             }
-
         }
         private void AddSampleTrack()
         {
-            sampleTrack.Add(new Line(new Vector2(100, 100), new Vector2(300, 100)));
-            sampleTrack.Add(new Line(new Vector2(300, 100), new Vector2(500, 0)));
-            sampleTrack.Add(new Line(new Vector2(500, 0), new Vector2(600, 0)));
-            sampleTrack.Add(new Line(new Vector2(600, 0), new Vector2(800, 100)));
+            sampleTrack.Add(new Line(new Vector2(-1100, 100), new Vector2(300, 100)));
+            sampleTrack.Add(new Line(new Vector2(300, 100), new Vector2(400, 0)));
+            sampleTrack.Add(new Line(new Vector2(400, 0), new Vector2(700, 0)));
+            sampleTrack.Add(new Line(new Vector2(700, 0), new Vector2(800, 100)));
+            sampleTrack.Add(new Line(new Vector2(300, 100), new Vector2(800, 100)));
+            sampleTrack.Add(new Line(new Vector2(800, 100), new Vector2(1100, 100)));
+            sampleTrack.Add(new Line(new Vector2(-100, 120), new Vector2(300, 120)));
+            sampleTrack.Add(new Line(new Vector2(300, 120), new Vector2(1100, 120)));
+            sampleTrack.Add(new Line(new Vector2(-100, 120), new Vector2(-200, 220)));
+            sampleTrack.Add(new Line(new Vector2(-200, 220), new Vector2(-500, 220)));
+            sampleTrack.Add(new Line(new Vector2(-500, 220), new Vector2(-600, 120)));
+            sampleTrack.Add(new Line(new Vector2(-600, 120), new Vector2(-1100, 120)));
+            sampleTrack.Add(new Line(new Vector2(-100, 120), new Vector2(-600, 120)));
         }
 
         /// <summary>
@@ -118,8 +126,8 @@ namespace RailRoadSignal.CustomControls
             m_currentTime = gameTime.TotalGameTime;
             /************************************************/
 
-
-
+           // m_mouseRay = new Ray(new Vector3(m_currMouseState.X, m_currMouseState.Y, 0), new Vector3());
+            
 
         }
         /// <summary>
@@ -173,6 +181,19 @@ namespace RailRoadSignal.CustomControls
 
         }
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="ray"></param>
+        /// <returns></returns>
+        private bool MouseIntersects(Line line, Ray ray)
+        {
+
+            return false;
+
+        }
+
+        /// <summary>
         /// All of the rendering of graphics go in here
         /// </summary>
         protected override void Draw()
@@ -194,17 +215,16 @@ namespace RailRoadSignal.CustomControls
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
                    SamplerState.PointClamp, null, null, null, m_view.getTransformation(GraphicsDevice));
             // Draws the lines on the background
-            foreach (Line line in lines)
-            {
-                line.Draw(whiteTexture, spriteBatch, Color.Yellow);
-            }
+            //foreach (Line line in lines)
+
+            //line.Draw(whiteTexture, spriteBatch, Color.Yellow);
+
             /*************************************************/
 
             foreach (Line line in sampleTrack)
             {
                 line.Draw(whiteTexture, spriteBatch, Color.Red);
             }
-
             spriteBatch.End();
         }
     }

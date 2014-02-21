@@ -7,7 +7,7 @@ using System.Windows.Forms;
 namespace RailRoadSignal.EditorForms
 {
     public partial class Railroad_Signal : Form
-    {   
+    {
         /// <summary>
         /// Initialize all the componenets for the application
         /// </summary>
@@ -58,6 +58,18 @@ namespace RailRoadSignal.EditorForms
                 MainLoop();
             }
         }
+
+        /// <summary>
+        /// Exit the program
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        
 
     }
 }

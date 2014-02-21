@@ -6,6 +6,9 @@ namespace RailRoadSignal
 {
     public class Line
     {
+        // equation for a line
+        // y = mx + b
+        
         /// <summary>
         /// End point for the line
         /// Returns a Vector2
