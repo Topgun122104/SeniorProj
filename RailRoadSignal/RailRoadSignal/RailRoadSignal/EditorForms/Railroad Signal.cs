@@ -35,7 +35,7 @@ namespace RailRoadSignal.EditorForms
                     GameTime gameTime = new GameTime(new TimeSpan(ticks2), new TimeSpan(ticks2 - ticks1));
                     ticks1 = Stopwatch.GetTimestamp();
                     displayWindow1.Update(gameTime);
-                    Refresh();
+                    //Refresh();
                 }
             }
         }
@@ -69,6 +69,7 @@ namespace RailRoadSignal.EditorForms
             Application.Exit();
         }
 
+    
         
 
     }

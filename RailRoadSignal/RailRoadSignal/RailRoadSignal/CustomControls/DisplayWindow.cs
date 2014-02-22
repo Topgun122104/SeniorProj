@@ -122,6 +122,7 @@ namespace RailRoadSignal.CustomControls
         /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
+            this.Refresh();
             UpdateView();
             m_currentTime = gameTime.TotalGameTime;
             /************************************************/
@@ -137,7 +138,14 @@ namespace RailRoadSignal.CustomControls
         {
             // get the current mouse position
             m_currMouseState = Mouse.GetState();
-
+            if(m_currMouseState.ScrollWheelValue > m_prevMouseState.ScrollWheelValue)
+            {
+                m_view.Zoom += 0.05f;
+            }
+            if(Keyboard.GetState().IsKeyDown(Keys.Add))
+            {
+                m_view.Zoom += 0.05f;
+            }
             // if the left button is pressed, move the view
             if (m_currMouseState.LeftButton == ButtonState.Pressed)
             {
@@ -188,7 +196,7 @@ namespace RailRoadSignal.CustomControls
         /// <returns></returns>
         private bool MouseIntersects(Line line, Ray ray)
         {
-
+         
             return false;
 
         }
@@ -198,6 +206,7 @@ namespace RailRoadSignal.CustomControls
         /// </summary>
         protected override void Draw()
         {
+            
             // Clears the view and sets the background to black
             GraphicsDevice.Clear(Color.Black);
 
