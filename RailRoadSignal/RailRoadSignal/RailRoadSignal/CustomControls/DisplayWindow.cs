@@ -23,6 +23,7 @@ namespace RailRoadSignal.CustomControls
         private SpriteFont testFont;
         private SpriteFont displayFont;
         private Texture2D whiteTexture;
+        private Texture2D arrowTexture;
 
         // Mouse position information (XNA)
         private MouseState m_currMouseState;
@@ -35,11 +36,10 @@ namespace RailRoadSignal.CustomControls
         private TimeSpan m_currentTime;
 
         /*******************************************************/
-        // List for the lines
-        List<Line> lines;
+
 
         // list for the sample track
-        List<Line> sampleTrack;
+        List<TrackSegment> sampleTrack;
 
         /// <summary>
         /// Initialize the display window and all of the contents
@@ -55,20 +55,18 @@ namespace RailRoadSignal.CustomControls
                                 WINDOWHEIGHT,           // The height of the display (720)
                                 new Vector2(100, 100),  // The starting location of the view
                                 0.5f,                   // Minimum zoom amount
-                                2.0f);                  // MAximum zoom amount
+                                3.0f);                  // MAximum zoom amount
 
             // Mouse state and mouse event handler
             m_currMouseState = Mouse.GetState();
             this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.UpdateMouseWheel);
-            lines = new List<Line>();
 
-            sampleTrack = new List<Line>();
+            sampleTrack = new List<TrackSegment>();
 
             // load all the textures and fonts
             Load(Content);
 
-            // just some lines for the background
-            AddBackgroundLines();
+
 
             // Add the sample track
             AddSampleTrack();
@@ -84,36 +82,25 @@ namespace RailRoadSignal.CustomControls
             testFont = content.Load<SpriteFont>("Fonts\\testFont");
             displayFont = content.Load<SpriteFont>("Fonts\\DisplayFont");
             whiteTexture = content.Load<Texture2D>("Textures\\2x2White");
+            arrowTexture = content.Load<Texture2D>("Textures\\arrow");
         }
 
-        /// <summary>
-        ///  Adds a set number of lines to the background
-        ///  I eventually want to get rd of this 
-        ///  and make them only draw when they are on the screen
-        /// </summary>
-        private void AddBackgroundLines()
-        {
-            for (int i = -100; i < 100; i++)
-            {
-                lines.Add(new Line(new Vector2(m_view.Position.X - 40000, i * 200), new Vector2(m_view.Position.X + 40000, i * 200), 1f, .01f));
-                lines.Add(new Line(new Vector2(i * 200, m_view.Position.Y - 4000), new Vector2(i * 200, m_view.Position.Y + 4000), 1f, .01f));
-            }
-        }
+
         private void AddSampleTrack()
         {
-            sampleTrack.Add(new Line(new Vector2(-1100, 100), new Vector2(300, 100)));
-            sampleTrack.Add(new Line(new Vector2(300, 100), new Vector2(400, 0)));
-            sampleTrack.Add(new Line(new Vector2(400, 0), new Vector2(700, 0)));
-            sampleTrack.Add(new Line(new Vector2(700, 0), new Vector2(800, 100)));
-            sampleTrack.Add(new Line(new Vector2(300, 100), new Vector2(800, 100)));
-            sampleTrack.Add(new Line(new Vector2(800, 100), new Vector2(1100, 100)));
-            sampleTrack.Add(new Line(new Vector2(-100, 120), new Vector2(300, 120)));
-            sampleTrack.Add(new Line(new Vector2(300, 120), new Vector2(1100, 120)));
-            sampleTrack.Add(new Line(new Vector2(-100, 120), new Vector2(-200, 220)));
-            sampleTrack.Add(new Line(new Vector2(-200, 220), new Vector2(-500, 220)));
-            sampleTrack.Add(new Line(new Vector2(-500, 220), new Vector2(-600, 120)));
-            sampleTrack.Add(new Line(new Vector2(-600, 120), new Vector2(-1100, 120)));
-            sampleTrack.Add(new Line(new Vector2(-100, 120), new Vector2(-600, 120)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-1100, 100), new Vector2(300, 100)));
+            sampleTrack.Add(new TrackSegment(new Vector2(300, 100), new Vector2(400, 0)));
+            sampleTrack.Add(new TrackSegment(new Vector2(400, 0), new Vector2(700, 0)));
+            sampleTrack.Add(new TrackSegment(new Vector2(700, 0), new Vector2(800, 100)));
+            sampleTrack.Add(new TrackSegment(new Vector2(300, 100), new Vector2(800, 100)));
+            sampleTrack.Add(new TrackSegment(new Vector2(800, 100), new Vector2(1100, 100)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(300, 120)));
+            sampleTrack.Add(new TrackSegment(new Vector2(300, 120), new Vector2(1100, 120)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-200, 220)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-200, 220), new Vector2(-500, 220)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
+            sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
         }
 
         /// <summary>
@@ -127,8 +114,8 @@ namespace RailRoadSignal.CustomControls
             m_currentTime = gameTime.TotalGameTime;
             /************************************************/
 
-           // m_mouseRay = new Ray(new Vector3(m_currMouseState.X, m_currMouseState.Y, 0), new Vector3());
-            
+            // m_mouseRay = new Ray(new Vector3(m_currMouseState.X, m_currMouseState.Y, 0), new Vector3());
+
 
         }
         /// <summary>
@@ -138,11 +125,11 @@ namespace RailRoadSignal.CustomControls
         {
             // get the current mouse position
             m_currMouseState = Mouse.GetState();
-            if(m_currMouseState.ScrollWheelValue > m_prevMouseState.ScrollWheelValue)
+            if (m_currMouseState.ScrollWheelValue > m_prevMouseState.ScrollWheelValue)
             {
                 m_view.Zoom += 0.05f;
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.Add))
+            if (Keyboard.GetState().IsKeyDown(Keys.Add))
             {
                 m_view.Zoom += 0.05f;
             }
@@ -196,7 +183,7 @@ namespace RailRoadSignal.CustomControls
         /// <returns></returns>
         private bool MouseIntersects(Line line, Ray ray)
         {
-         
+
             return false;
 
         }
@@ -206,7 +193,7 @@ namespace RailRoadSignal.CustomControls
         /// </summary>
         protected override void Draw()
         {
-            
+
             // Clears the view and sets the background to black
             GraphicsDevice.Clear(Color.Black);
 
@@ -223,16 +210,13 @@ namespace RailRoadSignal.CustomControls
             // display anything that gets updated with the view here
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
                    SamplerState.PointClamp, null, null, null, m_view.getTransformation(GraphicsDevice));
-            // Draws the lines on the background
-            //foreach (Line line in lines)
 
-            //line.Draw(whiteTexture, spriteBatch, Color.Yellow);
 
             /*************************************************/
 
-            foreach (Line line in sampleTrack)
+            foreach (TrackSegment track in sampleTrack)
             {
-                line.Draw(whiteTexture, spriteBatch, Color.Red);
+                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
             }
             spriteBatch.End();
         }

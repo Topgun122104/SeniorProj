@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Fonts\testFont.xnb</Output>
-      <Time>2014-02-22T10:02:01.0930797-05:00</Time>
+      <Time>2014-02-22T20:57:32.6834166-05:00</Time>
     </Item>
     <Item>
       <Source>Fonts\DisplayFont.spritefont</Source>
@@ -17,16 +17,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Fonts\DisplayFont.xnb</Output>
-      <Time>2014-02-22T10:02:01.008076-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\BallTest.png</Source>
-      <Name>Textures\BallTest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\BallTest.xnb</Output>
-      <Time>2014-02-22T10:02:01.1490878-05:00</Time>
+      <Time>2014-02-22T20:57:32.6764167-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\2x2White.png</Source>
@@ -35,7 +26,16 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\2x2White.xnb</Output>
-      <Time>2014-02-22T10:02:01.0980831-05:00</Time>
+      <Time>2014-02-22T20:57:32.6934152-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\arrow.png</Source>
+      <Name>Textures\arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\arrow.xnb</Output>
+      <Time>2014-02-22T23:29:37.5600125-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
