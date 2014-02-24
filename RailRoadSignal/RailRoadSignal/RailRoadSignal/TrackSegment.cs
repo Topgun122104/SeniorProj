@@ -18,7 +18,7 @@ namespace RailRoadSignal
         /// <param name="_a">End point for the line</param>
         /// <param name="_b">End point for the line</param>
         public TrackSegment(Vector2 _a, Vector2 _b)
-            : base(_a, _b) { }
+            : base(_a, _b) {  }
         /// <summary>
         /// Constructor for a new line
         /// </summary>

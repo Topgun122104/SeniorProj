@@ -101,6 +101,8 @@ namespace RailRoadSignal.CustomControls
             sampleTrack.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
             sampleTrack.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
             sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
+            sampleTrack.Add(new TrackSegment(new Vector2(0, 300), new Vector2(300, 300)));
+            sampleTrack.Add(new TrackSegment(new Vector2(300, 400), new Vector2(0, 400)));
         }
 
         /// <summary>
@@ -216,7 +218,7 @@ namespace RailRoadSignal.CustomControls
 
             foreach (TrackSegment track in sampleTrack)
             {
-                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
+                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.White);
             }
             spriteBatch.End();
         }
