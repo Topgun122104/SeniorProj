@@ -125,38 +125,46 @@ namespace RailRoadSignal.CustomControls
         /// </summary>
         private void UpdateView()
         {
-            // get the current mouse position
-            m_currMouseState = Mouse.GetState();
-            if (m_currMouseState.ScrollWheelValue > m_prevMouseState.ScrollWheelValue)
+            try
             {
-                m_view.Zoom += 0.05f;
+                // get the current mouse position
+                m_currMouseState = Mouse.GetState();
+                int currScrollValue = Mouse.GetState().ScrollWheelValue;
+
+
+                if (Keyboard.GetState().IsKeyDown(Keys.Add))
+                {
+                    m_view.Zoom += 0.05f;
+                }
+                // if the left button is pressed, move the view
+                if (m_currMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    if (m_currMouseState.X > m_prevMouseState.X)
+                    {
+                        m_view.MoveLeft((m_currMouseState.X - m_prevMouseState.X) / m_view.Zoom);
+                    }
+                    if (m_currMouseState.X < m_prevMouseState.X)
+                    {
+                        m_view.MoveRight((m_prevMouseState.X - m_currMouseState.X) / m_view.Zoom);
+                    }
+                    if (m_currMouseState.Y < m_prevMouseState.Y)
+                    {
+                        m_view.MoveUp((m_prevMouseState.Y - m_currMouseState.Y) / m_view.Zoom);
+                    }
+                    if (m_currMouseState.Y > m_prevMouseState.Y)
+                    {
+                        m_view.MoveDown((m_currMouseState.Y - m_prevMouseState.Y) / m_view.Zoom);
+                    }
+                }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.Add))
+            catch(Exception e)
             {
-                m_view.Zoom += 0.05f;
-            }
-            // if the left button is pressed, move the view
-            if (m_currMouseState.LeftButton == ButtonState.Pressed)
-            {
-                if (m_currMouseState.X > m_prevMouseState.X)
-                {
-                    m_view.MoveLeft((m_currMouseState.X - m_prevMouseState.X) / m_view.Zoom);
-                }
-                if (m_currMouseState.X < m_prevMouseState.X)
-                {
-                    m_view.MoveRight((m_prevMouseState.X - m_currMouseState.X) / m_view.Zoom);
-                }
-                if (m_currMouseState.Y < m_prevMouseState.Y)
-                {
-                    m_view.MoveUp((m_prevMouseState.Y - m_currMouseState.Y) / m_view.Zoom);
-                }
-                if (m_currMouseState.Y > m_prevMouseState.Y)
-                {
-                    m_view.MoveDown((m_currMouseState.Y - m_prevMouseState.Y) / m_view.Zoom);
-                }
+                  // do nothing
             }
             // Set the previous mouse state to the current mouse state
             m_prevMouseState = m_currMouseState;
+            
+            Refresh();
         }
 
         /// <summary>
