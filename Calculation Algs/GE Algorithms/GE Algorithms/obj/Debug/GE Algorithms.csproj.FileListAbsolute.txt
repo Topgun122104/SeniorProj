@@ -1,0 +1,6 @@
+C:\Users\Topgun\Desktop\GE\GE Algorithms\GE Algorithms\bin\Debug\GE Algorithms.exe.config
+C:\Users\Topgun\Desktop\GE\GE Algorithms\GE Algorithms\bin\Debug\GE Algorithms.exe
+C:\Users\Topgun\Desktop\GE\GE Algorithms\GE Algorithms\bin\Debug\GE Algorithms.pdb
+C:\Users\Topgun\Desktop\GE\GE Algorithms\GE Algorithms\obj\Debug\GE Algorithms.csprojResolveAssemblyReference.cache
+C:\Users\Topgun\Desktop\GE\GE Algorithms\GE Algorithms\obj\Debug\GE Algorithms.exe
+C:\Users\Topgun\Desktop\GE\GE Algorithms\GE Algorithms\obj\Debug\GE Algorithms.pdb
