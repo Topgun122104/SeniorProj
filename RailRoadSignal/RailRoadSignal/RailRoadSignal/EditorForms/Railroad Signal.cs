@@ -150,8 +150,5 @@ namespace RailRoadSignal.EditorForms
             trackSegmentForm.ShowDialog();
         }
 
-
-
-
     }
 }

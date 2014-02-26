@@ -99,6 +99,8 @@
       <DependentUpon>Railroad Signal.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\View.cs" />
+    <Compile Include="GEAlgorithms\Algorithms.cs" />
+    <Compile Include="GEAlgorithms\Physics.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
