@@ -1,16 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace RailRoadSignal.GEAlgorithms
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
     class Algorithms
     {
-        static const double MPH_TO_FPS = 1.467;
-        static const double FPS_TO_MPH = 0.7333;
+        const double MPH_TO_FPS = 1.467;
+        const double FPS_TO_MPH = 0.7333;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cabCommandSpeed"></param>
+        /// <param name="grade"></param>
+        /// <returns></returns>
         static double SafeBrakingDistanceCalc(double cabCommandSpeed, double grade)
         {
             //Vos is assumed to be cab command speed + 4mph overspeed

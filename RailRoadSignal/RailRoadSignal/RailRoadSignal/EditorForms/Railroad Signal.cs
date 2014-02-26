@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 
