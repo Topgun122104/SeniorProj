@@ -34,9 +34,9 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(1104, 12);
+            this.panel1.Location = new System.Drawing.Point(1078, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 626);
+            this.panel1.Size = new System.Drawing.Size(288, 626);
             this.panel1.TabIndex = 4;
             // 
             // displayWindow1
@@ -46,21 +46,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.displayWindow1.Location = new System.Drawing.Point(12, 12);
             this.displayWindow1.Name = "displayWindow1";
-            this.displayWindow1.Size = new System.Drawing.Size(1086, 626);
+            this.displayWindow1.Size = new System.Drawing.Size(1060, 626);
             this.displayWindow1.TabIndex = 3;
             this.displayWindow1.Text = "displayWindow1";
             // 
             // TrackViewDisplay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1378, 650);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.displayWindow1);
             this.DoubleBuffered = true;
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TrackViewDisplay";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Track View Display";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Railroad_Signal_Paint);

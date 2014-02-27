@@ -9,6 +9,7 @@ namespace RailRoadSignal.EditorForms
     {
         private TrackViewDisplay trackViewDisplay;
         private DataViewForm dataViewForm;
+        private MainMenuForm mainMenu;
 
 
         /// <summary>
@@ -17,6 +18,12 @@ namespace RailRoadSignal.EditorForms
         public Railroad_Signal()
         {
             InitializeComponent();
+
+            mainMenu = new MainMenuForm();
+            mainMenu.MdiParent = this;
+            mainMenu.WindowState = FormWindowState.Maximized;
+            mainMenu.Show();
+            mainMenu.Visible = true;
 
             trackViewDisplay = new TrackViewDisplay();
             trackViewDisplay.MdiParent = this;
@@ -55,6 +62,7 @@ namespace RailRoadSignal.EditorForms
 
                 trackViewDisplay.Visible = true;
                 dataViewForm.Visible = false;
+                mainMenu.Visible = false;
 
             }
 
@@ -71,7 +79,8 @@ namespace RailRoadSignal.EditorForms
             if (dataViewForm != null)
             {
                 dataViewForm.Visible = true;
-                trackViewDisplay.Visible = false;
+                //trackViewDisplay.Visible = false;
+                mainMenu.Visible = false;
             }
 
         }
