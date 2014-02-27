@@ -129,6 +129,7 @@
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
     <Content Include="GE_.ico" />
+    <Content Include="GE_TRansportation_Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RailRoadSignalContent\RailRoadSignalContent.contentproj">

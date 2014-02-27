@@ -37,6 +37,15 @@
       <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\arrow.xnb</Output>
       <Time>2014-02-24T13:29:09.8389478-05:00</Time>
     </Item>
+    <Item>
+      <Source>Textures\GE_TRansportation_Logo.png</Source>
+      <Name>Textures\GE_TRansportation_Logo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\GE_TRansportation_Logo.xnb</Output>
+      <Time>2014-02-27T17:14:29.0163885-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{7980A9B7-D719-4794-9C03-88FE6F833975}</ContentProjectGUID>

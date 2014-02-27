@@ -18,22 +18,22 @@ namespace RailRoadSignal.EditorForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // create a new track
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            // load a track from the database
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            // load a local saved track
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            // nothing yet
         }
     }
 }
