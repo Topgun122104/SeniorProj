@@ -11,6 +11,7 @@ namespace RailRoadSignal.EditorForms
         private DataViewForm dataViewForm;
         private MainMenuForm mainMenu;
 
+        public bool createNewTrack;
 
         /// <summary>
         /// Initialize all the componenets for the application
@@ -92,33 +93,7 @@ namespace RailRoadSignal.EditorForms
         /// <param name="e"></param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            // example files
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        using (myStream)
-                        {
-                            // Insert code to read the stream here.
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
-            }
-
+            
         }
 
         /// <summary>
@@ -155,6 +130,42 @@ namespace RailRoadSignal.EditorForms
         {
             NewTrackSegmentForm trackSegmentForm = new NewTrackSegmentForm();
             trackSegmentForm.ShowDialog();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            // example files
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            // Insert code to read the stream here.
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+
         }
 
     }

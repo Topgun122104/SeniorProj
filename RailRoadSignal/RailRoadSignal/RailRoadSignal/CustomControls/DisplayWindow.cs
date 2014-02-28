@@ -209,11 +209,11 @@ namespace RailRoadSignal.CustomControls
 
             // Display items that are not updated with the view here
             spriteBatch.Begin();
-            spriteBatch.DrawString(displayFont, "view X : " + m_view.Position.X, new Vector2(20, 0), Color.Red);
-            spriteBatch.DrawString(displayFont, "view Y : " + m_view.Position.Y, new Vector2(20, 10), Color.Red);
-            spriteBatch.DrawString(displayFont, "mouse X: " + m_currMouseState.X, new Vector2(20, 20), Color.Red);
-            spriteBatch.DrawString(displayFont, "mouse Y: " + m_currMouseState.Y, new Vector2(20, 30), Color.Red);
-            spriteBatch.DrawString(displayFont, "zoom   : " + m_view.Zoom, new Vector2(20, 40), Color.Red);
+            spriteBatch.DrawString(displayFont, "view X : " + m_view.Position.X, new Vector2(20, 0), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "view Y : " + m_view.Position.Y, new Vector2(20, 10), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "mouse X: " + m_currMouseState.X, new Vector2(20, 20), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "mouse Y: " + m_currMouseState.Y, new Vector2(20, 30), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "zoom   : " + m_view.Zoom, new Vector2(20, 40), Color.Yellow);
             spriteBatch.End();
 
 
@@ -226,7 +226,7 @@ namespace RailRoadSignal.CustomControls
 
             foreach (TrackSegment track in sampleTrack)
             {
-                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.White);
+                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
             }
             spriteBatch.End();
         }

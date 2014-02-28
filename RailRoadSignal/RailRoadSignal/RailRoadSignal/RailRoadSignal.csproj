@@ -17,8 +17,10 @@
     <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>c93d471f-21b4-4b35-9d6f-c3e775f81918</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>GE_.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <Thumbnail>
+    </Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -124,10 +126,6 @@
     <Compile Include="WinformsGraphicsDevice\ServiceContainer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png">
-      <XnaPlatformSpecific>true</XnaPlatformSpecific>
-    </Content>
     <Content Include="GE_.ico" />
     <Content Include="GE_TRansportation_Logo.png" />
   </ItemGroup>
