@@ -126,8 +126,10 @@
     <Compile Include="WinformsGraphicsDevice\ServiceContainer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="database.png" />
     <Content Include="GE_.ico" />
     <Content Include="GE_TRansportation_Logo.png" />
+    <Content Include="load.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RailRoadSignalContent\RailRoadSignalContent.contentproj">

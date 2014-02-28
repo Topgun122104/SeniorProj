@@ -143,7 +143,7 @@ namespace RailRoadSignal.EditorForms
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             // example files
-            openFileDialog1.InitialDirectory = "c:\\";
+             
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
