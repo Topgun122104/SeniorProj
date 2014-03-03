@@ -1,0 +1,1 @@
+insert into formulaConstants values(1.467, 0.7333, 4, 3.8,0.22,1.95, 1.35,14);formulaconstants
