@@ -46,9 +46,10 @@ namespace RailRoadSignal.EditorForms
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(432, 249);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 140);
+            this.button1.Size = new System.Drawing.Size(160, 160);
             this.button1.TabIndex = 0;
             this.button1.Text = "Create a New Track Layout";
             this.button1.UseVisualStyleBackColor = false;
@@ -62,9 +63,9 @@ namespace RailRoadSignal.EditorForms
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button2.Location = new System.Drawing.Point(599, 249);
+            this.button2.Location = new System.Drawing.Point(610, 249);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 140);
+            this.button2.Size = new System.Drawing.Size(160, 160);
             this.button2.TabIndex = 1;
             this.button2.Text = "Load a Track Layout From a Database";
             this.button2.UseVisualStyleBackColor = false;
@@ -73,13 +74,13 @@ namespace RailRoadSignal.EditorForms
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.Location = new System.Drawing.Point(432, 427);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 140);
+            this.button3.Size = new System.Drawing.Size(160, 160);
             this.button3.TabIndex = 2;
             this.button3.Text = "Continue a Previous Track";
             this.button3.UseVisualStyleBackColor = false;
@@ -90,9 +91,9 @@ namespace RailRoadSignal.EditorForms
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(599, 427);
+            this.button4.Location = new System.Drawing.Point(610, 427);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(140, 140);
+            this.button4.Size = new System.Drawing.Size(160, 160);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);

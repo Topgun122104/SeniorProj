@@ -51,3 +51,4 @@ C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\
 C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.DataViewForm.resources
 C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.MainMenuForm.resources
 C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\Content\Textures\GE_TRansportation_Logo.xnb
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.NewTrackLayoutForm.resources

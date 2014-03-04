@@ -20,18 +20,23 @@ namespace RailRoadSignal.EditorForms
         {
             InitializeComponent();
 
+            //Start the program at the main menu
             mainMenu = new MainMenuForm();
             mainMenu.MdiParent = this;
             mainMenu.WindowState = FormWindowState.Maximized;
             mainMenu.Show();
             mainMenu.Visible = true;
 
+            // Set up a new track view, 
+            // but don't make it visible
             trackViewDisplay = new TrackViewDisplay();
             trackViewDisplay.MdiParent = this;
             trackViewDisplay.WindowState = FormWindowState.Maximized;
             trackViewDisplay.Show();
             trackViewDisplay.Visible = false;
 
+            // Set up a new data view,
+            // but don't make it visible
             dataViewForm = new DataViewForm();
             dataViewForm.MdiParent = this;
             dataViewForm.WindowState = FormWindowState.Maximized;
@@ -51,7 +56,7 @@ namespace RailRoadSignal.EditorForms
         }
 
         /// <summary>
-        /// 
+        /// Make the Track viw visible
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -70,7 +75,7 @@ namespace RailRoadSignal.EditorForms
         }
 
         /// <summary>
-        /// 
+        /// Make the data view visible
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -80,7 +85,6 @@ namespace RailRoadSignal.EditorForms
             if (dataViewForm != null)
             {
                 dataViewForm.Visible = true;
-                //trackViewDisplay.Visible = false;
                 mainMenu.Visible = false;
             }
 
@@ -93,11 +97,12 @@ namespace RailRoadSignal.EditorForms
         /// <param name="e"></param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            // doesnt do anything now
+            // There are multiple other options.
         }
 
         /// <summary>
-        /// 
+        /// Opens the Save dialog box
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -137,13 +142,18 @@ namespace RailRoadSignal.EditorForms
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fromFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             // example files
-             
+
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;

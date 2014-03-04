@@ -21,6 +21,9 @@ namespace RailRoadSignal.EditorForms
         {
             // create a new track
             this.Visible = false;
+            NewTrackLayoutForm newTrackLayout = new NewTrackLayoutForm();
+            newTrackLayout.Show();
+
              
         }
 
