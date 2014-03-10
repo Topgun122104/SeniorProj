@@ -101,8 +101,6 @@ namespace GE_Algorithms
             return 0;
         }
 
-
-
         /// <sumary>
         /// Test main for safe breaking distance calculations
         /// </summary>
