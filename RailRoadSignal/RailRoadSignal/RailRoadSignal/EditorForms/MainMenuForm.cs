@@ -17,6 +17,11 @@ namespace RailRoadSignal.EditorForms
             InitializeComponent();
         }
 
+        /// <summary>
+        ///  creates a new track layout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             // create a new track
@@ -24,14 +29,28 @@ namespace RailRoadSignal.EditorForms
             NewTrackLayoutForm newTrackLayout = new NewTrackLayoutForm();
             newTrackLayout.Show();
 
-             
+
         }
 
+
+        /// <summary>
+        /// Loads a track from a database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             // load a track from the database
+            LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
+            databaseForm.ShowDialog(this);
+
         }
 
+        /// <summary>
+        /// Loads a saved Track layout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             // load a local saved track
@@ -39,7 +58,7 @@ namespace RailRoadSignal.EditorForms
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             // example files
-             
+
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.RestoreDirectory = true;
