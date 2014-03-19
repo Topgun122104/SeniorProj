@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using RailRoadSignal.Files;
 
 namespace RailRoadSignal.CustomControls
 {
@@ -157,13 +157,14 @@ namespace RailRoadSignal.CustomControls
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                  // do nothing
+                // do nothing
+
             }
             // Set the previous mouse state to the current mouse state
             m_prevMouseState = m_currMouseState;
-            
+
             Refresh();
         }
 
@@ -215,7 +216,7 @@ namespace RailRoadSignal.CustomControls
             spriteBatch.DrawString(displayFont, "mouse Y: " + m_currMouseState.Y, new Vector2(20, 30), Color.Yellow);
             spriteBatch.DrawString(displayFont, "zoom   : " + m_view.Zoom, new Vector2(20, 40), Color.Yellow);
             spriteBatch.End();
-
+            
 
             // display anything that gets updated with the view here
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
@@ -227,6 +228,7 @@ namespace RailRoadSignal.CustomControls
             foreach (TrackSegment track in sampleTrack)
             {
                 track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
+                
             }
             spriteBatch.End();
         }
