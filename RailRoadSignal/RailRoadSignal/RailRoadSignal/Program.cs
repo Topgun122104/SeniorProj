@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using RailRoadSignal.EditorForms;
+using RailRoadSignal.Database;
 
 namespace RailRoadSignal
 {
@@ -14,6 +15,10 @@ namespace RailRoadSignal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            DatabaseConnection conn = new 
+                DatabaseConnection("andrew.cs.fit.edu", 3306, "signalblockdesign", "signalblockdesig", "E2SnzbV922m6R51");
+
 
             /// <sumary>
             /// Runs the Application
