@@ -59,23 +59,47 @@ namespace RailRoadSignal.Database
             }
 
         }
-        public void runQuery(DatabaseConnection db_connection, string queryText)
-        {
+        //public void runQuery(DatabaseConnection db_connection, string queryText)
+        //{
 
-            db_connection.openConnection();
+        //    db_connection.openConnection();
+
+        //    MySqlCommand cmd = db_connection.getConnection().CreateCommand();
+        //    cmd.CommandText = queryText;
+        //    MySqlDataReader reader = cmd.ExecuteReader();
+
+        //    while (reader.Read())
+        //    {
+        //        string row = "";
+        //        for (int i = 0; i < reader.FieldCount; i++)
+        //            row += reader.GetValue(i).ToString() + ", ";
+        //        Console.WriteLine(row);
+        //    }
+        //    db_connection.closeConnection();
+
+        //}
+
+        public List<string> runQuery(DatabaseConnection db_connection, string queryText)
+        {
+            List<string> result = new List<string>();
+             db_connection.openConnection();
 
             MySqlCommand cmd = db_connection.getConnection().CreateCommand();
             cmd.CommandText = queryText;
             MySqlDataReader reader = cmd.ExecuteReader();
 
+           // string row = "";
             while (reader.Read())
             {
-                string row = "";
                 for (int i = 0; i < reader.FieldCount; i++)
-                    row += reader.GetValue(i).ToString() + ", ";
-                Console.WriteLine(row);
+                result.Add( reader.GetValue(i).ToString());
+               // result.Add(row);
             }
+
             db_connection.closeConnection();
+
+            return result;
+        
 
         }
     }
