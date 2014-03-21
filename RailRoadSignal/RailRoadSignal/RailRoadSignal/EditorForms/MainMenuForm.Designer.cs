@@ -63,7 +63,7 @@ namespace RailRoadSignal.EditorForms
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button2.Location = new System.Drawing.Point(610, 249);
+            this.button2.Location = new System.Drawing.Point(610, 427);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(160, 160);
             this.button2.TabIndex = 1;
@@ -91,10 +91,11 @@ namespace RailRoadSignal.EditorForms
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(610, 427);
+            this.button4.Location = new System.Drawing.Point(610, 249);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(160, 160);
             this.button4.TabIndex = 3;
+            this.button4.Text = "Import From\r\n Excel File";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 

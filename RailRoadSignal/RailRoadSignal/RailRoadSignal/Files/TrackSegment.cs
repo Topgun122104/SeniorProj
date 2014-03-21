@@ -16,19 +16,19 @@ namespace RailRoadSignal
         /// Constructor for a new line
         /// Sets the thickness to 5f, and deoth to 1.0f
         /// </summary>
-        /// <param name="_a">End point for the line</param>
-        /// <param name="_b">End point for the line</param> 
-        public TrackSegment(Vector2 _a, Vector2 _b)
-            : base(_a, _b) { }
+        /// <param name="startPoint">End point for the line</param>
+        /// <param name="endPoint">End point for the line</param> 
+        public TrackSegment(Vector2 startPoint, Vector2 endPoint)
+            : base(startPoint, endPoint) { }
         /// <summary>
         /// Constructor for a new line
         /// </summary>
-        /// <param name="_a">End point for the line</param>
-        /// <param name="_b">End point for the line</param>
+        /// <param name="startPoint">End point for the line</param>
+        /// <param name="endPoint">End point for the line</param>
         /// <param name="_thickness">The thickness to draw the line</param>
         /// <param name="_depth">The sorting depth of the sprite, between 0 (front) and 1 (back).</param>
-        public TrackSegment(Vector2 _a, Vector2 _b, float _thickness, float _depth)
-            : base(_a, _b, _thickness, _depth) { }
+        public TrackSegment(Vector2 startPoint, Vector2 endPoint, float _thickness, float _depth)
+            : base(startPoint, endPoint, _thickness, _depth) { }
 
 
         //**************************************
@@ -74,6 +74,7 @@ namespace RailRoadSignal
             OverhangDist = overhangDist;
             SafetyFact = safetyFact;
 
+            
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist, SafetyFact);

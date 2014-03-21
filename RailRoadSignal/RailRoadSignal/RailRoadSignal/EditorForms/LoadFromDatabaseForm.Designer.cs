@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.ServerNameBox = new System.Windows.Forms.TextBox();
+            this.PortBox = new System.Windows.Forms.TextBox();
+            this.DatabaseNameBox = new System.Windows.Forms.TextBox();
+            this.UserNameBox = new System.Windows.Forms.TextBox();
+            this.PasswordBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,40 +42,40 @@
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // ServerNameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.ServerNameBox.Location = new System.Drawing.Point(137, 37);
+            this.ServerNameBox.Name = "ServerNameBox";
+            this.ServerNameBox.Size = new System.Drawing.Size(100, 20);
+            this.ServerNameBox.TabIndex = 0;
             // 
-            // textBox2
+            // PortBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(137, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.PortBox.Location = new System.Drawing.Point(137, 81);
+            this.PortBox.Name = "PortBox";
+            this.PortBox.Size = new System.Drawing.Size(100, 20);
+            this.PortBox.TabIndex = 1;
             // 
-            // textBox3
+            // DatabaseNameBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(137, 125);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.DatabaseNameBox.Location = new System.Drawing.Point(137, 125);
+            this.DatabaseNameBox.Name = "DatabaseNameBox";
+            this.DatabaseNameBox.Size = new System.Drawing.Size(100, 20);
+            this.DatabaseNameBox.TabIndex = 2;
             // 
-            // textBox4
+            // UserNameBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(137, 172);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
+            this.UserNameBox.Location = new System.Drawing.Point(137, 172);
+            this.UserNameBox.Name = "UserNameBox";
+            this.UserNameBox.Size = new System.Drawing.Size(100, 20);
+            this.UserNameBox.TabIndex = 3;
             // 
-            // textBox5
+            // PasswordBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(137, 223);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 4;
+            this.PasswordBox.Location = new System.Drawing.Point(137, 223);
+            this.PasswordBox.Name = "PasswordBox";
+            this.PasswordBox.Size = new System.Drawing.Size(100, 20);
+            this.PasswordBox.TabIndex = 4;
             // 
             // button1
             // 
@@ -154,11 +154,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PasswordBox);
+            this.Controls.Add(this.UserNameBox);
+            this.Controls.Add(this.DatabaseNameBox);
+            this.Controls.Add(this.PortBox);
+            this.Controls.Add(this.ServerNameBox);
             this.Name = "LoadFromDatabaseForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Database";
@@ -169,11 +169,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
@@ -181,5 +176,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox ServerNameBox;
+        public System.Windows.Forms.TextBox PortBox;
+        public System.Windows.Forms.TextBox DatabaseNameBox;
+        public System.Windows.Forms.TextBox UserNameBox;
+        public System.Windows.Forms.TextBox PasswordBox;
     }
 }

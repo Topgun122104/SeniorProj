@@ -38,9 +38,6 @@ namespace RailRoadSignal.CustomControls
         /*******************************************************/
 
 
-        // list for the sample track
-        List<TrackSegment> sampleTrack;
-
         /// <summary>
         /// Initialize the display window and all of the contents
         /// </summary>
@@ -61,8 +58,7 @@ namespace RailRoadSignal.CustomControls
             m_currMouseState = Mouse.GetState();
             this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.UpdateMouseWheel);
 
-            sampleTrack = new List<TrackSegment>();
-
+            
             // load all the textures and fonts
             Load(Content);
 
@@ -88,21 +84,21 @@ namespace RailRoadSignal.CustomControls
 
         private void AddSampleTrack()
         {
-            sampleTrack.Add(new TrackSegment(new Vector2(-1100, 100), new Vector2(300, 100)));
-            sampleTrack.Add(new TrackSegment(new Vector2(300, 100), new Vector2(400, 0)));
-            sampleTrack.Add(new TrackSegment(new Vector2(400, 0), new Vector2(700, 0)));
-            sampleTrack.Add(new TrackSegment(new Vector2(700, 0), new Vector2(800, 100)));
-            sampleTrack.Add(new TrackSegment(new Vector2(300, 100), new Vector2(800, 100)));
-            sampleTrack.Add(new TrackSegment(new Vector2(800, 100), new Vector2(1100, 100)));
-            sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(300, 120)));
-            sampleTrack.Add(new TrackSegment(new Vector2(300, 120), new Vector2(1100, 120)));
-            sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-200, 220)));
-            sampleTrack.Add(new TrackSegment(new Vector2(-200, 220), new Vector2(-500, 220)));
-            sampleTrack.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
-            sampleTrack.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
-            sampleTrack.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
-            sampleTrack.Add(new TrackSegment(new Vector2(0, 300), new Vector2(300, 300)));
-            sampleTrack.Add(new TrackSegment(new Vector2(300, 400), new Vector2(0, 400)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-1100, 100), new Vector2(300, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(400, 0)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(400, 0), new Vector2(700, 0)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(700, 0), new Vector2(800, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(800, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(800, 100), new Vector2(1100, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(300, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 120), new Vector2(1100, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-200, 220)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-200, 220), new Vector2(-500, 220)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 300), new Vector2(300, 300)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 400), new Vector2(0, 400)));
         }
 
         /// <summary>
@@ -225,7 +221,7 @@ namespace RailRoadSignal.CustomControls
 
             /*************************************************/
 
-            foreach (TrackSegment track in sampleTrack)
+            foreach (TrackSegment track in TrackLayout.Track)
             {
                 track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
                 

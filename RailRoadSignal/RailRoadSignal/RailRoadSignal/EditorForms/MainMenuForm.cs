@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Xna.Framework;
+using RailRoadSignal.Files;
 
 
 namespace RailRoadSignal.EditorForms
@@ -45,7 +47,7 @@ namespace RailRoadSignal.EditorForms
             LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
             if(databaseForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                
+                //Database.DatabaseConnection conn = new Database.DatabaseConnection(
             }
              
 
@@ -89,6 +91,35 @@ namespace RailRoadSignal.EditorForms
 
         private void button4_Click(object sender, EventArgs e)
         {
+            
+            Stream myStream = null;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            // Types of files to read
+            openFileDialog.Filter = "Comma Seperated Value (*.csv)|*.csv | Excel 97-2003 (*.xls)|*.xls | Excel Workbook (*.xlsx)|*.xlsx";
+            openFileDialog.FilterIndex = 2;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            // Insert code to read the stream here.
+
+                            // insert the track segments into the static TrackLayout class.
+                            // TrackLayout.Track.Add(new TrackSegment());
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
             // nothing yet
         }
     }

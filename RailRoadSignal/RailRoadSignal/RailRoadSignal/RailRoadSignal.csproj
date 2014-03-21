@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="CustomControls\View.cs" />
     <Compile Include="Files\SocketConnection.cs" />
+    <Compile Include="Files\TrackLayout.cs" />
     <Compile Include="GEAlgorithms\Algorithms.cs" />
     <Compile Include="GEAlgorithms\Physics.cs" />
     <Compile Include="Files\Line.cs" />
