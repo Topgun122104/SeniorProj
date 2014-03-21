@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace RailRoadSignal.EditorForms
 {
     public partial class MainMenuForm : Form
@@ -42,7 +43,11 @@ namespace RailRoadSignal.EditorForms
         {
             // load a track from the database
             LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
-            databaseForm.ShowDialog(this);
+            if(databaseForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                
+            }
+             
 
         }
 

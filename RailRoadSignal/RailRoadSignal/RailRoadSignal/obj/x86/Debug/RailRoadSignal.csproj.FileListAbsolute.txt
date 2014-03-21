@@ -71,3 +71,4 @@ C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\D
 C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.csproj.GenerateResource.Cache
 C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.exe
 C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.pdb
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.LoadFromDatabaseForm.resources

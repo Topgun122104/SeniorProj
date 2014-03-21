@@ -9,41 +9,87 @@ namespace RailRoadSignal.Database
 {
     public class DatabaseConnection
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        private string ServerName { get; set; }
 
-        private string serverName;
-        private uint port;
-        private string databaseName;
-        private string UID;
-        private string password;
+        /// <summary>
+        /// 
+        /// </summary>
+        private uint Port { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private string DatabaseName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private string UID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private string Password { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private MySqlConnectionStringBuilder connString = new MySqlConnectionStringBuilder();
+
+        /// <summary>
+        /// 
+        /// </summary>
         private MySqlConnection conn;
-        public DatabaseConnection(string serverName, uint port, string databaseName, string UID, string password)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="serverName"></param>
+        /// <param name="port"></param>
+        /// <param name="databaseName"></param>
+        /// <param name="uid"></param>
+        /// <param name="password"></param>
+        public DatabaseConnection(string serverName, uint port, string databaseName, string uid, string password)
         {
-            this.serverName = serverName;
-            this.port = port;
-            this.databaseName = databaseName;
-            this.UID = UID;
-            this.password = password;
+            ServerName = serverName;
+            Port = port;
+            DatabaseName = databaseName;
+            UID = uid;
+            Password = password;
 
             //create the connection object using a string builder
-            connString.Server = this.serverName;
-            connString.Port = this.port;
-            connString.UserID = this.UID;
-            connString.Password = this.password;
-            connString.Database = this.databaseName;
+            connString.Server = ServerName;
+            connString.Port = Port;
+            connString.UserID = UID;
+            connString.Password = Password;
+            connString.Database = DatabaseName;
 
             conn = new MySqlConnection(connString.ToString());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void openConnection()
         {
             conn.Open();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void closeConnection()
         {
             conn.Close();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public MySqlConnection getConnection()
         {
             return this.conn;

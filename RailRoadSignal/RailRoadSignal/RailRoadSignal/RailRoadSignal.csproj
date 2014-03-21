@@ -183,6 +183,9 @@
     <EmbeddedResource Include="EditorForms\DataViewForm.resx">
       <DependentUpon>DataViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditorForms\LoadFromDatabaseForm.resx">
+      <DependentUpon>LoadFromDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditorForms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>

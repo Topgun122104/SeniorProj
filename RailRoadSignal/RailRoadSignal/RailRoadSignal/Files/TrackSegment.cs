@@ -38,8 +38,8 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="_a"></param>
-        /// <param name="_b"></param>
+        /// <param name="startPoint"></param>
+        /// <param name="endPoint"></param>
         /// <param name="brakeLocation"></param>
         /// <param name="targetLocation"></param>
         /// <param name="gradeWorst"></param>
@@ -53,17 +53,30 @@ namespace RailRoadSignal
         /// <param name="brakeBuildUpSec"></param>
         /// <param name="overhangDist"></param>
         /// <param name="safetyFact"></param>
-        public TrackSegment(Vector2 _a, Vector2 _b,
-            int brakeLocation, int targetLocation, double gradeWorst,
-            double speedMax, double overspeed, double vehicleAccel,
-            double reactionTime, double brakeRate, double runwayAccelSec,
-            double propulsionRemSec, int brakeBuildUpSec, int overhangDist,
-            double safetyFact)
-            : base(_a, _b)
+        public TrackSegment(Vector2 startPoint, Vector2 endPoint,
+                            int brakeLocation, int targetLocation, double gradeWorst,
+                             double speedMax, double overSpeed, double vehicleAccel, 
+                            double reactionTime, double brakeRate, double runwayAccelSec, 
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
+                            : base(startPoint, endPoint)
         {
-            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(brakeLocation, targetLocation, gradeWorst,
-                speedMax, overspeed, vehicleAccel, reactionTime, brakeRate, runwayAccelSec, propulsionRemSec,
-                brakeBuildUpSec, overhangDist, safetyFact);
+            BrakeLocation = brakeLocation;
+            TargetLocation = targetLocation;
+            GradeWorst = gradeWorst;
+            SpeedMax = speedMax;
+            OverSpeed = overSpeed;
+            VehicleAccel = vehicleAccel;
+            ReactionTime = reactionTime;
+            BrakeRate = brakeRate;
+            RunwayAccelSec = runwayAccelSec;
+            PropulsionRemSec = propulsionRemSec;
+            BrakeBuildUpSec = brakeBuildUpSec;
+            OverhangDist = overhangDist;
+            SafetyFact = safetyFact;
+
+            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
+                SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
+                BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
 
         /// <summary>
@@ -92,6 +105,18 @@ namespace RailRoadSignal
         public double ApproachLockingTime { get; set; }
 
 
-
+        public int BrakeLocation { get; set; }
+        public int TargetLocation { get; set; }
+        public int BrakeBuildUpSec { get; set; }
+        public int OverhangDist { get; set; }
+        public double GradeWorst { get; set; }
+        public double SpeedMax { get; set; }
+        public double OverSpeed { get; set; }
+        public double VehicleAccel { get; set; }
+        public double ReactionTime { get; set; }
+        public double BrakeRate { get; set; }
+        public double RunwayAccelSec { get; set; }
+        public double PropulsionRemSec { get; set; }
+        public double SafetyFact { get; set; }
     }
 }
