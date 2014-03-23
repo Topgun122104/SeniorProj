@@ -131,6 +131,8 @@ namespace RailRoadSignal.EditorForms
                     // Code to write the stream goes here.
                     myStream.Close();
                 }
+                // refreshes the dataview to the new list of track segments
+                dataViewForm.UpdateDataView();
             }
         }
 
@@ -142,18 +144,69 @@ namespace RailRoadSignal.EditorForms
         private void newTrackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NewTrackSegmentForm trackSegmentForm = new NewTrackSegmentForm();
+
+            
             if(trackSegmentForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                TrackLayout.Track.Add(new TrackSegment(
-                    new Vector2((float)Convert.ToDouble(trackSegmentForm.startPositionXBox.Text),
-                    (float)Convert.ToDouble(trackSegmentForm.startPositionYBox.Text)),
-                      new Vector2((float)Convert.ToDouble(trackSegmentForm.endPositionXBox.Text),
-                       (float)Convert.ToDouble(trackSegmentForm.endPositionYBox.Text))));
+                /// <param name="trackID"></param>
+                /// <param name="startPoint"></param>
+                /// <param name="endPoint"></param>
+                /// <param name="brakeLocation"></param>
+                /// <param name="targetLocation"></param>
+                /// <param name="gradeWorst"></param>
+                /// <param name="speedMax"></param>
+                /// <param name="overspeed"></param>
+                /// <param name="vehicleAccel"></param>
+                /// <param name="reactionTime"></param>
+                /// <param name="brakeRate"></param>
+                /// <param name="runwayAccelSec"></param>
+                /// <param name="propulsionRemSec"></param>
+                /// <param name="brakeBuildUpSec"></param>
+                /// <param name="overhangDist"></param>
+                /// <param name="safetyFact"></param>
+                TrackLayout.Track.Add(new TrackSegment(trackSegmentForm.trackIDBox.Text,
+                        new Vector2((float)Convert.ToDouble(trackSegmentForm.startPositionXBox.Text),
+                        (float)Convert.ToDouble(trackSegmentForm.startPositionYBox.Text)),
+                        new Vector2((float)Convert.ToDouble(trackSegmentForm.endPositionXBox.Text),
+                        (float)Convert.ToDouble(trackSegmentForm.endPositionYBox.Text)), 
+                        Convert.ToInt32(trackSegmentForm.BrakeLocationBox.Text),
+                        Convert.ToInt32(trackSegmentForm.TargetLocationBox.Text),
+                        Convert.ToDouble(trackSegmentForm.GradeWorstBox.Text), 
+                        Convert.ToDouble(trackSegmentForm.SpeedMaxBox.Text),
+                        Convert.ToDouble(trackSegmentForm.OverSpeedBox.Text),
+                        Convert.ToDouble(trackSegmentForm.VehicleAccelBox.Text),
+                        Convert.ToDouble(trackSegmentForm.ReactionTimeBox.Text),
+                        Convert.ToDouble(trackSegmentForm.BrakeRateBox.Text),
+                        Convert.ToDouble(trackSegmentForm.RunwayAccelSecBox.Text),
+                        Convert.ToDouble(trackSegmentForm.PropulsionRemSecBox.Text), 
+                        Convert.ToInt32(trackSegmentForm.BrakeBuildUpSecBox.Text),
+                        Convert.ToInt32(trackSegmentForm.OverhangDistBox.Text), 
+                        Convert.ToDouble(trackSegmentForm.SafetyFactBox.Text)));
                 
                 
                 dataViewForm.UpdateDataView();
 
             }
+        }
+
+        private void LoadSampleTrack()
+        {
+
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-1100, 100), new Vector2(300, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(400, 0)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(400, 0), new Vector2(700, 0)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(700, 0), new Vector2(800, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(800, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(800, 100), new Vector2(1100, 100)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(300, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 120), new Vector2(1100, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-200, 220)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-200, 220), new Vector2(-500, 220)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 300), new Vector2(300, 300)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 400), new Vector2(0, 400)));
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

@@ -71,7 +71,7 @@ namespace RailRoadSignal.CustomControls
 
 
             // Add the sample track
-            AddSampleTrack();
+            
         }
 
 
@@ -90,21 +90,7 @@ namespace RailRoadSignal.CustomControls
 
         private void AddSampleTrack()
         {
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-1100, 100), new Vector2(300, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(400, 0)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(400, 0), new Vector2(700, 0)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(700, 0), new Vector2(800, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(800, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(800, 100), new Vector2(1100, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(300, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 120), new Vector2(1100, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-200, 220)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-200, 220), new Vector2(-500, 220)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 300), new Vector2(300, 300)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 400), new Vector2(0, 400)));
+           
         }
 
         /// <summary>

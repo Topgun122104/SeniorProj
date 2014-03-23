@@ -24,7 +24,7 @@ namespace RailRoadSignal.EditorForms
 
             this.dataGridView1.DataBindings.Clear();
             this.dataGridView1.Rows.Clear();
-            //this.dataGridView1.Refresh();
+            
         }
         public void UpdateDataView()
         {

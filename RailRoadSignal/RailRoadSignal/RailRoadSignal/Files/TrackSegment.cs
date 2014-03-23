@@ -34,7 +34,7 @@ namespace RailRoadSignal
         public TrackSegment(Vector2 startPoint, Vector2 endPoint, float _thickness, float _depth)
             : base(startPoint, endPoint, _thickness, _depth)
         {
-           
+
 
         }
 
@@ -46,9 +46,9 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="trackID"></param>
         /// <param name="startPoint"></param>
         /// <param name="endPoint"></param>
-        /// <param name="trackID"></param>
         /// <param name="brakeLocation"></param>
         /// <param name="targetLocation"></param>
         /// <param name="gradeWorst"></param>
@@ -62,7 +62,7 @@ namespace RailRoadSignal
         /// <param name="brakeBuildUpSec"></param>
         /// <param name="overhangDist"></param>
         /// <param name="safetyFact"></param>
-        public TrackSegment(Vector2 startPoint, Vector2 endPoint, string trackID,
+        public TrackSegment(string trackID, Vector2 startPoint, Vector2 endPoint,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
