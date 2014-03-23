@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
+using RailRoadSignal.Files;
 
 
 namespace RailRoadSignal.EditorForms
@@ -12,6 +13,7 @@ namespace RailRoadSignal.EditorForms
         private DataViewForm dataViewForm;
         private MainMenuForm mainMenu;
 
+        
         public bool createNewTrack;
 
         /// <summary>
@@ -40,9 +42,10 @@ namespace RailRoadSignal.EditorForms
             // but don't make it visible
             dataViewForm = new DataViewForm();
             dataViewForm.MdiParent = this;
-            dataViewForm.WindowState = FormWindowState.Maximized;
+            dataViewForm.WindowState = FormWindowState.Maximized;           
             dataViewForm.Show();
             dataViewForm.Visible = false;
+
         }
 
 
@@ -67,7 +70,8 @@ namespace RailRoadSignal.EditorForms
             if (trackViewDisplay != null)
             {
 
-                trackViewDisplay.Visible = true;
+                trackViewDisplay.WindowState = FormWindowState.Maximized;
+                trackViewDisplay.Visible = true;                
                 dataViewForm.Visible = false;
                 mainMenu.Visible = false;
 
@@ -85,6 +89,9 @@ namespace RailRoadSignal.EditorForms
             // make the data view visible
             if (dataViewForm != null)
             {
+                 
+                dataViewForm.UpdateDataView();
+                dataViewForm.WindowState = FormWindowState.Maximized;
                 dataViewForm.Visible = true;
                 mainMenu.Visible = false;
             }
@@ -135,7 +142,18 @@ namespace RailRoadSignal.EditorForms
         private void newTrackToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NewTrackSegmentForm trackSegmentForm = new NewTrackSegmentForm();
-            trackSegmentForm.ShowDialog();
+            if(trackSegmentForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                TrackLayout.Track.Add(new TrackSegment(
+                    new Vector2((float)Convert.ToDouble(trackSegmentForm.startPositionXBox.Text),
+                    (float)Convert.ToDouble(trackSegmentForm.startPositionYBox.Text)),
+                      new Vector2((float)Convert.ToDouble(trackSegmentForm.endPositionXBox.Text),
+                       (float)Convert.ToDouble(trackSegmentForm.endPositionYBox.Text))));
+                
+                
+                dataViewForm.UpdateDataView();
+
+            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

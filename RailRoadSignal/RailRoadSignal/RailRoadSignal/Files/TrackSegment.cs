@@ -19,7 +19,11 @@ namespace RailRoadSignal
         /// <param name="startPoint">End point for the line</param>
         /// <param name="endPoint">End point for the line</param> 
         public TrackSegment(Vector2 startPoint, Vector2 endPoint)
-            : base(startPoint, endPoint) { }
+            : base(startPoint, endPoint)
+        {
+            TrackID = "3";
+            SafeBreakingDistance = 23.43;
+        }
         /// <summary>
         /// Constructor for a new line
         /// </summary>
@@ -28,7 +32,11 @@ namespace RailRoadSignal
         /// <param name="_thickness">The thickness to draw the line</param>
         /// <param name="_depth">The sorting depth of the sprite, between 0 (front) and 1 (back).</param>
         public TrackSegment(Vector2 startPoint, Vector2 endPoint, float _thickness, float _depth)
-            : base(startPoint, endPoint, _thickness, _depth) { }
+            : base(startPoint, endPoint, _thickness, _depth)
+        {
+           
+
+        }
 
 
         //**************************************
@@ -40,6 +48,7 @@ namespace RailRoadSignal
         /// </summary>
         /// <param name="startPoint"></param>
         /// <param name="endPoint"></param>
+        /// <param name="trackID"></param>
         /// <param name="brakeLocation"></param>
         /// <param name="targetLocation"></param>
         /// <param name="gradeWorst"></param>
@@ -53,13 +62,14 @@ namespace RailRoadSignal
         /// <param name="brakeBuildUpSec"></param>
         /// <param name="overhangDist"></param>
         /// <param name="safetyFact"></param>
-        public TrackSegment(Vector2 startPoint, Vector2 endPoint,
+        public TrackSegment(Vector2 startPoint, Vector2 endPoint, string trackID,
                             int brakeLocation, int targetLocation, double gradeWorst,
-                             double speedMax, double overSpeed, double vehicleAccel, 
-                            double reactionTime, double brakeRate, double runwayAccelSec, 
+                             double speedMax, double overSpeed, double vehicleAccel,
+                            double reactionTime, double brakeRate, double runwayAccelSec,
                             double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
-                            : base(startPoint, endPoint)
+            : base(startPoint, endPoint)
         {
+            TrackID = trackID;
             BrakeLocation = brakeLocation;
             TargetLocation = targetLocation;
             GradeWorst = gradeWorst;
@@ -74,7 +84,7 @@ namespace RailRoadSignal
             OverhangDist = overhangDist;
             SafetyFact = safetyFact;
 
-            
+
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
@@ -100,24 +110,84 @@ namespace RailRoadSignal
         /// </summary>
         public double ClearTime { get; set; }
 
+
+        /////////////////////////////////////////////////////////////////////////////
+
+
         /// <summary>
         /// 
         /// </summary>
         public double ApproachLockingTime { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string TrackID { get; set; }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int BrakeLocation { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int TargetLocation { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int BrakeBuildUpSec { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int OverhangDist { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double GradeWorst { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double SpeedMax { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double OverSpeed { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double VehicleAccel { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double ReactionTime { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double BrakeRate { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double RunwayAccelSec { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double PropulsionRemSec { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public double SafetyFact { get; set; }
     }
 }

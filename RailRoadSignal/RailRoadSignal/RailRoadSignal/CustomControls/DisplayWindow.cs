@@ -29,6 +29,11 @@ namespace RailRoadSignal.CustomControls
         private MouseState m_currMouseState;
         private MouseState m_prevMouseState;
         private Ray m_mouseRay;
+        private Vector3 NearSource;
+        private Vector3 FarSource;
+        private Vector3 NearPoint;
+        private Vector3 FarPoint;
+
         // Create a new view camera for the display window
         private View m_view;
 
@@ -37,7 +42,8 @@ namespace RailRoadSignal.CustomControls
 
         /*******************************************************/
 
-
+        string error = "";
+        bool ViewError = false;
         /// <summary>
         /// Initialize the display window and all of the contents
         /// </summary>
@@ -58,7 +64,7 @@ namespace RailRoadSignal.CustomControls
             m_currMouseState = Mouse.GetState();
             this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.UpdateMouseWheel);
 
-            
+
             // load all the textures and fonts
             Load(Content);
 
@@ -114,6 +120,11 @@ namespace RailRoadSignal.CustomControls
 
             // m_mouseRay = new Ray(new Vector3(m_currMouseState.X, m_currMouseState.Y, 0), new Vector3());
 
+            NearSource = new Vector3((float)m_currMouseState.X, m_currMouseState.Y, 0f);
+            FarSource = new Vector3((float)m_currMouseState.X, m_currMouseState.Y, 1f);
+
+            // NearPoint = GraphicsDevice.Viewport.Unproject(NearSource, )
+
 
         }
         /// <summary>
@@ -152,10 +163,15 @@ namespace RailRoadSignal.CustomControls
                         m_view.MoveDown((m_currMouseState.Y - m_prevMouseState.Y) / m_view.Zoom);
                     }
                 }
+
+                ViewError = false;
+
             }
             catch (Exception e)
             {
                 // do nothing
+                ViewError = true;
+                error = e.ToString();
 
             }
             // Set the previous mouse state to the current mouse state
@@ -211,8 +227,12 @@ namespace RailRoadSignal.CustomControls
             spriteBatch.DrawString(displayFont, "mouse X: " + m_currMouseState.X, new Vector2(20, 20), Color.Yellow);
             spriteBatch.DrawString(displayFont, "mouse Y: " + m_currMouseState.Y, new Vector2(20, 30), Color.Yellow);
             spriteBatch.DrawString(displayFont, "zoom   : " + m_view.Zoom, new Vector2(20, 40), Color.Yellow);
+            if (ViewError)
+            {
+                spriteBatch.DrawString(displayFont, error, new Vector2(Width / 2, Height / 2), Color.Yellow);
+            }
             spriteBatch.End();
-            
+
 
             // display anything that gets updated with the view here
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
@@ -224,7 +244,7 @@ namespace RailRoadSignal.CustomControls
             foreach (TrackSegment track in TrackLayout.Track)
             {
                 track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
-                
+
             }
             spriteBatch.End();
         }

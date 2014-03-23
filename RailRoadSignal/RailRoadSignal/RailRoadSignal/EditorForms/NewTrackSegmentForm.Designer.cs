@@ -30,15 +30,16 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.startPositionXBox = new System.Windows.Forms.TextBox();
+            this.startPositionYBox = new System.Windows.Forms.TextBox();
+            this.endPositionXBox = new System.Windows.Forms.TextBox();
+            this.endPositionYBox = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(309, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -49,6 +50,7 @@
             // 
             // button2
             // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Location = new System.Drawing.Point(13, 320);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -57,33 +59,33 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // textBox1
+            // startPositionXBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.startPositionXBox.Location = new System.Drawing.Point(104, 12);
+            this.startPositionXBox.Name = "startPositionXBox";
+            this.startPositionXBox.Size = new System.Drawing.Size(100, 20);
+            this.startPositionXBox.TabIndex = 2;
             // 
-            // textBox2
+            // startPositionYBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(13, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.startPositionYBox.Location = new System.Drawing.Point(210, 12);
+            this.startPositionYBox.Name = "startPositionYBox";
+            this.startPositionYBox.Size = new System.Drawing.Size(100, 20);
+            this.startPositionYBox.TabIndex = 3;
             // 
-            // textBox3
+            // endPositionXBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(13, 65);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 4;
+            this.endPositionXBox.Location = new System.Drawing.Point(104, 38);
+            this.endPositionXBox.Name = "endPositionXBox";
+            this.endPositionXBox.Size = new System.Drawing.Size(100, 20);
+            this.endPositionXBox.TabIndex = 4;
             // 
-            // textBox4
+            // endPositionYBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(13, 92);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 5;
+            this.endPositionYBox.Location = new System.Drawing.Point(210, 38);
+            this.endPositionYBox.Name = "endPositionYBox";
+            this.endPositionYBox.Size = new System.Drawing.Size(100, 20);
+            this.endPositionYBox.TabIndex = 5;
             // 
             // textBox5
             // 
@@ -98,10 +100,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 355);
             this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.endPositionYBox);
+            this.Controls.Add(this.endPositionXBox);
+            this.Controls.Add(this.startPositionYBox);
+            this.Controls.Add(this.startPositionXBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.DoubleBuffered = true;
@@ -119,10 +121,10 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.TextBox startPositionXBox;
+        public System.Windows.Forms.TextBox startPositionYBox;
+        public System.Windows.Forms.TextBox endPositionXBox;
+        public System.Windows.Forms.TextBox endPositionYBox;
     }
 }
