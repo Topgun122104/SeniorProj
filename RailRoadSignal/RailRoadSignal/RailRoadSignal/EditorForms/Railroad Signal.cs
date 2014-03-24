@@ -260,7 +260,27 @@ namespace RailRoadSignal.EditorForms
         /// <param name="e"></param>
         private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            TrackInformationForm infoForm = new TrackInformationForm();
+            infoForm.CustomerBox.Text = TrackLayout.Customer;
+            infoForm.ProjectNameBox.Text = TrackLayout.ProjectName;
+            infoForm.ContractBox.Text = TrackLayout.Contract;
+            infoForm.PreparerBox.Text = TrackLayout.Preparer;
+            infoForm.MaxSpeedBox.Text = TrackLayout.MaxSpeed.ToString();
+            infoForm.TypeBox.Text = TrackLayout.TrainType;
+            infoForm.TonnageBox.Text = TrackLayout.Tonnage.ToString();
+            infoForm.MaxLengthBox.Text = TrackLayout.MaxBlockLength.ToString();
+            infoForm.BreakingCharacteristicsBox.Text = TrackLayout.BreakingCharacteristics;
+            if(TrackLayout.Miles == true)
+            {
+                infoForm.PostRangeBox.Text = "Miles";
+            }
+            else 
+            {
+                infoForm.PostRangeBox.Text = "Kilometers";
+            }
 
+            infoForm.ShowDialog(this);
+             
         }
 
         /// <summary>

@@ -158,6 +158,7 @@
     <Content Include="database.png" />
     <Content Include="GE_.ico" />
     <Content Include="GE_TRansportation_Logo.png" />
+    <Content Include="import.png" />
     <Content Include="load.png" />
     <Content Include="new.png" />
   </ItemGroup>
