@@ -72,3 +72,5 @@ C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\D
 C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.exe
 C:\Users\Chris\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.pdb
 C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.LoadFromDatabaseForm.resources
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.TrackInformationForm.resources
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.AboutForm.resources

@@ -44,6 +44,9 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newTrackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.trackInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +55,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
-            this.addToolStripMenuItem});
+            this.addToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -81,8 +85,9 @@
             // trackLayoutToolStripMenuItem
             // 
             this.trackLayoutToolStripMenuItem.Name = "trackLayoutToolStripMenuItem";
-            this.trackLayoutToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.trackLayoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.trackLayoutToolStripMenuItem.Text = "Track Layout";
+            this.trackLayoutToolStripMenuItem.Click += new System.EventHandler(this.trackLayoutToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
@@ -99,6 +104,7 @@
             this.fromDatabaseToolStripMenuItem.Name = "fromDatabaseToolStripMenuItem";
             this.fromDatabaseToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.fromDatabaseToolStripMenuItem.Text = "From Database";
+            this.fromDatabaseToolStripMenuItem.Click += new System.EventHandler(this.fromDatabaseToolStripMenuItem_Click);
             // 
             // fromFileToolStripMenuItem
             // 
@@ -125,7 +131,8 @@
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dataToolStripMenuItem,
-            this.trackToolStripMenuItem});
+            this.trackToolStripMenuItem,
+            this.trackInfoToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -133,15 +140,15 @@
             // dataToolStripMenuItem
             // 
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
-            this.dataToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.dataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dataToolStripMenuItem.Text = "Data";
             this.dataToolStripMenuItem.Click += new System.EventHandler(this.dataToolStripMenuItem_Click);
             // 
             // trackToolStripMenuItem
             // 
             this.trackToolStripMenuItem.Name = "trackToolStripMenuItem";
-            this.trackToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.trackToolStripMenuItem.Text = "Track";
+            this.trackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.trackToolStripMenuItem.Text = "Track Layout";
             this.trackToolStripMenuItem.Click += new System.EventHandler(this.trackToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
@@ -155,7 +162,7 @@
             // newTrackToolStripMenuItem
             // 
             this.newTrackToolStripMenuItem.Name = "newTrackToolStripMenuItem";
-            this.newTrackToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.newTrackToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newTrackToolStripMenuItem.Text = "New Track ";
             this.newTrackToolStripMenuItem.Click += new System.EventHandler(this.newTrackToolStripMenuItem_Click);
             // 
@@ -166,6 +173,28 @@
             this.statusStrip1.Size = new System.Drawing.Size(1264, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // trackInfoToolStripMenuItem
+            // 
+            this.trackInfoToolStripMenuItem.Name = "trackInfoToolStripMenuItem";
+            this.trackInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.trackInfoToolStripMenuItem.Text = "Track Info";
+            this.trackInfoToolStripMenuItem.Click += new System.EventHandler(this.trackInfoToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // Railroad_Signal
             // 
@@ -206,5 +235,8 @@
         private System.Windows.Forms.ToolStripMenuItem fromDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fromFileToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem trackInfoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

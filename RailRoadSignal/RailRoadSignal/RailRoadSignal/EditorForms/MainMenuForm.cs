@@ -40,19 +40,14 @@ namespace RailRoadSignal.EditorForms
                 this.Visible = false;
                 TrackLayout.Customer = newTrackLayout.CustomerBox.Text;
                 TrackLayout.ProjectName = newTrackLayout.ProjectNameBox.Text;
-                TrackLayout.Contract = newTrackLayout.ContractBox.Text;
-                TrackLayout.PostRange = Convert.ToDouble(newTrackLayout.PostRangeBox.Text);
+                TrackLayout.Contract = newTrackLayout.ContractBox.Text;                
                 TrackLayout.Preparer = newTrackLayout.PreparerBox.Text;
                 TrackLayout.MaxSpeed = Convert.ToDouble(newTrackLayout.MaxSpeedBox.Text);
                 TrackLayout.TrainType = newTrackLayout.TypeBox.Text;
                 TrackLayout.Tonnage = Convert.ToDouble(newTrackLayout.TonnageBox.Text);
                 TrackLayout.MaxBlockLength = Convert.ToDouble(newTrackLayout.MaxBlockLengthBox.Text);
                 TrackLayout.BreakingCharacteristics = newTrackLayout.BreakingCharacteristicsBox.Text;
-
-
             }
-
-
         }
 
 

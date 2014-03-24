@@ -13,7 +13,7 @@ namespace RailRoadSignal.EditorForms
         private DataViewForm dataViewForm;
         private MainMenuForm mainMenu;
 
-        
+
         public bool createNewTrack;
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace RailRoadSignal.EditorForms
             // but don't make it visible
             dataViewForm = new DataViewForm();
             dataViewForm.MdiParent = this;
-            dataViewForm.WindowState = FormWindowState.Maximized;           
+            dataViewForm.WindowState = FormWindowState.Maximized;
             dataViewForm.Show();
             dataViewForm.Visible = false;
 
@@ -71,7 +71,7 @@ namespace RailRoadSignal.EditorForms
             {
 
                 trackViewDisplay.WindowState = FormWindowState.Maximized;
-                trackViewDisplay.Visible = true;                
+                trackViewDisplay.Visible = true;
                 dataViewForm.Visible = false;
                 mainMenu.Visible = false;
 
@@ -89,7 +89,7 @@ namespace RailRoadSignal.EditorForms
             // make the data view visible
             if (dataViewForm != null)
             {
-                 
+
                 dataViewForm.UpdateDataView();
                 dataViewForm.WindowState = FormWindowState.Maximized;
                 dataViewForm.Visible = true;
@@ -145,8 +145,8 @@ namespace RailRoadSignal.EditorForms
         {
             NewTrackSegmentForm trackSegmentForm = new NewTrackSegmentForm();
 
-            
-            if(trackSegmentForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+            if (trackSegmentForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 /// <param name="trackID"></param>
                 /// <param name="startPoint"></param>
@@ -168,22 +168,22 @@ namespace RailRoadSignal.EditorForms
                         new Vector2((float)Convert.ToDouble(trackSegmentForm.startPositionXBox.Text),
                         (float)Convert.ToDouble(trackSegmentForm.startPositionYBox.Text)),
                         new Vector2((float)Convert.ToDouble(trackSegmentForm.endPositionXBox.Text),
-                        (float)Convert.ToDouble(trackSegmentForm.endPositionYBox.Text)), 
+                        (float)Convert.ToDouble(trackSegmentForm.endPositionYBox.Text)),
                         Convert.ToInt32(trackSegmentForm.BrakeLocationBox.Text),
                         Convert.ToInt32(trackSegmentForm.TargetLocationBox.Text),
-                        Convert.ToDouble(trackSegmentForm.GradeWorstBox.Text), 
+                        Convert.ToDouble(trackSegmentForm.GradeWorstBox.Text),
                         Convert.ToDouble(trackSegmentForm.SpeedMaxBox.Text),
                         Convert.ToDouble(trackSegmentForm.OverSpeedBox.Text),
                         Convert.ToDouble(trackSegmentForm.VehicleAccelBox.Text),
                         Convert.ToDouble(trackSegmentForm.ReactionTimeBox.Text),
                         Convert.ToDouble(trackSegmentForm.BrakeRateBox.Text),
                         Convert.ToDouble(trackSegmentForm.RunwayAccelSecBox.Text),
-                        Convert.ToDouble(trackSegmentForm.PropulsionRemSecBox.Text), 
+                        Convert.ToDouble(trackSegmentForm.PropulsionRemSecBox.Text),
                         Convert.ToInt32(trackSegmentForm.BrakeBuildUpSecBox.Text),
-                        Convert.ToInt32(trackSegmentForm.OverhangDistBox.Text), 
+                        Convert.ToInt32(trackSegmentForm.OverhangDistBox.Text),
                         Convert.ToDouble(trackSegmentForm.SafetyFactBox.Text)));
-                
-                
+
+
                 dataViewForm.UpdateDataView();
 
             }
@@ -250,6 +250,52 @@ namespace RailRoadSignal.EditorForms
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void trackInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// About Menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm about = new AboutForm();
+            if (about.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                about.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Load from database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fromDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /// <summary>
+        /// Start a new track layout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void trackLayoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
 
