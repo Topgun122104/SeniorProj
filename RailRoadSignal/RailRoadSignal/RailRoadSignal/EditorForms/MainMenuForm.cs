@@ -9,7 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using RailRoadSignal.Files;
-
+using RailRoadSignal.Database;
 
 namespace RailRoadSignal.EditorForms
 {
@@ -27,11 +27,11 @@ namespace RailRoadSignal.EditorForms
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-             
+
             NewTrackLayoutForm newTrackLayout = new NewTrackLayoutForm();
             if (newTrackLayout.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                 
+
 
                 // TODO: need to do error checking on the input to make sure that all the 
                 // fields are filled out.
@@ -40,13 +40,14 @@ namespace RailRoadSignal.EditorForms
                 this.Visible = false;
                 TrackLayout.Customer = newTrackLayout.CustomerBox.Text;
                 TrackLayout.ProjectName = newTrackLayout.ProjectNameBox.Text;
-                TrackLayout.Contract = newTrackLayout.ContractBox.Text;                
+                TrackLayout.Contract = newTrackLayout.ContractBox.Text;
                 TrackLayout.Preparer = newTrackLayout.PreparerBox.Text;
                 TrackLayout.MaxSpeed = Convert.ToDouble(newTrackLayout.MaxSpeedBox.Text);
                 TrackLayout.TrainType = newTrackLayout.TypeBox.Text;
                 TrackLayout.Tonnage = Convert.ToDouble(newTrackLayout.TonnageBox.Text);
                 TrackLayout.MaxBlockLength = Convert.ToDouble(newTrackLayout.MaxBlockLengthBox.Text);
                 TrackLayout.BreakingCharacteristics = newTrackLayout.BreakingCharacteristicsBox.Text;
+
             }
         }
 
@@ -62,9 +63,20 @@ namespace RailRoadSignal.EditorForms
             LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
             if (databaseForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
-                //Database.DatabaseConnection conn = new Database.DatabaseConnection(
-            }
+                // TODO: Set up the database
+                Database.DatabaseConnection conn = new Database.DatabaseConnection(databaseForm.ServerNameBox.Text,
+                    Convert.ToUInt32(databaseForm.PortBox.Text), databaseForm.DatabaseNameBox.Text,
+                    databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
 
+                Query q = new Query();
+                List<string> list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '921T'");
+                string text = "";
+                for (int i = 0; i < list.Count; i++)
+                {
+                    text += list[i] + "\n";
+                }
+                MessageBox.Show(text);
+            }
 
         }
 

@@ -197,6 +197,10 @@ namespace RailRoadSignal.CustomControls
 
         }
 
+        public void SetView(Vector2 position)
+        {
+            m_view.Move(position);
+        }
         /// <summary>
         /// All of the rendering of graphics go in here
         /// </summary>

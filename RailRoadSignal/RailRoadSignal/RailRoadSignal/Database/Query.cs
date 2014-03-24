@@ -28,10 +28,7 @@ namespace RailRoadSignal.Database
         {
             try
             {
-
-
                 db_connection.openConnection();
-
 
                 MySqlDataReader reader = cmd.ExecuteReader();
                 string row = null;
@@ -82,24 +79,24 @@ namespace RailRoadSignal.Database
         public List<string> runQuery(DatabaseConnection db_connection, string queryText)
         {
             List<string> result = new List<string>();
-             db_connection.openConnection();
+            db_connection.openConnection();
 
             MySqlCommand cmd = db_connection.getConnection().CreateCommand();
             cmd.CommandText = queryText;
             MySqlDataReader reader = cmd.ExecuteReader();
 
-           // string row = "";
+            // string row = "";
             while (reader.Read())
             {
                 for (int i = 0; i < reader.FieldCount; i++)
-                result.Add( reader.GetValue(i).ToString());
-               // result.Add(row);
+                    result.Add(reader.GetValue(i).ToString());
+                // result.Add(row);
             }
 
             db_connection.closeConnection();
 
             return result;
-        
+
 
         }
     }

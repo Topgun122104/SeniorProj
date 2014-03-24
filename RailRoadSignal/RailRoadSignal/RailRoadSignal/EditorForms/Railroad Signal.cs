@@ -23,12 +23,7 @@ namespace RailRoadSignal.EditorForms
         {
             InitializeComponent();
 
-            //Start the program at the main menu
-            mainMenu = new MainMenuForm();
-            mainMenu.MdiParent = this;
-            mainMenu.WindowState = FormWindowState.Maximized;
-            mainMenu.Show();
-            mainMenu.Visible = true;
+            
 
             // Set up a new track view, 
             // but don't make it visible
@@ -45,7 +40,14 @@ namespace RailRoadSignal.EditorForms
             dataViewForm.WindowState = FormWindowState.Maximized;
             dataViewForm.Show();
             dataViewForm.Visible = false;
+            UpdateTrackInformation();
 
+            //Start the program at the main menu
+            mainMenu = new MainMenuForm();
+            mainMenu.MdiParent = this;
+            mainMenu.WindowState = FormWindowState.Maximized;
+            mainMenu.Show();
+            mainMenu.Visible = true;
         }
 
 
@@ -87,14 +89,7 @@ namespace RailRoadSignal.EditorForms
         private void dataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // make the data view visible
-            if (dataViewForm != null)
-            {
-
-                dataViewForm.UpdateDataView();
-                dataViewForm.WindowState = FormWindowState.Maximized;
-                dataViewForm.Visible = true;
-                mainMenu.Visible = false;
-            }
+            SetDataView();
 
         }
 
@@ -183,7 +178,6 @@ namespace RailRoadSignal.EditorForms
                         Convert.ToInt32(trackSegmentForm.OverhangDistBox.Text),
                         Convert.ToDouble(trackSegmentForm.SafetyFactBox.Text)));
 
-
                 dataViewForm.UpdateDataView();
 
             }
@@ -195,21 +189,18 @@ namespace RailRoadSignal.EditorForms
         private void LoadSampleTrack()
         {
 
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-1100, 100), new Vector2(300, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(400, 0)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(400, 0), new Vector2(700, 0)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(700, 0), new Vector2(800, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 100), new Vector2(800, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(800, 100), new Vector2(1100, 100)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(300, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 120), new Vector2(1100, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-200, 220)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-200, 220), new Vector2(-500, 220)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-500, 220), new Vector2(-600, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-600, 120), new Vector2(-1100, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 120), new Vector2(-600, 120)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 300), new Vector2(300, 300)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(300, 400), new Vector2(0, 400)));
+            TrackLayout.Track.Add(new TrackSegment("921T", new Vector2(-1100, 100), new Vector2(300, 100), 48895, 49485, 1.296, 15.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("921T", new Vector2(300, 100), new Vector2(400, 0), 48895, 50100, 2.467, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(400, 0), new Vector2(700, 0), 49485, 50100, 3.59, 20.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(700, 0), new Vector2(800, 100), 49485, 51066, 1.879, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(300, 100), new Vector2(800, 100), 49485, 52032, -0.405, 55.0, 2.0, 0.6079, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("951T", new Vector2(800, 100), new Vector2(1100, 100), 50100, 51066, 0.7902, 25.0, 2.0, 2.2406, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("951T", new Vector2(-100, 120), new Vector2(300, 120), 50100, 52032, -1.677, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("951T", new Vector2(300, 120), new Vector2(1100, 120), 50100, 52998, -0.962, 55.0, 2.0, 0.6079, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-100, 120), new Vector2(-200, 220), 50166, 52998, -1.837, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-200, 220), new Vector2(-500, 220), 50166, 53964, -2.032, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-500, 220), new Vector2(-600, 120), 50166, 54930, -0.819, 65.0, 2.0, .3471, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            dataViewForm.UpdateDataView();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -270,19 +261,44 @@ namespace RailRoadSignal.EditorForms
             infoForm.TonnageBox.Text = TrackLayout.Tonnage.ToString();
             infoForm.MaxLengthBox.Text = TrackLayout.MaxBlockLength.ToString();
             infoForm.BreakingCharacteristicsBox.Text = TrackLayout.BreakingCharacteristics;
-            if(TrackLayout.Miles == true)
+            if (TrackLayout.Miles == true)
             {
                 infoForm.PostRangeBox.Text = "Miles";
+                 
             }
-            else 
+            else
             {
                 infoForm.PostRangeBox.Text = "Kilometers";
+                 
             }
-
+            
+            
             infoForm.ShowDialog(this);
-             
+            
         }
 
+        public void UpdateTrackInformation()
+        {
+            dataViewForm.CustomerBox.Text = TrackLayout.Customer;
+            dataViewForm.ProjectNameBox.Text = TrackLayout.ProjectName;
+            dataViewForm.MaxSpeedBox.Text = TrackLayout.MaxSpeed.ToString();
+            dataViewForm.TypeBox.Text = TrackLayout.TrainType;
+            dataViewForm.TonnageBox.Text = TrackLayout.Tonnage.ToString();
+            dataViewForm.MaxBlockLengthBox.Text = TrackLayout.MaxBlockLength.ToString();
+            dataViewForm.BreakingCharBox.Text = TrackLayout.BreakingCharacteristics;
+            if (TrackLayout.Miles == true)
+            {
+                 
+                dataViewForm.PostRangeBox.Text = "Miles";
+            }
+            else
+            {
+                 
+                dataViewForm.PostRangeBox.Text = "Kilometers";
+            }
+
+            dataViewForm.Refresh();
+        }
         /// <summary>
         /// About Menu
         /// </summary>
@@ -317,6 +333,33 @@ namespace RailRoadSignal.EditorForms
         private void trackLayoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void SetDataView()
+        {
+            if (dataViewForm != null)
+            {
+
+                UpdateTrackInformation();
+                dataViewForm.UpdateDataView();
+                dataViewForm.WindowState = FormWindowState.Maximized;
+                dataViewForm.Visible = true;
+                mainMenu.Visible = false;
+
+            }
+        }
+        /// <summary>
+        /// A test set of data to display
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void loadSampleDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadSampleTrack();
         }
 
     }

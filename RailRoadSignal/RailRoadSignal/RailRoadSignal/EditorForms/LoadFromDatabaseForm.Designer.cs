@@ -48,6 +48,7 @@
             this.ServerNameBox.Name = "ServerNameBox";
             this.ServerNameBox.Size = new System.Drawing.Size(100, 20);
             this.ServerNameBox.TabIndex = 0;
+            this.ServerNameBox.Text = "andrew.cs.fit.edu";
             // 
             // PortBox
             // 
@@ -55,6 +56,7 @@
             this.PortBox.Name = "PortBox";
             this.PortBox.Size = new System.Drawing.Size(100, 20);
             this.PortBox.TabIndex = 1;
+            this.PortBox.Text = "3306";
             // 
             // DatabaseNameBox
             // 
@@ -62,6 +64,7 @@
             this.DatabaseNameBox.Name = "DatabaseNameBox";
             this.DatabaseNameBox.Size = new System.Drawing.Size(100, 20);
             this.DatabaseNameBox.TabIndex = 2;
+            this.DatabaseNameBox.Text = "signalblockdesign";
             // 
             // UserNameBox
             // 
@@ -69,6 +72,7 @@
             this.UserNameBox.Name = "UserNameBox";
             this.UserNameBox.Size = new System.Drawing.Size(100, 20);
             this.UserNameBox.TabIndex = 3;
+            this.UserNameBox.Text = "signalblockdesig";
             // 
             // PasswordBox
             // 
@@ -76,6 +80,7 @@
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.Size = new System.Drawing.Size(100, 20);
             this.PasswordBox.TabIndex = 4;
+            this.PasswordBox.Text = "E2SnzbV922m6R51";
             // 
             // button1
             // 
@@ -160,6 +165,7 @@
             this.Controls.Add(this.PortBox);
             this.Controls.Add(this.ServerNameBox);
             this.Name = "LoadFromDatabaseForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Database";
             this.ResumeLayout(false);
