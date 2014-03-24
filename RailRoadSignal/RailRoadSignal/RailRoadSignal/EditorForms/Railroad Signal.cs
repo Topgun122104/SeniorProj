@@ -189,6 +189,9 @@ namespace RailRoadSignal.EditorForms
             }
         }
 
+        /// <summary>
+        ///  This is sample data for a basic track layout
+        /// </summary>
         private void LoadSampleTrack()
         {
 

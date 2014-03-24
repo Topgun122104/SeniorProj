@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using RailRoadSignal.Files;
 
 namespace RailRoadSignal.EditorForms
 {
@@ -37,6 +38,21 @@ namespace RailRoadSignal.EditorForms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void KilometersCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            TrackLayout.Kilometers = true;
+            TrackLayout.Miles = false;
+            MilesCheckBox.Checked = false;
+        }
+
+        private void MilesCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            TrackLayout.Miles = true;
+            TrackLayout.Kilometers = false;
+            KilometersCheckBox.Checked = false;
+           
         }
     }
 }

@@ -27,10 +27,30 @@ namespace RailRoadSignal.EditorForms
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            // create a new track
-            this.Visible = false;
+             
             NewTrackLayoutForm newTrackLayout = new NewTrackLayoutForm();
-            newTrackLayout.Show();
+            if (newTrackLayout.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                 
+
+                // TODO: need to do error checking on the input to make sure that all the 
+                // fields are filled out.
+                // Do we do this with a bunch of if statements?
+
+                this.Visible = false;
+                TrackLayout.Customer = newTrackLayout.CustomerBox.Text;
+                TrackLayout.ProjectName = newTrackLayout.ProjectNameBox.Text;
+                TrackLayout.Contract = newTrackLayout.ContractBox.Text;
+                TrackLayout.PostRange = Convert.ToDouble(newTrackLayout.PostRangeBox.Text);
+                TrackLayout.Preparer = newTrackLayout.PreparerBox.Text;
+                TrackLayout.MaxSpeed = Convert.ToDouble(newTrackLayout.MaxSpeedBox.Text);
+                TrackLayout.TrainType = newTrackLayout.TypeBox.Text;
+                TrackLayout.Tonnage = Convert.ToDouble(newTrackLayout.TonnageBox.Text);
+                TrackLayout.MaxBlockLength = Convert.ToDouble(newTrackLayout.MaxBlockLengthBox.Text);
+                TrackLayout.BreakingCharacteristics = newTrackLayout.BreakingCharacteristicsBox.Text;
+
+
+            }
 
 
         }
@@ -45,11 +65,11 @@ namespace RailRoadSignal.EditorForms
         {
             // load a track from the database
             LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
-            if(databaseForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            if (databaseForm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
             {
                 //Database.DatabaseConnection conn = new Database.DatabaseConnection(
             }
-             
+
 
         }
 
@@ -91,7 +111,7 @@ namespace RailRoadSignal.EditorForms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+
             Stream myStream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
