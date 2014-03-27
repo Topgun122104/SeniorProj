@@ -1,0 +1,12 @@
+C:\Users\ZacharyDesktop\Documents\Visual Studio 2012\Projects\InputFileParsing\InputFileParsing\bin\Debug\InputFileParsing.exe
+C:\Users\ZacharyDesktop\Documents\Visual Studio 2012\Projects\InputFileParsing\InputFileParsing\bin\Debug\InputFileParsing.pdb
+C:\Users\ZacharyDesktop\Documents\Visual Studio 2012\Projects\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.csprojResolveAssemblyReference.cache
+C:\Users\ZacharyDesktop\Documents\Visual Studio 2012\Projects\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.csproj.ResolveComReference.cache
+C:\Users\ZacharyDesktop\Documents\Visual Studio 2012\Projects\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.exe
+C:\Users\ZacharyDesktop\Documents\Visual Studio 2012\Projects\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.pdb
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.csproj.ResolveComReference.cache
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.exe
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.pdb
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\InputFileParsing\InputFileParsing\obj\Debug\InputFileParsing.csprojResolveAssemblyReference.cache
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\InputFileParsing\InputFileParsing\bin\Debug\InputFileParsing.exe
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\InputFileParsing\InputFileParsing\bin\Debug\InputFileParsing.pdb
