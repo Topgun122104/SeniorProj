@@ -10,3 +10,6 @@ C:\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\obj\Debug\GE Algorith
 C:\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\bin\Debug\GE Algorithms.exe
 C:\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\bin\Debug\GE Algorithms.pdb
 C:\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\obj\Debug\GE Algorithms.csprojResolveAssemblyReference.cache
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\bin\Debug\GE Algorithms.exe.config
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\obj\Debug\GE Algorithms.exe
+C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\Calculation Algs\GE Algorithms\GE Algorithms\obj\Debug\GE Algorithms.pdb
