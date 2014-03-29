@@ -12,7 +12,8 @@ namespace InputFileParsing
         String mFilename;
         Excel.Workbook mWorkBook;
         Excel.Application mApp;
-        public Program(String filename) 
+        ExcelSheet[] safeBreakingSheets;
+        public Program(String filename)
         {
             mFilename = filename;
             mApp = new Excel.Application();
@@ -22,14 +23,22 @@ namespace InputFileParsing
         public void processData()
         {
             int sheets = mWorkBook.Sheets.Count;
-            for(int i = 1; i <= mWorkBook.Sheets.Count; i++)
+            int begin = findFirstOccurrence();
+            if (begin == -1)
             {
-                Excel._Worksheet worksheet = mWorkBook.Sheets[1];
-                getData(worksheet);
-                worksheet = mWorkBook.Sheets[i];
-                Marshal.ReleaseComObject(worksheet);
+                return;
             }
-            
+            safeBreakingSheets = new ExcelSheet[(mWorkBook.Sheets.Count - begin) + 1];
+            for (int i = begin; i <= mWorkBook.Sheets.Count; i++)
+            {
+                Excel._Worksheet worksheet = mWorkBook.Sheets[i];
+                if (worksheet.Name.Length >= 10 && ((worksheet.Name.Substring(0, 10) == "Southbound") 
+                    || worksheet.Name.Substring(0, 10) == "Northbound"))
+                {
+                    safeBreakingSheets[i - begin] = getData(worksheet);
+                    Marshal.ReleaseComObject(worksheet);
+                }
+           }
         }
 
         public void cleanUp()
@@ -45,33 +54,208 @@ namespace InputFileParsing
 
         }
 
-        public void getData(Excel._Worksheet worksheet)
+        public ExcelSheet getData(Excel._Worksheet worksheet)
         {
             Excel.Range range = worksheet.UsedRange;
             int rows = range.Rows.Count;
-            int cols = range.Rows.Count;
-            for (int i = 4; i <= rows; i++)
+            ExcelSheet currentSheet = new ExcelSheet(rows);
+            for (int i = 7; i <= rows; i++)
             {
+                /* 
+                 * Column Name      |   Column Number
+                 * Track            |         2
+                 * Direction        |         3
+                 * Move             |         4
+                 * Circuit          |         5
+                 * Brake Location   |         6
+                 * Target Location  |         7
+                 * Worst Grade      |         9
+                 * Entry Speed      |         10
+                 * Overspeed        |         11
+                 * Acceleration     |         13
+                 * Reaction Time    |         15
+                 * Brake Rate       |         17
+                 * Runaway Accel    |         20
+                 * Propulsion Remov |         22
+                 * Brake Build up   |         24
+                 * Overhang Dist    |         26
+                 */
+                int currentRowInSheet = currentSheet.getCurrentRow();
+                ExcelRow currentRow =  new ExcelRow(
+                    range.Cells[i, 2].Value2 != null ? Convert.ToInt32(range.Cells[i, 2].Value2) : currentSheet.getRow(currentRowInSheet - 1).getTrack(),              // Track
+                    range.Cells[i, 3].Value2 != null ? range.Cells[i, 3].Value2 : currentSheet.getRow(currentRowInSheet - 1).getDirection(),                           // Direction
+                    range.Cells[i, 4].Value2 != null ? range.Cells[i, 4].Value2 : currentSheet.getRow(currentRowInSheet - 1).getMove(),                                // Move
+                    range.Cells[i, 5].Value2,                          // Circuit
+                    Convert.ToInt32(range.Cells[i, 6].Value2),         // Brake Location
+                    Convert.ToInt32(range.Cells[i, 7].Value2),         // Target Location
+                    Convert.ToDouble(range.Cells[i, 9].Value2),        // Worst Grade
+                    Convert.ToInt32(range.Cells[i, 10].Value2),        // Entry Speed
+                    Convert.ToInt32(range.Cells[i, 11].Value2),        // Overspeed
+                    Convert.ToDouble(range.Cells[i, 13].Value2),       // Acceleration
+                    Convert.ToDouble(range.Cells[i, 15].Value2),       // Reaction Time
+                    Convert.ToDouble(range.Cells[i, 17].Value2),       // Brake Rate
+                    Convert.ToDouble(range.Cells[i, 20].Value2),       // Runaway Accel
+                    Convert.ToDouble(range.Cells[i, 22].Value2),       // Propulsion Removal
+                    Convert.ToInt32(range.Cells[i, 24].Value2),        // Brake Build Up
+                    Convert.ToInt32(range.Cells[i, 26].Value2));       // Overhand Distance
+                currentSheet.addRow(currentRow);
                 
-                for (int j = 1; j <= cols; j++)
-                {
-                    if (j == 1)
-                    {
-                        Console.Write("\r\n");
-                    }
+            }
+            return currentSheet;
+            // Create sheet that holds the rows (array), count of current array
+            // Have sheet array here that holds calc data.
+        }
 
-                    if (range.Cells[i, j] != null && range.Cells[i, j].Value2 != null)
-                    {
-                        Console.Write(range.Cells[i, j].Value2 + "\t");
-                    }
+        private int findFirstOccurrence()
+        {
+            for (int i = 1; i < mWorkBook.Sheets.Count; i++)
+            {
+                Excel._Worksheet worksheet = mWorkBook.Sheets[i];
+                string name = worksheet.Name;
+                if (name.Length >= 10 && (name.Substring(0, 10) == "Southbound" || name.Substring(0, 10) == "Northbound"))
+                {
+                    return i;
                 }
             }
+            return -1;
         }
         static void Main(string[] args)
         {
-           Program prog = new Program("C:\\Users\\ZacharyDesktop\\Documents\\GitHub\\SeniorProj\\InputFileParsing\\testdata.xlsx");
-           prog.processData();
-           prog.cleanUp();
+            Program prog = new Program("C:\\Users\\ZacharyDesktop\\Documents\\GitHub\\SeniorProj\\Documents\\Research\\DART I3 - Safe Braking Distance -SBD Calculations_1_29_2014_Change Per C....xlsx");
+            prog.processData();
+            prog.cleanUp();
+        }
+
+
+    }
+
+    public class ExcelRow
+    {
+        private int mTrack;
+        private String mDirection;
+        private String mMoveNormRevDiv;
+        private String mCircuit;
+        private int mBrakeLocation;
+        private int mTargetLocation;
+        private double mWorstCaseGrade;
+        private int mEntrySpeed;
+        private double mOverspeed;
+        private double mAcceleration;
+        private double mReactionTime;
+        private double mBrakeRate;
+        private double mRunawayAccel;
+        private double mPropulsionRemoval;
+        private int mBrakeBuildUp;
+        private int mOverhangDist;
+
+        public ExcelRow()
+        {
+        }
+
+        public ExcelRow(int track, String direction, String moveNormRevDiv, String circuit, int brakeLocation, int targetLocation, double worstCaseGrade,
+            int entrySpeed, double overSpeed, double acceleration, double reactionTime, double brakeRate, double runawayAccel, double propulsionRemoval, 
+            int brakeBuildUp, int overhangDist)
+        {
+            mTrack = track;
+            mDirection = direction;
+            mMoveNormRevDiv = moveNormRevDiv;
+            mCircuit = circuit;
+            mBrakeLocation = brakeLocation;
+            mTargetLocation = targetLocation;
+            mWorstCaseGrade = worstCaseGrade;
+            mEntrySpeed = entrySpeed;
+            mOverspeed = overSpeed;
+            mAcceleration = acceleration;
+            mReactionTime = reactionTime;
+            mBrakeRate = brakeRate;
+            mRunawayAccel = runawayAccel;
+            mPropulsionRemoval = propulsionRemoval;
+            mBrakeBuildUp = brakeBuildUp;
+            mOverhangDist = overhangDist;
+        }
+
+        public string displayRow()
+        {
+            StringBuilder strBuild = new StringBuilder();
+            strBuild.Append(mTrack + " ");
+            strBuild.Append(mDirection + " ");
+            strBuild.Append(mMoveNormRevDiv + " ");
+            strBuild.Append(mCircuit + " ");
+            strBuild.Append(mBrakeLocation + " ");
+            strBuild.Append(mTargetLocation + " ");
+            strBuild.Append(mWorstCaseGrade + " ");
+            strBuild.Append(mEntrySpeed + " ");
+            strBuild.Append(mOverspeed + " ");
+            strBuild.Append(mAcceleration + " ");
+            strBuild.Append(mReactionTime + " ");
+            strBuild.Append(mBrakeRate + " ");
+            strBuild.Append(mRunawayAccel + " ");
+            strBuild.Append(mPropulsionRemoval + " ");
+            strBuild.Append(mBrakeBuildUp + " ");
+            strBuild.Append(mOverhangDist + " ");
+            strBuild.Append("\n");
+            return strBuild.ToString();
+        }
+
+        public int getTrack()
+        {
+            return mTrack;
+        }
+
+        public string getDirection()
+        {
+            return mDirection;
+        }
+
+        public string getMove()
+        {
+            return mMoveNormRevDiv;
+        }
+    }
+
+    public class ExcelSheet {
+        private ExcelRow[] mRows;
+        private int mCurrentRow = 0;
+        private int mTotalRows;
+        
+        public ExcelSheet(int totalRows) 
+        {
+            mRows = new ExcelRow[totalRows];
+            mTotalRows = totalRows;
+        }
+
+        public ExcelSheet(int sheets, ExcelRow row)
+        {
+            mRows = new ExcelRow[sheets];
+            mTotalRows = sheets;
+            mRows[mCurrentRow] = row;
+            mCurrentRow++;
+        }
+    
+        public Boolean addRow(ExcelRow row) {
+            if(mCurrentRow != mTotalRows) {
+                mRows[mCurrentRow] = row;
+                mCurrentRow++;
+                return true;
+            }
+            return false;
+        }
+
+        public ExcelRow getRow(int i)
+        {
+            if (i < mTotalRows && i >= 0)
+            {
+                return mRows[i];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public int getCurrentRow()
+        {
+            return mCurrentRow;
         }
     }
 }
