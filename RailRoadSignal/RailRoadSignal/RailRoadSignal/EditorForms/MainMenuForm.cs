@@ -135,10 +135,19 @@ namespace RailRoadSignal.EditorForms
                     {
                         using (myStream)
                         {
-                            // Insert code to read the stream here.
+                            if(openFileDialog.FilterIndex == 1)
+                            {
 
-                            // insert the track segments into the static TrackLayout class.
-                            // TrackLayout.Track.Add(new TrackSegment());
+                            }
+                            // if its a excel file
+                            if(openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
+                            {
+                                ExcelParser parser = new ExcelParser(openFileDialog.FileName);
+                                parser.processData();
+                                parser.cleanUp();
+                            }
+                             
+                             
                         }
                     }
                 }
