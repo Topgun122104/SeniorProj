@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using RailRoadSignal.Files;
 using RailRoadSignal.Database;
+using System.Threading;
 
 namespace RailRoadSignal.EditorForms
 {
@@ -135,19 +136,19 @@ namespace RailRoadSignal.EditorForms
                     {
                         using (myStream)
                         {
-                            if(openFileDialog.FilterIndex == 1)
+                            if (openFileDialog.FilterIndex == 1)
                             {
 
                             }
                             // if its a excel file
-                            if(openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
+                            if (openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
                             {
-                                ExcelParser parser = new ExcelParser(openFileDialog.FileName);
-                                parser.processData();
-                                parser.cleanUp();
+                                Thread t = new Thread(LoadExcelFile);
+                                t.IsBackground = true;
+                                t.Start(openFileDialog.FileName);
+
                             }
-                             
-                             
+
                         }
                     }
                 }
@@ -157,6 +158,14 @@ namespace RailRoadSignal.EditorForms
                 }
             }
             // nothing yet
+        }
+
+
+        private void LoadExcelFile(object filename)
+        {
+            ExcelParser parser = new ExcelParser(filename.ToString());
+            parser.processData();
+            parser.cleanUp();
         }
     }
 }

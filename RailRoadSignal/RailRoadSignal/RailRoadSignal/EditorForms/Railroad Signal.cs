@@ -23,7 +23,7 @@ namespace RailRoadSignal.EditorForms
         {
             InitializeComponent();
 
-            
+
 
             // Set up a new track view, 
             // but don't make it visible
@@ -160,6 +160,7 @@ namespace RailRoadSignal.EditorForms
                 /// <param name="overhangDist"></param>
                 /// <param name="safetyFact"></param>
                 TrackLayout.Track.Add(new TrackSegment(trackSegmentForm.trackIDBox.Text,
+                        "", "", "",
                         new Vector2((float)Convert.ToDouble(trackSegmentForm.startPositionXBox.Text),
                         (float)Convert.ToDouble(trackSegmentForm.startPositionYBox.Text)),
                         new Vector2((float)Convert.ToDouble(trackSegmentForm.endPositionXBox.Text),
@@ -188,7 +189,7 @@ namespace RailRoadSignal.EditorForms
         /// </summary>
         private void LoadSampleTrack()
         {
-
+            /*
             TrackLayout.Track.Add(new TrackSegment("921T", new Vector2(-1100, 100), new Vector2(300, 100), 48895, 49485, 1.296, 15.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
             TrackLayout.Track.Add(new TrackSegment("921T", new Vector2(300, 100), new Vector2(400, 0), 48895, 50100, 2.467, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
             TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(400, 0), new Vector2(700, 0), 49485, 50100, 3.59, 20.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
@@ -201,6 +202,7 @@ namespace RailRoadSignal.EditorForms
             TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-200, 220), new Vector2(-500, 220), 50166, 53964, -2.032, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
             TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-500, 220), new Vector2(-600, 120), 50166, 54930, -0.819, 65.0, 2.0, .3471, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
             dataViewForm.UpdateDataView();
+             * */
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -264,17 +266,17 @@ namespace RailRoadSignal.EditorForms
             if (TrackLayout.Miles == true)
             {
                 infoForm.PostRangeBox.Text = "Miles";
-                 
+
             }
             else
             {
                 infoForm.PostRangeBox.Text = "Kilometers";
-                 
+
             }
-            
-            
+
+
             infoForm.ShowDialog(this);
-            
+
         }
 
         public void UpdateTrackInformation()
@@ -288,12 +290,12 @@ namespace RailRoadSignal.EditorForms
             dataViewForm.BreakingCharBox.Text = TrackLayout.BreakingCharacteristics;
             if (TrackLayout.Miles == true)
             {
-                 
+
                 dataViewForm.PostRangeBox.Text = "Miles";
             }
             else
             {
-                 
+
                 dataViewForm.PostRangeBox.Text = "Kilometers";
             }
 
@@ -349,7 +351,7 @@ namespace RailRoadSignal.EditorForms
                 dataViewForm.WindowState = FormWindowState.Maximized;
                 dataViewForm.Visible = true;
                 mainMenu.Visible = false;
-
+                dataViewForm.Refresh();
             }
         }
         /// <summary>

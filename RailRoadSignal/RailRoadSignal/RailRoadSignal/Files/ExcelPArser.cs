@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using Microsoft.Xna.Framework;
 using Excel = Microsoft.Office.Interop.Excel;
+using RailRoadSignal.Files;
 
 namespace RailRoadSignal.Files
 {
@@ -18,6 +20,7 @@ namespace RailRoadSignal.Files
             mFilename = filename;
             mApp = new Excel.Application();
             mWorkBook = mApp.Workbooks.Open(mFilename);
+
             
 
         }
@@ -34,13 +37,13 @@ namespace RailRoadSignal.Files
             for (int i = begin; i <= mWorkBook.Sheets.Count; i++)
             {
                 Excel._Worksheet worksheet = mWorkBook.Sheets[i];
-                if (worksheet.Name.Length >= 10 && ((worksheet.Name.Substring(0, 10) == "Southbound") 
+                if (worksheet.Name.Length >= 10 && ((worksheet.Name.Substring(0, 10) == "Southbound")
                     || worksheet.Name.Substring(0, 10) == "Northbound"))
                 {
                     safeBreakingSheets[i - begin] = getData(worksheet);
                     Marshal.ReleaseComObject(worksheet);
                 }
-           }
+            }
         }
 
         public void cleanUp()
@@ -83,25 +86,47 @@ namespace RailRoadSignal.Files
                  * Overhang Dist    |         26
                  */
                 int currentRowInSheet = currentSheet.getCurrentRow();
-                ExcelRow currentRow =  new ExcelRow(
+                TrackLayout.Track.Add(new TrackSegment(
                     range.Cells[i, 2].Value2 != null ? Convert.ToInt32(range.Cells[i, 2].Value2) : currentSheet.getRow(currentRowInSheet - 1).getTrack(),              // Track
                     range.Cells[i, 3].Value2 != null ? range.Cells[i, 3].Value2 : currentSheet.getRow(currentRowInSheet - 1).getDirection(),                           // Direction
                     range.Cells[i, 4].Value2 != null ? range.Cells[i, 4].Value2 : currentSheet.getRow(currentRowInSheet - 1).getMove(),                                // Move
-                    range.Cells[i, 5].Value2,                          // Circuit
-                    Convert.ToInt32(range.Cells[i, 6].Value2),         // Brake Location
-                    Convert.ToInt32(range.Cells[i, 7].Value2),         // Target Location
-                    Convert.ToDouble(range.Cells[i, 9].Value2),        // Worst Grade
-                    Convert.ToInt32(range.Cells[i, 10].Value2),        // Entry Speed
-                    Convert.ToInt32(range.Cells[i, 11].Value2),        // Overspeed
-                    Convert.ToDouble(range.Cells[i, 13].Value2),       // Acceleration
-                    Convert.ToDouble(range.Cells[i, 15].Value2),       // Reaction Time
-                    Convert.ToDouble(range.Cells[i, 17].Value2),       // Brake Rate
-                    Convert.ToDouble(range.Cells[i, 20].Value2),       // Runaway Accel
-                    Convert.ToDouble(range.Cells[i, 22].Value2),       // Propulsion Removal
-                    Convert.ToInt32(range.Cells[i, 24].Value2),        // Brake Build Up
-                    Convert.ToInt32(range.Cells[i, 26].Value2));       // Overhand Distance
-                currentSheet.addRow(currentRow);
-                
+                    range.Cells[i, 5].Value2,                           // Circuit
+                    Vector2.Zero,
+                    Vector2.Zero,
+                    Convert.ToInt32(range.Cells[i, 6].Value2),          // Brake Location
+                    Convert.ToInt32(range.Cells[i, 7].Value2),          // Target Location
+                    Convert.ToDouble(range.Cells[i, 9].Value2),         // Worst Grade
+                    Convert.ToInt32(range.Cells[i, 10].Value2),         // Entry Speed
+                    Convert.ToInt32(range.Cells[i, 11].Value2),         // Overspeed
+                    Convert.ToDouble(range.Cells[i, 13].Value2),        // Acceleration
+                    Convert.ToDouble(range.Cells[i, 15].Value2),        // Reaction Time
+                    Convert.ToDouble(range.Cells[i, 17].Value2),        // Brake Rate
+                    Convert.ToDouble(range.Cells[i, 20].Value2),        // Runaway Accel
+                    Convert.ToDouble(range.Cells[i, 22].Value2),        // Propulsion Removal
+                    Convert.ToInt32(range.Cells[i, 24].Value2),         // Brake Build Up
+                    Convert.ToInt32(range.Cells[i, 26].Value2),         // Overhand Distance
+                    Convert.ToDouble(range.Cells[i, 27].Value2)));      // Safety Factor
+
+
+                /// <param name="trackID">string</param>
+                /// <param name="direction"></param>
+                /// <param name="move"></param>
+                /// <param name="trackCircuit"></param>
+                /// <param name="startPoint">Vector2</param>
+                /// <param name="endPoint">Vector2</param>
+                /// <param name="brakeLocation">int</param>
+                /// <param name="targetLocation">int</param>
+                /// <param name="gradeWorst">double</param>
+                /// <param name="speedMax">double</param>
+                /// <param name="overspeed">double</param>
+                /// <param name="vehicleAccel">double</param>
+                /// <param name="reactionTime">double</param>
+                /// <param name="brakeRate">double</param>
+                /// <param name="runwayAccelSec">double</param>
+                /// <param name="propulsionRemSec">double</param>
+                /// <param name="brakeBuildUpSec">int</param>
+                /// <param name="overhangDist">int</param>
+                /// <param name="safetyFact">double</param>
             }
             return currentSheet;
             // Create sheet that holds the rows (array), count of current array
@@ -156,7 +181,7 @@ namespace RailRoadSignal.Files
         }
 
         public ExcelRow(int track, String direction, String moveNormRevDiv, String circuit, int brakeLocation, int targetLocation, double worstCaseGrade,
-            int entrySpeed, double overSpeed, double acceleration, double reactionTime, double brakeRate, double runawayAccel, double propulsionRemoval, 
+            int entrySpeed, double overSpeed, double acceleration, double reactionTime, double brakeRate, double runawayAccel, double propulsionRemoval,
             int brakeBuildUp, int overhangDist)
         {
             mTrack = track;
@@ -216,12 +241,13 @@ namespace RailRoadSignal.Files
         }
     }
 
-    public class ExcelSheet {
+    public class ExcelSheet
+    {
         private ExcelRow[] mRows;
         private int mCurrentRow = 0;
         private int mTotalRows;
-        
-        public ExcelSheet(int totalRows) 
+
+        public ExcelSheet(int totalRows)
         {
             mRows = new ExcelRow[totalRows];
             mTotalRows = totalRows;
@@ -234,9 +260,11 @@ namespace RailRoadSignal.Files
             mRows[mCurrentRow] = row;
             mCurrentRow++;
         }
-    
-        public Boolean addRow(ExcelRow row) {
-            if(mCurrentRow != mTotalRows) {
+
+        public Boolean addRow(ExcelRow row)
+        {
+            if (mCurrentRow != mTotalRows)
+            {
                 mRows[mCurrentRow] = row;
                 mCurrentRow++;
                 return true;

@@ -46,23 +46,26 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="trackID"></param>
-        /// <param name="startPoint"></param>
-        /// <param name="endPoint"></param>
-        /// <param name="brakeLocation"></param>
-        /// <param name="targetLocation"></param>
-        /// <param name="gradeWorst"></param>
-        /// <param name="speedMax"></param>
-        /// <param name="overspeed"></param>
-        /// <param name="vehicleAccel"></param>
-        /// <param name="reactionTime"></param>
-        /// <param name="brakeRate"></param>
-        /// <param name="runwayAccelSec"></param>
-        /// <param name="propulsionRemSec"></param>
-        /// <param name="brakeBuildUpSec"></param>
-        /// <param name="overhangDist"></param>
-        /// <param name="safetyFact"></param>
-        public TrackSegment(string trackID, Vector2 startPoint, Vector2 endPoint,
+        /// <param name="trackID">string</param>
+        /// <param name="direction"></param>
+        /// <param name="move"></param>
+        /// <param name="trackCircuit"></param>
+        /// <param name="startPoint">Vector2</param>
+        /// <param name="endPoint">Vector2</param>
+        /// <param name="brakeLocation">int</param>
+        /// <param name="targetLocation">int</param>
+        /// <param name="gradeWorst">double</param>
+        /// <param name="speedMax">double</param>
+        /// <param name="overspeed">double</param>
+        /// <param name="vehicleAccel">double</param>
+        /// <param name="reactionTime">double</param>
+        /// <param name="brakeRate">double</param>
+        /// <param name="runwayAccelSec">double</param>
+        /// <param name="propulsionRemSec">double</param>
+        /// <param name="brakeBuildUpSec">int</param>
+        /// <param name="overhangDist">int</param>
+        /// <param name="safetyFact">double</param>
+        public TrackSegment(string trackID, string direction, string move, string trackCircuit, Vector2 startPoint, Vector2 endPoint,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
@@ -70,6 +73,9 @@ namespace RailRoadSignal
             : base(startPoint, endPoint)
         {
             TrackID = trackID;
+            Direction = direction;
+            Move = move;
+            TrackCircuit = trackCircuit;
             BrakeLocation = brakeLocation;
             TargetLocation = targetLocation;
             GradeWorst = gradeWorst;
@@ -124,7 +130,20 @@ namespace RailRoadSignal
         /// </summary>
         public string TrackID { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Direction { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Move { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string TrackCircuit { get; set; }
         /// <summary>
         /// 
         /// </summary>
