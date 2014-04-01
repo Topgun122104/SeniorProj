@@ -6,6 +6,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Excel = Microsoft.Office.Interop.Excel;
 using RailRoadSignal.Files;
+using System.Windows.Forms;
+using RailRoadSignal.EditorForms;
+using System.Threading;
+
 
 namespace RailRoadSignal.Files
 {
@@ -20,8 +24,16 @@ namespace RailRoadSignal.Files
             mFilename = filename;
             mApp = new Excel.Application();
             mWorkBook = mApp.Workbooks.Open(mFilename);
+            ProgressBoxForm p = new ProgressBoxForm();
+            p.Visible = true;
+            p.Show();
 
-            
+            for (int i = 0; i < 100; i++)
+            {
+                p.progressBar1.PerformStep();
+                Thread.Sleep(10);
+
+            }
 
         }
 
@@ -59,8 +71,13 @@ namespace RailRoadSignal.Files
 
         }
 
+
         public ExcelSheet getData(Excel._Worksheet worksheet)
         {
+
+            ProgressBoxForm progressBox = new ProgressBoxForm();
+            progressBox.ShowDialog();
+
             Excel.Range range = worksheet.UsedRange;
             int rows = range.Rows.Count;
             ExcelSheet currentSheet = new ExcelSheet(rows);
@@ -107,27 +124,10 @@ namespace RailRoadSignal.Files
                     Convert.ToInt32(range.Cells[i, 26].Value2),         // Overhand Distance
                     Convert.ToDouble(range.Cells[i, 27].Value2)));      // Safety Factor
 
+                progressBox.progressBar1.PerformStep();
 
-                /// <param name="trackID">string</param>
-                /// <param name="direction"></param>
-                /// <param name="move"></param>
-                /// <param name="trackCircuit"></param>
-                /// <param name="startPoint">Vector2</param>
-                /// <param name="endPoint">Vector2</param>
-                /// <param name="brakeLocation">int</param>
-                /// <param name="targetLocation">int</param>
-                /// <param name="gradeWorst">double</param>
-                /// <param name="speedMax">double</param>
-                /// <param name="overspeed">double</param>
-                /// <param name="vehicleAccel">double</param>
-                /// <param name="reactionTime">double</param>
-                /// <param name="brakeRate">double</param>
-                /// <param name="runwayAccelSec">double</param>
-                /// <param name="propulsionRemSec">double</param>
-                /// <param name="brakeBuildUpSec">int</param>
-                /// <param name="overhangDist">int</param>
-                /// <param name="safetyFact">double</param>
             }
+            progressBox.Close();
             return currentSheet;
             // Create sheet that holds the rows (array), count of current array
             // Have sheet array here that holds calc data.

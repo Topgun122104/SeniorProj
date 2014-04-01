@@ -143,10 +143,12 @@ namespace RailRoadSignal.EditorForms
                             // if its a excel file
                             if (openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
                             {
+                                 
+
                                 Thread t = new Thread(LoadExcelFile);
                                 t.IsBackground = true;
                                 t.Start(openFileDialog.FileName);
-
+                                
                             }
 
                         }
@@ -156,6 +158,7 @@ namespace RailRoadSignal.EditorForms
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
+                
             }
             // nothing yet
         }

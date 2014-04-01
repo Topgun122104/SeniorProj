@@ -125,6 +125,12 @@
     <Compile Include="EditorForms\NewTrackSegmentForm.Designer.cs">
       <DependentUpon>NewTrackSegmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditorForms\ProgressBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditorForms\ProgressBoxForm.Designer.cs">
+      <DependentUpon>ProgressBoxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditorForms\Railroad Signal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditorForms\NewTrackSegmentForm.resx">
       <DependentUpon>NewTrackSegmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorForms\ProgressBoxForm.resx">
+      <DependentUpon>ProgressBoxForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditorForms\Railroad Signal.resx">
       <DependentUpon>Railroad Signal.cs</DependentUpon>

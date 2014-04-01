@@ -12,8 +12,10 @@ namespace RailRoadSignal.EditorForms
         private TrackViewDisplay trackViewDisplay;
         private DataViewForm dataViewForm;
         private MainMenuForm mainMenu;
-
-
+        StatusBar statusbar = new StatusBar();
+        StatusBarPanel panel = new StatusBarPanel();
+        StatusBarPanel panel2 = new StatusBarPanel();
+       
         public bool createNewTrack;
 
         /// <summary>
@@ -48,6 +50,25 @@ namespace RailRoadSignal.EditorForms
             mainMenu.WindowState = FormWindowState.Maximized;
             mainMenu.Show();
             mainMenu.Visible = true;
+            
+
+            panel.Text = "Loading...";
+            panel.AutoSize = StatusBarPanelAutoSize.Spring;
+            panel2.ToolTipText = "Started: " + System.DateTime.Now.ToShortTimeString();
+
+            panel2.Text = System.DateTime.Today.ToLongDateString();
+            // Set the AutoSize property to size the panel to the size of the contents.
+            panel2.AutoSize = StatusBarPanelAutoSize.Contents;
+
+            // Display panels in the StatusBar control.
+            statusbar.ShowPanels = true;
+
+            // Add both panels to the StatusBarPanelCollection of the StatusBar.			
+            statusbar.Panels.Add(panel);
+            statusbar.Panels.Add(panel2);
+
+            // Add the StatusBar to the form. 
+            this.Controls.Add(statusbar);
         }
 
 
