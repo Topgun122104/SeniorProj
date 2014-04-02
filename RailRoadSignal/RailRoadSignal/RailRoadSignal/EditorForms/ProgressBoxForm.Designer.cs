@@ -64,8 +64,10 @@
             this.MinimizeBox = false;
             this.Name = "ProgressBoxForm";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

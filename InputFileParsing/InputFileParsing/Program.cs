@@ -121,7 +121,7 @@ namespace InputFileParsing
         }
         static void Main(string[] args)
         {
-            Program prog = new Program("C:\\Users\\ZacharyDesktop\\Documents\\GitHub\\SeniorProj\\Documents\\Research\\DART I3 - Safe Braking Distance -SBD Calculations_1_29_2014_Change Per C....xlsx");
+            Program prog = new Program("C:\\Users\\Chad\\Documents\\SeniorProj\\Documents\\Research\\DART I3 - Safe Braking Distance -SBD Calculations_1_29_2014_Change Per C....xlsx");
             prog.processData();
             prog.cleanUp();
         }

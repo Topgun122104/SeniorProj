@@ -88,6 +88,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Database\DatabaseConnection.cs" />
+    <Compile Include="Database\DatabaseOerations.cs" />
     <Compile Include="Database\Query.cs" />
     <Compile Include="EditorForms\AboutForm.cs">
       <SubType>Form</SubType>
@@ -145,6 +146,8 @@
       <DependentUpon>TrackInformationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Files\ExcelParser.cs" />
+    <Compile Include="Files\ExcelRow.cs" />
+    <Compile Include="Files\ExcelSheet.cs" />
     <Compile Include="Files\SocketConnection.cs" />
     <Compile Include="Files\TrackLayout.cs" />
     <Compile Include="GEAlgorithms\Algorithms.cs" />

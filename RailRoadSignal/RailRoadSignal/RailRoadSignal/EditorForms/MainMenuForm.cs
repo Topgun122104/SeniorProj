@@ -12,6 +12,7 @@ using RailRoadSignal.Files;
 using RailRoadSignal.Database;
 using System.Threading;
 
+
 namespace RailRoadSignal.EditorForms
 {
     public partial class MainMenuForm : Form
@@ -19,6 +20,7 @@ namespace RailRoadSignal.EditorForms
         public MainMenuForm()
         {
             InitializeComponent();
+
         }
 
         /// <summary>
@@ -125,7 +127,7 @@ namespace RailRoadSignal.EditorForms
 
             // Types of files to read
             openFileDialog.Filter = "Comma Seperated Value (*.csv)|*.csv | Excel 97-2003 (*.xls)|*.xls | Excel Workbook (*.xlsx)|*.xlsx";
-            openFileDialog.FilterIndex = 2;
+            openFileDialog.FilterIndex = 3;
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -143,12 +145,12 @@ namespace RailRoadSignal.EditorForms
                             // if its a excel file
                             if (openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
                             {
-                                 
+
 
                                 Thread t = new Thread(LoadExcelFile);
                                 t.IsBackground = true;
                                 t.Start(openFileDialog.FileName);
-                                
+
                             }
 
                         }
@@ -158,7 +160,7 @@ namespace RailRoadSignal.EditorForms
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
-                
+
             }
             // nothing yet
         }
