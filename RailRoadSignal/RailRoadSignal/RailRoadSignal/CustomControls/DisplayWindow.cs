@@ -14,8 +14,8 @@ namespace RailRoadSignal.CustomControls
     public class DisplayWindow : WinFormsGraphicsDevice.GraphicsDeviceControl
     {
         // The height and width for the camera
-        private const int WINDOWHEIGHT = 720;
-        private const int WINDOWWIDTH = 1280;
+        private const int WINDOWHEIGHT = 599 + 59;
+        private const int WINDOWWIDTH = 1052 + 12;
 
         // Variables for loading(XNA) content
         private ContentManager Content;
@@ -28,11 +28,8 @@ namespace RailRoadSignal.CustomControls
         // Mouse position information (XNA)
         private MouseState m_currMouseState;
         private MouseState m_prevMouseState;
-        private Ray m_mouseRay;
-        private Vector3 NearSource;
-        private Vector3 FarSource;
-        private Vector3 NearPoint;
-        private Vector3 FarPoint;
+
+        private Vector2 mouseWorldPosition;
 
         // Create a new view camera for the display window
         private View m_view;
@@ -56,7 +53,7 @@ namespace RailRoadSignal.CustomControls
             // create a new view to be able to move around
             m_view = new View(WINDOWWIDTH,              // The width of the display (1280)
                                 WINDOWHEIGHT,           // The height of the display (720)
-                                new Vector2(100, 100),  // The starting location of the view
+                                new Vector2(0, 0),  // The starting location of the view
                                 0.5f,                   // Minimum zoom amount
                                 3.0f);                  // MAximum zoom amount
 
@@ -71,7 +68,7 @@ namespace RailRoadSignal.CustomControls
 
 
             // Add the sample track
-            
+
         }
 
 
@@ -85,12 +82,19 @@ namespace RailRoadSignal.CustomControls
             displayFont = content.Load<SpriteFont>("Fonts\\DisplayFont");
             whiteTexture = content.Load<Texture2D>("Textures\\2x2White");
             arrowTexture = content.Load<Texture2D>("Textures\\arrow");
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(1000, 0)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(0, 1000)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(0, -1000)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(-1000, 0)));
+            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 100), new Vector2(500, 500)));
+
+
         }
 
 
         private void AddSampleTrack()
         {
-           
+
         }
 
         /// <summary>
@@ -104,14 +108,39 @@ namespace RailRoadSignal.CustomControls
             m_currentTime = gameTime.TotalGameTime;
             /************************************************/
 
-            // m_mouseRay = new Ray(new Vector3(m_currMouseState.X, m_currMouseState.Y, 0), new Vector3());
 
-            NearSource = new Vector3((float)m_currMouseState.X, m_currMouseState.Y, 0f);
-            FarSource = new Vector3((float)m_currMouseState.X, m_currMouseState.Y, 1f);
+            mouseWorldPosition = new Vector2(
+                m_view.Position.X - (WINDOWWIDTH / 2) + (m_currMouseState.X - (7)),
+                (m_view.Position.Y - (WINDOWHEIGHT / 2) + (m_currMouseState.Y - (57))));
 
-            // NearPoint = GraphicsDevice.Viewport.Unproject(NearSource, )
+            CheckEndPointCollision();
 
 
+        }
+
+        private void CheckEndPointCollision()
+        {
+            foreach (TrackSegment t in TrackLayout.Track)
+            {
+
+                if (t.CollidesEnd(mouseWorldPosition))
+                {
+                    t.EndColor = Color.Green;
+                }
+                else
+                {
+                    t.EndColor = Color.Blue;
+                }
+                if (t.CollidesStart(mouseWorldPosition))
+                {
+                    t.StartColor = Color.Green;
+                }
+                else
+                {
+                    t.StartColor = Color.Blue;
+                }
+
+            }
         }
         /// <summary>
         /// Updates the view according to the mouse position
@@ -216,7 +245,9 @@ namespace RailRoadSignal.CustomControls
             spriteBatch.DrawString(displayFont, "view Y : " + m_view.Position.Y, new Vector2(20, 10), Color.Yellow);
             spriteBatch.DrawString(displayFont, "mouse X: " + m_currMouseState.X, new Vector2(20, 20), Color.Yellow);
             spriteBatch.DrawString(displayFont, "mouse Y: " + m_currMouseState.Y, new Vector2(20, 30), Color.Yellow);
-            spriteBatch.DrawString(displayFont, "zoom   : " + m_view.Zoom, new Vector2(20, 40), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "world X: " + mouseWorldPosition.X, new Vector2(20, 40), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "world Y: " + mouseWorldPosition.Y, new Vector2(20, 50), Color.Yellow);
+            spriteBatch.DrawString(displayFont, "zoom   : " + m_view.Zoom, new Vector2(20, 60), Color.Yellow);
             if (ViewError)
             {
                 spriteBatch.DrawString(displayFont, error, new Vector2(Width / 2, Height / 2), Color.Yellow);

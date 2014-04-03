@@ -8,18 +8,33 @@ namespace RailRoadSignal
     {
         // equation for a line
         // y = mx + b
-        
+
+        private Vector2 startPoint;
         /// <summary>
         /// End point for the line
         /// Returns a Vector2
         /// </summary>
-        public Vector2 StartPoint { get; set; }
+        public Vector2 StartPoint
+        {
+            get
+            {
+                return new Vector2(startPoint.X, -startPoint.Y);
+            }
+            set
+            {
+                startPoint = value;
+            }
+
+        }
         /// <summary>
         /// End point for the line
         /// Returns a Vector2
         /// </summary>
         public Vector2 EndPoint { get; set; }
 
+        public Color EndColor { get; set; }
+
+        public Color StartColor { get; set; }
         /// <summary>
         /// The thickness for drawing the line
         /// </summary>
@@ -30,6 +45,10 @@ namespace RailRoadSignal
         /// </summary>
         protected float m_depth;
 
+        private Rectangle BoundingRectangle(Vector2 point)
+        {
+            return new Rectangle((int)point.X, (int)point.Y, 4, 4);
+        }
         /// <summary>
         /// Default constructor for a new line
         /// </summary>
@@ -68,7 +87,15 @@ namespace RailRoadSignal
             m_thickness = _thickness;
             m_depth = _depth;
         }
+        public bool CollidesEnd(Vector2 position)
+        {
+            return BoundingRectangle(EndPoint).Intersects(new Rectangle((int)position.X, (int)position.Y, 1, 1));
+        }
 
+        public bool CollidesStart(Vector2 position)
+        {
+            return BoundingRectangle(StartPoint).Intersects(new Rectangle((int)position.X, (int)position.Y, 1, 1));
+        }
         /// <summary>
         /// Draw method for drawing the line to the screen 
         /// </summary>
@@ -86,8 +113,8 @@ namespace RailRoadSignal
 
             _spriteBatch.Draw(_texture, StartPoint, null, color, rotation, middleOrigin, middleScale, SpriteEffects.None, m_depth);
             _spriteBatch.Draw(_tex, midpoint, null, color, rotation, middleOrigin, 1.0f, SpriteEffects.None, m_depth);
-            _spriteBatch.Draw(_texture, StartPoint, null, Color.Blue, rotation, endOrigin, m_thickness, SpriteEffects.None, m_depth - .5f);
-            _spriteBatch.Draw(_texture, EndPoint, null, Color.Blue, rotation, endOrigin, m_thickness, SpriteEffects.None, m_depth - .5f);
+            _spriteBatch.Draw(_texture, StartPoint, null, StartColor, rotation, endOrigin, m_thickness, SpriteEffects.None, m_depth - .5f);
+            _spriteBatch.Draw(_texture, EndPoint, null, EndColor, rotation, endOrigin, m_thickness, SpriteEffects.None, m_depth - .5f);
         }
     }
 }
