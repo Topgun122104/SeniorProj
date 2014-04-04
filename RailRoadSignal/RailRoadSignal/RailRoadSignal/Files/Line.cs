@@ -40,6 +40,8 @@ namespace RailRoadSignal
         /// </summary>
         protected float m_thickness;
 
+        public bool Highlighted { get; set; }
+
         /// <summary>
         /// The sorting depth of the sprite, between 0 (front) and 1 (back).
         /// </summary>
@@ -58,6 +60,7 @@ namespace RailRoadSignal
             EndPoint = new Vector2(0, 0);
             m_thickness = 1.0f;
             m_depth = 0.0f;
+            Highlighted = false;
         }
 
         /// <summary>
@@ -72,6 +75,7 @@ namespace RailRoadSignal
             EndPoint = endPoint;
             m_thickness = 2.0f;
             m_depth = 1.0f;
+            Highlighted = false;
         }
         /// <summary>
         /// Constructor for a new line
@@ -86,12 +90,24 @@ namespace RailRoadSignal
             EndPoint = endPoint;
             m_thickness = _thickness;
             m_depth = _depth;
+            Highlighted = false;
         }
+
+        /// <summary>
+        /// Checks collision with the start point of the line
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public bool CollidesEnd(Vector2 position)
         {
             return BoundingRectangle(EndPoint).Intersects(new Rectangle((int)position.X, (int)position.Y, 1, 1));
         }
 
+        /// <summary>
+        /// Checks the collision with the end point of the line
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public bool CollidesStart(Vector2 position)
         {
             return BoundingRectangle(StartPoint).Intersects(new Rectangle((int)position.X, (int)position.Y, 1, 1));
@@ -102,7 +118,7 @@ namespace RailRoadSignal
         /// <param name="_texture">The texture to draw to the screen </param>
         /// <param name="_spriteBatch">Sprite batch to use</param>
         /// <param name="color">The color to draw the line</param>
-        public void Draw(Texture2D _texture, Texture2D _tex, SpriteBatch _spriteBatch, Color color)
+        public void Draw(Texture2D _texture, Texture2D _tex, SpriteBatch _spriteBatch, Color color, SpriteFont font, Vector2 position)
         {
             Vector2 tangent = EndPoint - StartPoint;
             float rotation = (float)Math.Atan2(tangent.Y, tangent.X);
@@ -115,6 +131,11 @@ namespace RailRoadSignal
             _spriteBatch.Draw(_tex, midpoint, null, color, rotation, middleOrigin, 1.0f, SpriteEffects.None, m_depth);
             _spriteBatch.Draw(_texture, StartPoint, null, StartColor, rotation, endOrigin, m_thickness, SpriteEffects.None, m_depth - .5f);
             _spriteBatch.Draw(_texture, EndPoint, null, EndColor, rotation, endOrigin, m_thickness, SpriteEffects.None, m_depth - .5f);
+             
+
         }
+
+        
+
     }
 }

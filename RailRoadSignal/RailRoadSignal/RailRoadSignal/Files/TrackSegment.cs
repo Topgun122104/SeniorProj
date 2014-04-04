@@ -95,7 +95,13 @@ namespace RailRoadSignal
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
-
+        
+        /*
+        public void DisplayInfo(Vector2 mouseWorldPosition, SpriteBatch spriteBatch, SpriteFont font, TrackSegment track)
+        {
+            Display(mouseWorldPosition, spriteBatch, font);
+        }
+         */
         /// <summary>
         /// 
         /// </summary>
@@ -208,5 +214,6 @@ namespace RailRoadSignal
         /// 
         /// </summary>
         public double SafetyFact { get; set; }
+
     }
 }

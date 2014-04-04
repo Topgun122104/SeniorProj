@@ -126,19 +126,25 @@ namespace RailRoadSignal.CustomControls
                 if (t.CollidesEnd(mouseWorldPosition))
                 {
                     t.EndColor = Color.Green;
+                    t.Highlighted = true;                   
+
                 }
-                else
-                {
-                    t.EndColor = Color.Blue;
-                }
-                if (t.CollidesStart(mouseWorldPosition))
+                
+                else if (t.CollidesStart(mouseWorldPosition))
                 {
                     t.StartColor = Color.Green;
+                    t.Highlighted = true;
+                     
+
                 }
+
                 else
                 {
                     t.StartColor = Color.Blue;
+                    t.EndColor = Color.Blue;
+                    t.Highlighted = false;
                 }
+                
 
             }
         }
@@ -254,6 +260,22 @@ namespace RailRoadSignal.CustomControls
             }
             spriteBatch.End();
 
+            foreach(TrackSegment t in TrackLayout.Track)
+            {
+                if(t.Highlighted)
+                {
+                    spriteBatch.Begin();
+                    spriteBatch.DrawString(displayFont, "TrackID   : " + t.TrackID + 
+                                                      "\nCircuit   : " + t.TrackCircuit +
+                                                      "\nDirection : " + t.Direction +
+                                                      "\nSBD       : " + t.SafeBreakingDistance.ToString() +
+                                                        "\n"
+                                
+                        
+                        , new Vector2(m_currMouseState.X + 10, m_currMouseState.Y - 50), Color.Yellow);
+                    spriteBatch.End();
+                }
+            }
 
             // display anything that gets updated with the view here
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend,
@@ -264,7 +286,7 @@ namespace RailRoadSignal.CustomControls
 
             foreach (TrackSegment track in TrackLayout.Track)
             {
-                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red);
+                track.Draw(whiteTexture, arrowTexture, spriteBatch, Color.Red, displayFont, mouseWorldPosition);
 
             }
             spriteBatch.End();

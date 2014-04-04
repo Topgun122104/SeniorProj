@@ -15,7 +15,7 @@ namespace RailRoadSignal.EditorForms
         StatusBar statusbar = new StatusBar();
         StatusBarPanel panel = new StatusBarPanel();
         StatusBarPanel panel2 = new StatusBarPanel();
-       
+
         public bool createNewTrack;
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace RailRoadSignal.EditorForms
             mainMenu.WindowState = FormWindowState.Maximized;
             mainMenu.Show();
             mainMenu.Visible = true;
-            
 
-            panel.Text = "Loading...";
+
+            panel.Text = "";
             panel.AutoSize = StatusBarPanelAutoSize.Spring;
             panel2.ToolTipText = "Started: " + System.DateTime.Now.ToShortTimeString();
 
@@ -210,20 +210,20 @@ namespace RailRoadSignal.EditorForms
         /// </summary>
         private void LoadSampleTrack()
         {
-            /*
-            TrackLayout.Track.Add(new TrackSegment("921T", new Vector2(-1100, 100), new Vector2(300, 100), 48895, 49485, 1.296, 15.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("921T", new Vector2(300, 100), new Vector2(400, 0), 48895, 50100, 2.467, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(400, 0), new Vector2(700, 0), 49485, 50100, 3.59, 20.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(700, 0), new Vector2(800, 100), 49485, 51066, 1.879, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("931T", new Vector2(300, 100), new Vector2(800, 100), 49485, 52032, -0.405, 55.0, 2.0, 0.6079, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("951T", new Vector2(800, 100), new Vector2(1100, 100), 50100, 51066, 0.7902, 25.0, 2.0, 2.2406, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("951T", new Vector2(-100, 120), new Vector2(300, 120), 50100, 52032, -1.677, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("951T", new Vector2(300, 120), new Vector2(1100, 120), 50100, 52998, -0.962, 55.0, 2.0, 0.6079, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-100, 120), new Vector2(-200, 220), 50166, 52998, -1.837, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-200, 220), new Vector2(-500, 220), 50166, 53964, -2.032, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
-            TrackLayout.Track.Add(new TrackSegment("961T", new Vector2(-500, 220), new Vector2(-600, 120), 50166, 54930, -0.819, 65.0, 2.0, .3471, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+
+            TrackLayout.Track.Add(new TrackSegment("1", "Northbound", "", "914T", new Vector2(-1100, 100), new Vector2(300, 100), 48895, 49485, 1.296, 15.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("2", "Northbound", "", "914T", new Vector2(300, 100), new Vector2(400, 0), 48895, 50100, 2.467, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("3", "Northbound", "", "914T", new Vector2(400, 0), new Vector2(700, 0), 49485, 50100, 3.59, 20.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("4", "Northbound", "", "914T", new Vector2(700, 0), new Vector2(800, 100), 49485, 51066, 1.879, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("5", "Northbound", "", "914T", new Vector2(300, 100), new Vector2(800, 100), 49485, 52032, -0.405, 55.0, 2.0, 0.6079, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("6", "Northbound", "", "914T", new Vector2(800, 100), new Vector2(1100, 100), 50100, 51066, 0.7902, 25.0, 2.0, 2.2406, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("7", "Northbound", "", "914T", new Vector2(-100, 120), new Vector2(300, 120), 50100, 52032, -1.677, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("8", "Northbound", "", "914T", new Vector2(300, 120), new Vector2(1100, 120), 50100, 52998, -0.962, 55.0, 2.0, 0.6079, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("9", "Northbound", "", "914T", new Vector2(-100, 120), new Vector2(-200, 220), 50166, 52998, -1.837, 35.0, 2.0, 1.6007, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("10", "Northbound", "", "914T", new Vector2(-200, 220), new Vector2(-500, 220), 50166, 53964, -2.032, 45.0, 2.0, 1.0565, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
+            TrackLayout.Track.Add(new TrackSegment("11", "Northbound", "", "914T", new Vector2(-500, 220), new Vector2(-600, 120), 50166, 54930, -0.819, 65.0, 2.0, .3471, 4.8, 1.67, 1.2, 0.5, 1, 28, 0));
             dataViewForm.UpdateDataView();
-             * */
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
