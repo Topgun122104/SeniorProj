@@ -34,12 +34,10 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.ForeColor = System.Drawing.Color.Blue;
+            this.progressBar1.ForeColor = System.Drawing.Color.Navy;
             this.progressBar1.Location = new System.Drawing.Point(12, 40);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(220, 23);
-            this.progressBar1.Step = 25;
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 0;
             // 
             // label1
@@ -59,7 +57,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressBoxForm";
@@ -75,7 +73,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ProgressBar progressBar1;
+        public System.Windows.Forms.Label label1;
     }
 }

@@ -21,8 +21,8 @@ namespace RailRoadSignal
         public TrackSegment(Vector2 startPoint, Vector2 endPoint)
             : base(startPoint, endPoint)
         {
-            TrackID = "3";
-            SafeBreakingDistance = 23.43;
+            TrackID = "Basic Line";
+            SafeBreakingDistance = 0.00;
         }
         /// <summary>
         /// Constructor for a new line
@@ -95,13 +95,63 @@ namespace RailRoadSignal
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
-        
-        /*
-        public void DisplayInfo(Vector2 mouseWorldPosition, SpriteBatch spriteBatch, SpriteFont font, TrackSegment track)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="trackID"></param>
+        /// <param name="direction"></param>
+        /// <param name="move"></param>
+        /// <param name="trackCircuit"></param>
+        /// <param name="startX"></param>
+        /// <param name="startY"></param>
+        /// <param name="endX"></param>
+        /// <param name="endY"></param>
+        /// <param name="brakeLocation"></param>
+        /// <param name="targetLocation"></param>
+        /// <param name="gradeWorst"></param>
+        /// <param name="speedMax"></param>
+        /// <param name="overSpeed"></param>
+        /// <param name="vehicleAccel"></param>
+        /// <param name="reactionTime"></param>
+        /// <param name="brakeRate"></param>
+        /// <param name="runwayAccelSec"></param>
+        /// <param name="propulsionRemSec"></param>
+        /// <param name="brakeBuildUpSec"></param>
+        /// <param name="overhangDist"></param>
+        /// <param name="safetyFact"></param>
+        public TrackSegment(string trackID, string direction, string move, string trackCircuit, int startX, int startY, int endX, int endY,
+                            int brakeLocation, int targetLocation, double gradeWorst,
+                             double speedMax, double overSpeed, double vehicleAccel,
+                            double reactionTime, double brakeRate, double runwayAccelSec,
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
+            : base(new Vector2((float)startX, (float)startY), new Vector2((float)endX, (float)endY))
         {
-            Display(mouseWorldPosition, spriteBatch, font);
+            TrackID = trackID;
+            Direction = direction;
+            Move = move;
+            TrackCircuit = trackCircuit;
+            BrakeLocation = brakeLocation;
+            TargetLocation = targetLocation;
+            GradeWorst = gradeWorst;
+            SpeedMax = speedMax;
+            OverSpeed = overSpeed;
+            VehicleAccel = vehicleAccel;
+            ReactionTime = reactionTime;
+            BrakeRate = brakeRate;
+            RunwayAccelSec = runwayAccelSec;
+            PropulsionRemSec = propulsionRemSec;
+            BrakeBuildUpSec = brakeBuildUpSec;
+            OverhangDist = overhangDist;
+            SafetyFact = safetyFact;
+
+
+            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
+                SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
+                BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
-         */
+
+
         /// <summary>
         /// 
         /// </summary>

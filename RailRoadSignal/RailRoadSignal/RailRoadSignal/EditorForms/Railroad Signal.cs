@@ -289,10 +289,14 @@ namespace RailRoadSignal.EditorForms
                 infoForm.PostRangeBox.Text = "Miles";
 
             }
-            else
+            else if (TrackLayout.Kilometers == true)
             {
                 infoForm.PostRangeBox.Text = "Kilometers";
 
+            }
+            else
+            {
+                infoForm.PostRangeBox.Text = "";
             }
 
 
@@ -314,10 +318,14 @@ namespace RailRoadSignal.EditorForms
 
                 dataViewForm.PostRangeBox.Text = "Miles";
             }
-            else
+            else if (TrackLayout.Kilometers == true)
             {
 
                 dataViewForm.PostRangeBox.Text = "Kilometers";
+            }
+            else
+            {
+                dataViewForm.PostRangeBox.Text = "";
             }
 
             dataViewForm.Refresh();
@@ -346,6 +354,7 @@ namespace RailRoadSignal.EditorForms
         {
 
         }
+
 
 
         /// <summary>
@@ -384,6 +393,20 @@ namespace RailRoadSignal.EditorForms
         {
             LoadSampleTrack();
         }
+        private void button2_click(object sender, EventArgs e)
+        {
 
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //contextMenuStrip.Show(sender.Equals(MouseButtons.Right.Equals);
+        }
+
+        private void splitHereToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

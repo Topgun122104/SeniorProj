@@ -49,7 +49,7 @@ namespace RailRoadSignal
 
         private Rectangle BoundingRectangle(Vector2 point)
         {
-            return new Rectangle((int)point.X, (int)point.Y, 4, 4);
+            return new Rectangle((int)point.X - 2, (int)point.Y - 2, 4, 4);
         }
         /// <summary>
         /// Default constructor for a new line

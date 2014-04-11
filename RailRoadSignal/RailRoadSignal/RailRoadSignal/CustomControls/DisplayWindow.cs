@@ -110,8 +110,8 @@ namespace RailRoadSignal.CustomControls
 
 
             mouseWorldPosition = new Vector2(
-                m_view.Position.X - (WINDOWWIDTH / 2) + (m_currMouseState.X - (7)),
-                (m_view.Position.Y - (WINDOWHEIGHT / 2) + (m_currMouseState.Y - (57))));
+               (m_view.Position.X - (WINDOWWIDTH / 2) + (m_currMouseState.X - (6))), // for view offset from top corner of window 
+                (m_view.Position.Y - (WINDOWHEIGHT / 2) + (m_currMouseState.Y - (56))));
 
             CheckEndPointCollision();
 
@@ -126,15 +126,15 @@ namespace RailRoadSignal.CustomControls
                 if (t.CollidesEnd(mouseWorldPosition))
                 {
                     t.EndColor = Color.Green;
-                    t.Highlighted = true;                   
+                    t.Highlighted = true;
 
                 }
-                
+
                 else if (t.CollidesStart(mouseWorldPosition))
                 {
                     t.StartColor = Color.Green;
                     t.Highlighted = true;
-                     
+
 
                 }
 
@@ -144,7 +144,7 @@ namespace RailRoadSignal.CustomControls
                     t.EndColor = Color.Blue;
                     t.Highlighted = false;
                 }
-                
+
 
             }
         }
@@ -260,18 +260,18 @@ namespace RailRoadSignal.CustomControls
             }
             spriteBatch.End();
 
-            foreach(TrackSegment t in TrackLayout.Track)
+            foreach (TrackSegment t in TrackLayout.Track)
             {
-                if(t.Highlighted)
+                if (t.Highlighted)
                 {
                     spriteBatch.Begin();
-                    spriteBatch.DrawString(displayFont, "TrackID   : " + t.TrackID + 
+                    spriteBatch.DrawString(displayFont, "TrackID   : " + t.TrackID +
                                                       "\nCircuit   : " + t.TrackCircuit +
                                                       "\nDirection : " + t.Direction +
                                                       "\nSBD       : " + t.SafeBreakingDistance.ToString() +
                                                         "\n"
-                                
-                        
+
+
                         , new Vector2(m_currMouseState.X + 10, m_currMouseState.Y - 50), Color.Yellow);
                     spriteBatch.End();
                 }
