@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Microsoft.Xna.Framework;
 using RailRoadSignal.Files;
 using RailRoadSignal.Database;
 using System.Threading;
@@ -119,6 +113,11 @@ namespace RailRoadSignal.EditorForms
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button4_Click(object sender, EventArgs e)
         {
 
@@ -138,6 +137,7 @@ namespace RailRoadSignal.EditorForms
                     {
                         using (myStream)
                         {
+                            // if importing csv file
                             if (openFileDialog.FilterIndex == 1)
                             {
 
@@ -145,14 +145,10 @@ namespace RailRoadSignal.EditorForms
                             // if its a excel file
                             if (openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
                             {
-
-
                                 Thread t = new Thread(LoadExcelFile);
                                 t.IsBackground = true;
                                 t.Start(openFileDialog.FileName);
-
                             }
-
                         }
                     }
                 }
@@ -160,12 +156,14 @@ namespace RailRoadSignal.EditorForms
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
-
             }
-            // nothing yet
+
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
         private void LoadExcelFile(object filename)
         {
             ExcelParser parser = new ExcelParser(filename.ToString());

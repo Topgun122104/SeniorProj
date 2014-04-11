@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Excel = Microsoft.Office.Interop.Excel;
-using RailRoadSignal.Files;
 using System.Windows.Forms;
 using RailRoadSignal.EditorForms;
-using System.Threading;
 
 
 namespace RailRoadSignal.Files
@@ -19,6 +13,11 @@ namespace RailRoadSignal.Files
         Excel.Workbook mWorkBook;
         Excel.Application mApp;
         ExcelSheet[] safeBreakingSheets;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filename"></param>
         public ExcelParser(String filename)
         {
             mFilename = filename;
@@ -27,6 +26,9 @@ namespace RailRoadSignal.Files
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void processData()
         {
             int sheets = mWorkBook.Sheets.Count;
@@ -50,6 +52,9 @@ namespace RailRoadSignal.Files
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void cleanUp()
         {
             GC.Collect();
@@ -63,7 +68,11 @@ namespace RailRoadSignal.Files
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
         public ExcelSheet getData(Excel._Worksheet worksheet)
         {
 
@@ -123,6 +132,10 @@ namespace RailRoadSignal.Files
             // Have sheet array here that holds calc data.
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="worksheet"></param>
         public void FillTrack(Excel._Worksheet worksheet)
         {
             ProgressBoxForm progressBox = new ProgressBoxForm();
@@ -211,9 +224,13 @@ namespace RailRoadSignal.Files
             }
 
             progressBox.Close();
-            // Create sheet that holds the rows (array), count of current array
-            // Have sheet array here that holds calc data.
+             
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private int findFirstOccurrence()
         {
             for (int i = 1; i < mWorkBook.Sheets.Count; i++)

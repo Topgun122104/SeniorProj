@@ -17,27 +17,13 @@ namespace RailRoadSignal
         /// Sets the thickness to 5f, and deoth to 1.0f
         /// </summary>
         /// <param name="startPoint">End point for the line</param>
-        /// <param name="endPoint">End point for the line</param> 
+        /// <param name="endPoint">End point for the line</param>
         public TrackSegment(Vector2 startPoint, Vector2 endPoint)
             : base(startPoint, endPoint)
         {
             TrackID = "Basic Line";
             SafeBreakingDistance = 0.00;
         }
-        /// <summary>
-        /// Constructor for a new line
-        /// </summary>
-        /// <param name="startPoint">End point for the line</param>
-        /// <param name="endPoint">End point for the line</param>
-        /// <param name="_thickness">The thickness to draw the line</param>
-        /// <param name="_depth">The sorting depth of the sprite, between 0 (front) and 1 (back).</param>
-        public TrackSegment(Vector2 startPoint, Vector2 endPoint, float _thickness, float _depth)
-            : base(startPoint, endPoint, _thickness, _depth)
-        {
-
-
-        }
-
 
         //**************************************
         /* Add additional constructors here */
@@ -89,7 +75,6 @@ namespace RailRoadSignal
             BrakeBuildUpSec = brakeBuildUpSec;
             OverhangDist = overhangDist;
             SafetyFact = safetyFact;
-
 
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
@@ -145,7 +130,6 @@ namespace RailRoadSignal
             OverhangDist = overhangDist;
             SafetyFact = safetyFact;
 
-
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
@@ -194,7 +178,7 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
-        public string Move { get; set; }
+        private string Move { get; set; }
 
         /// <summary>
         /// 
@@ -203,67 +187,67 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
-        public int BrakeLocation { get; set; }
+        private int BrakeLocation { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int TargetLocation { get; set; }
+        private int TargetLocation { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int BrakeBuildUpSec { get; set; }
+        private int BrakeBuildUpSec { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public int OverhangDist { get; set; }
+        private int OverhangDist { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double GradeWorst { get; set; }
+        private double GradeWorst { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double SpeedMax { get; set; }
+        private double SpeedMax { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double OverSpeed { get; set; }
+        private double OverSpeed { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double VehicleAccel { get; set; }
+        private double VehicleAccel { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double ReactionTime { get; set; }
+        private double ReactionTime { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double BrakeRate { get; set; }
+        private double BrakeRate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double RunwayAccelSec { get; set; }
+        private double RunwayAccelSec { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double PropulsionRemSec { get; set; }
+        private double PropulsionRemSec { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public double SafetyFact { get; set; }
+        private double SafetyFact { get; set; }
 
     }
 }

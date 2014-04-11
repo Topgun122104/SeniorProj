@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -86,7 +85,7 @@ namespace RailRoadSignal.CustomControls
             TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(0, 1000)));
             TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(0, -1000)));
             TrackLayout.Track.Add(new TrackSegment(new Vector2(0, 0), new Vector2(-1000, 0)));
-            TrackLayout.Track.Add(new TrackSegment(new Vector2(-100, 100), new Vector2(500, 500)));
+            
 
 
         }

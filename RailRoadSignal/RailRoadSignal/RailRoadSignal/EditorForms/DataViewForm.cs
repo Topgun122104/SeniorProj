@@ -24,7 +24,7 @@ namespace RailRoadSignal.EditorForms
 
             this.dataGridView1.DataBindings.Clear();
             this.dataGridView1.Rows.Clear();
-            
+
         }
         public void UpdateDataView()
         {
@@ -32,7 +32,7 @@ namespace RailRoadSignal.EditorForms
 
             foreach (var x in TrackLayout.Track)
             {
-                this.dataGridView1.Rows.Add(x.TrackID, x.SafeBreakingDistance, x.Headway, x.RuntimePerformance, x.ClearTime, x.ApproachLockingTime);
+                this.dataGridView1.Rows.Add(x.TrackID, x.TrackCircuit, x.SafeBreakingDistance, x.Headway, x.RuntimePerformance, x.ClearTime, x.ApproachLockingTime);
             }
         }
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
@@ -40,6 +40,6 @@ namespace RailRoadSignal.EditorForms
 
         }
 
-         
+
     }
 }
