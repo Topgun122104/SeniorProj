@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using RailRoadSignal.Files;
 using RailRoadSignal.Database;
 using System.Threading;
+using MySql.Data.MySqlClient;
 
 
 namespace RailRoadSignal.EditorForms
@@ -128,7 +129,7 @@ namespace RailRoadSignal.EditorForms
             openFileDialog.Filter = "Comma Seperated Value (*.csv)|*.csv | Excel 97-2003 (*.xls)|*.xls | Excel Workbook (*.xlsx)|*.xlsx";
             openFileDialog.FilterIndex = 3;
             openFileDialog.RestoreDirectory = true;
-
+             
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -151,12 +152,14 @@ namespace RailRoadSignal.EditorForms
                             }
                         }
                     }
+
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
-            }
+            }  
 
         }
 
@@ -168,6 +171,30 @@ namespace RailRoadSignal.EditorForms
         {
             ExcelParser parser = new ExcelParser(filename.ToString());
             parser.processData();
+            try
+            {
+                ProgressBoxForm progress = new ProgressBoxForm();
+                progress.Show(this);
+
+                MySqlCommand cmd = new MySqlCommand();
+                DatabaseConnection conn = new DatabaseConnection("andrew.cs.fit.edu", 3306, "signalblockdesign", "signalblockdesig", "E2SnzbV922m6R51");
+                conn.openConnection();
+
+                foreach (TrackSegment t in TrackLayout.Track)
+                {
+                    DatabaseOperations.InsertIntoDatabase(conn, cmd, t);
+                    progress.progressBar1.PerformStep();
+                }
+                progress.Close();
+                conn.closeConnection();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Could not load into database. Original error: " + ex.Message);
+            }
+
             parser.cleanUp();
         }
     }

@@ -1,0 +1,123 @@
+﻿using System.Windows.Forms;
+using Signal_Block_Design_Tool.Files;
+
+namespace Signal_Block_Design_Tool.Forms
+{
+    public partial class SignalBlockForm : Form
+    {
+        private MainMenuForm mainMenuForm;
+        private DataViewForm dataViewForm;
+        TrackViewForm trackViewForm;
+
+        private StatusBar statusBar = new StatusBar();
+        private StatusBarPanel panel2 = new StatusBarPanel();
+
+        public SignalBlockForm()
+        {
+            InitializeComponent();
+
+            mainMenuForm = new MainMenuForm();
+            mainMenuForm.MdiParent = this;
+            mainMenuForm.WindowState = FormWindowState.Maximized;
+            mainMenuForm.Show();
+            mainMenuForm.Visible = true;
+
+            dataViewForm = new DataViewForm();
+            dataViewForm.MdiParent = this;
+            dataViewForm.WindowState = FormWindowState.Maximized;
+            dataViewForm.Show();
+            dataViewForm.Visible = false;
+
+            trackViewForm = new TrackViewForm();
+            trackViewForm.MdiParent = this;
+            trackViewForm.WindowState = FormWindowState.Maximized;
+            trackViewForm.Show();
+            trackViewForm.Visible = false;
+
+
+
+            panel2.ToolTipText = "Started: " + System.DateTime.Now.ToShortTimeString();
+            panel2.Text = System.DateTime.Today.ToLongDateString();
+            panel2.AutoSize = StatusBarPanelAutoSize.Contents;
+            statusBar.ShowPanels = true;
+            statusBar.Panels.Add(panel2);
+            this.Controls.Add(statusBar);
+
+        }
+
+        private void dataToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            mainMenuForm.Visible = false;
+            trackViewForm.Visible = false;
+            dataViewForm.Visible = true;
+
+        }
+
+        private void trackLayoutToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            mainMenuForm.Visible = false;
+            dataViewForm.Visible = false;
+            trackViewForm.Visible = true;
+             
+        }
+
+        private void trackInfoToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+            Application.Exit();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            File.CreateNewTrack();
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            File.LoadTrack();
+        }
+
+        private void importToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            File.ImportFromFile();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            File.SaveTrack();
+        }
+
+        private void viewHelpToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            //Goto website
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void newTrackToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void fromFileToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void fromDatabaseToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+
+
+    }
+}

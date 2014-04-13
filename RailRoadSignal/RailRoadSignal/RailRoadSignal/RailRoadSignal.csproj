@@ -22,7 +22,7 @@
     <Thumbnail>
     </Thumbnail>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <PublishUrl>C:\Users\Chad\Desktop\GE\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,9 +32,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -62,6 +63,18 @@
     <PlatformTarget>x86</PlatformTarget>
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CA0E22D53A3D32C44FBAA4EF7DEBF90380D87D9F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>RailRoadSignal_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
@@ -88,7 +101,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Database\DatabaseConnection.cs" />
-    <Compile Include="Database\DatabaseOerations.cs" />
+    <Compile Include="Database\DatabaseOperations.cs" />
     <Compile Include="Database\Query.cs" />
     <Compile Include="EditorForms\AboutForm.cs">
       <SubType>Form</SubType>
@@ -208,6 +221,7 @@
     <None Include="app.config" />
     <None Include="RailRoadSignal.Files.TrackLayout1.datasource" />
     <None Include="RailRoadSignal.Files.TrackLayout2.datasource" />
+    <None Include="RailRoadSignal_TemporaryKey.pfx" />
     <None Include="TrackSegment.datasource" />
     <None Include="TrackSegment1.datasource" />
   </ItemGroup>

@@ -98,3 +98,7 @@ C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\RailRoadSignal\RailRoadSigna
 C:\Users\ZacharyDesktop\Documents\GitHub\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.pdb
 C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.csproj.ResolveComReference.cache
 C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.EditorForms.ProgressBoxForm.resources
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\RailRoadSignal.exe.manifest
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\bin\x86\Debug\RailRoadSignal.application
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.exe.manifest
+C:\Users\Chad\Documents\SeniorProj\RailRoadSignal\RailRoadSignal\RailRoadSignal\obj\x86\Debug\RailRoadSignal.application

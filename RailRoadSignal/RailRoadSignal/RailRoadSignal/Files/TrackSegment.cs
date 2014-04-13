@@ -178,7 +178,7 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
-        private string Move { get; set; }
+        public string Move { get; set; }
 
         /// <summary>
         /// 
@@ -187,67 +187,67 @@ namespace RailRoadSignal
         /// <summary>
         /// 
         /// </summary>
-        private int BrakeLocation { get; set; }
+        public int BrakeLocation { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private int TargetLocation { get; set; }
+        public int TargetLocation { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private int BrakeBuildUpSec { get; set; }
+        public int BrakeBuildUpSec { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private int OverhangDist { get; set; }
+        public int OverhangDist { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double GradeWorst { get; set; }
+        public double GradeWorst { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double SpeedMax { get; set; }
+        public double SpeedMax { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double OverSpeed { get; set; }
+        public double OverSpeed { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double VehicleAccel { get; set; }
+        public double VehicleAccel { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double ReactionTime { get; set; }
+        public double ReactionTime { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double BrakeRate { get; set; }
+        public double BrakeRate { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double RunwayAccelSec { get; set; }
+        public double RunwayAccelSec { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double PropulsionRemSec { get; set; }
+        public double PropulsionRemSec { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        private double SafetyFact { get; set; }
+        public double SafetyFact { get; set; }
 
     }
 }
