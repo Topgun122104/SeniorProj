@@ -76,7 +76,7 @@
     <Compile Include="Forms\TrackViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TrackViewForm.Designer.cs">
+    <Compile Include="Forms\trackViewForm.Designer.cs">
       <DependentUpon>TrackViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GEAlgorithms\Algorithms.cs" />
@@ -162,7 +162,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\FIT Logo.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\GE_TRansportation_Logo.png" />
   </ItemGroup>

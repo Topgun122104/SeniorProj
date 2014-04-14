@@ -93,6 +93,16 @@ namespace Signal_Block_Design_Tool.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FIT_Logo {
+            get {
+                object obj = ResourceManager.GetObject("FIT Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GE_TRansportation_Logo {
             get {
                 object obj = ResourceManager.GetObject("GE_TRansportation_Logo", resourceCulture);

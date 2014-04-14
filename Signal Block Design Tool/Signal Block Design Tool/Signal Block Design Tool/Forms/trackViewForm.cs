@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using OpenTK.Graphics.OpenGL;
-using OpenTK.Math;
 using Signal_Block_Design_Tool.Files;
 using System.Diagnostics;
-
-
+using OpenTK.Graphics.OpenGL;
 namespace Signal_Block_Design_Tool.Forms
 {
     public partial class TrackViewForm : Form
@@ -40,7 +43,6 @@ namespace Signal_Block_Design_Tool.Forms
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
             Draw();
-
         }
 
         private void Accumulate(double milliseconds)
@@ -49,7 +51,7 @@ namespace Signal_Block_Design_Tool.Forms
             accumulator += milliseconds;
             if (accumulator > 1000)
             {
-                FPSLabel.Text = "FPS: " + idleCounter.ToString();
+                //FPSLabel.Text = "FPS: " + idleCounter.ToString();
                 accumulator -= 1000;
                 idleCounter = 0;
             }

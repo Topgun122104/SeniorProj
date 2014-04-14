@@ -6,8 +6,9 @@ namespace Signal_Block_Design_Tool.Forms
     public partial class SignalBlockForm : Form
     {
         private MainMenuForm mainMenuForm;
+        private TrackViewForm trackViewForm;
         private DataViewForm dataViewForm;
-        TrackViewForm trackViewForm;
+
 
         private StatusBar statusBar = new StatusBar();
         private StatusBarPanel panel2 = new StatusBarPanel();
@@ -22,19 +23,17 @@ namespace Signal_Block_Design_Tool.Forms
             mainMenuForm.Show();
             mainMenuForm.Visible = true;
 
-            dataViewForm = new DataViewForm();
-            dataViewForm.MdiParent = this;
-            dataViewForm.WindowState = FormWindowState.Maximized;
-            dataViewForm.Show();
-            dataViewForm.Visible = false;
-
             trackViewForm = new TrackViewForm();
             trackViewForm.MdiParent = this;
             trackViewForm.WindowState = FormWindowState.Maximized;
             trackViewForm.Show();
             trackViewForm.Visible = false;
 
-
+            dataViewForm = new DataViewForm();
+            dataViewForm.MdiParent = this;
+            dataViewForm.WindowState = FormWindowState.Maximized;
+            dataViewForm.Show();
+            dataViewForm.Visible = false;
 
             panel2.ToolTipText = "Started: " + System.DateTime.Now.ToShortTimeString();
             panel2.Text = System.DateTime.Today.ToLongDateString();
@@ -50,8 +49,6 @@ namespace Signal_Block_Design_Tool.Forms
             mainMenuForm.Visible = false;
             trackViewForm.Visible = false;
             dataViewForm.Visible = true;
-            dataViewForm.UpdateDataView();
-
         }
 
         private void trackLayoutToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -59,7 +56,6 @@ namespace Signal_Block_Design_Tool.Forms
             mainMenuForm.Visible = false;
             dataViewForm.Visible = false;
             trackViewForm.Visible = true;
-
         }
 
         private void trackInfoToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -95,7 +91,7 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void viewHelpToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            //Goto website
+            //Goto help website
         }
 
         private void aboutToolStripMenuItem_Click(object sender, System.EventArgs e)
