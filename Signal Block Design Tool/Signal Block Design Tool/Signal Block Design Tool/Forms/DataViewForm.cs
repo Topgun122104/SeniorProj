@@ -29,9 +29,9 @@ namespace Signal_Block_Design_Tool.Forms
         {
             ClearDataView();
 
-            foreach (var x in TrackLayout.Track)
+            foreach (TrackSegment t in TrackLayout.Track)
             {
-                this.dataGridView1.Rows.Add(x.TrackID, x.TrackCircuit, x.SafeBreakingDistance, x.Headway, x.RuntimePerformance, x.ClearTime, x.ApproachLockingTime);
+                this.dataGridView1.Rows.Add(t.TrackID.ToString(), t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.Headway.ToString());
             }
         }
     }

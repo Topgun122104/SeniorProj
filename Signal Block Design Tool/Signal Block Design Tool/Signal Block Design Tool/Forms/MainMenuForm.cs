@@ -34,8 +34,6 @@ namespace Signal_Block_Design_Tool.Forms
 
         }
 
-
-
         private void NewTrackButton_MouseLeave(object sender, EventArgs e)
         {
             this.NewTrackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));

@@ -50,6 +50,7 @@ namespace Signal_Block_Design_Tool.Forms
             mainMenuForm.Visible = false;
             trackViewForm.Visible = false;
             dataViewForm.Visible = true;
+            dataViewForm.UpdateDataView();
 
         }
 
@@ -58,7 +59,7 @@ namespace Signal_Block_Design_Tool.Forms
             mainMenuForm.Visible = false;
             dataViewForm.Visible = false;
             trackViewForm.Visible = true;
-             
+
         }
 
         private void trackInfoToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -84,7 +85,7 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void importToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            File.ImportFromFile();
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -99,7 +100,8 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void aboutToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog(this);
         }
 
         private void newTrackToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -109,12 +111,12 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void fromFileToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-
+            File.ImportFromFile();
         }
 
         private void fromDatabaseToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-
+            File.LoadFromDatabase();
         }
 
 
