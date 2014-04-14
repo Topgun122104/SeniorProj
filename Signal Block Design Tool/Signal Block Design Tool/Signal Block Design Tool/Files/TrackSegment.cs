@@ -111,6 +111,7 @@ namespace Signal_Block_Design_Tool.Files
             OverhangDist = overhangDist;
             SafetyFact = safetyFact;
 
+
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
