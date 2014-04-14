@@ -15,7 +15,15 @@ namespace Signal_Block_Design_Tool.Database
         public static void InsertIntoDatabase(DatabaseConnection conn, MySqlCommand cmd, TrackSegment obj)
         {
 
-            cmd.CommandText = "Insert into trackSegment(trackCircuit, trackNumber, fromDist, toDist, worstCaseGrade, maxEntrySpeed, overSpeed, vehicleAccel, reactionTime, brakeRate, runwayAccelSec, propulsion, buildUpBrake, overhangDist) values(@trackCircuit, @trackNumber, @fromDist, @toDist, @worstCaseGrade, @maxEntrySpeed, @overSpeed, @vehicleAccel, @reactionTime, @brakeRate, @runwayAccelSec, @propulsion, @buildUpBrake, @overhangDist)";
+            cmd.CommandText = @"Insert into trackSegment
+                        (trackCircuit, trackNumber, fromDist, 
+                        toDist, worstCaseGrade, maxEntrySpeed, overSpeed, 
+                        vehicleAccel, reactionTime, brakeRate, runwayAccelSec, 
+                        propulsion, buildUpBrake, overhangDist)
+                        values(@trackCircuit, @trackNumber, @fromDist, 
+                        @toDist, @worstCaseGrade, @maxEntrySpeed, @overSpeed, 
+                        @vehicleAccel, @reactionTime, @brakeRate, @runwayAccelSec, 
+                        @propulsion, @buildUpBrake, @overhangDist)";
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
             cmd.Parameters.AddWithValue("@trackNumber", obj.TrackID);
             cmd.Parameters.AddWithValue("@fromDist", obj.StartPoint);

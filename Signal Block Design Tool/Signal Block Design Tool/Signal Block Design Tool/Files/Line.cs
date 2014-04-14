@@ -53,6 +53,7 @@ namespace Signal_Block_Design_Tool.Files
         /// </summary>
         protected float m_depth;
 
+
         private Box2 BoundingRectangle(Vector2 point)
         {
             return new Box2((int)point.X - 2, (int)point.Y - 2, 4, 4);
@@ -97,6 +98,13 @@ namespace Signal_Block_Design_Tool.Files
             m_thickness = _thickness;
             m_depth = _depth;
             Highlighted = false;
+        }
+
+        public Line(int startPoint, int endPoint)
+        {
+            // TODO: Complete member initialization
+            StartPoint = new Vector2(startPoint, 0);
+            EndPoint = new Vector2(endPoint, 0);
         }
 
         /*

@@ -86,6 +86,36 @@ namespace Signal_Block_Design_Tool.Files
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
 
+        public TrackSegment(string trackID, string direction, string move, string trackCircuit, int startPoint, int endPoint,
+                            int brakeLocation, int targetLocation, double gradeWorst,
+                             double speedMax, double overSpeed, double vehicleAccel,
+                            double reactionTime, double brakeRate, double runwayAccelSec,
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
+            : base(startPoint, endPoint)
+        {
+            TrackID = trackID;
+            Direction = direction;
+            Move = move;
+            TrackCircuit = trackCircuit;
+            BrakeLocation = brakeLocation;
+            TargetLocation = targetLocation;
+            GradeWorst = gradeWorst;
+            SpeedMax = speedMax;
+            OverSpeed = overSpeed;
+            VehicleAccel = vehicleAccel;
+            ReactionTime = reactionTime;
+            BrakeRate = brakeRate;
+            RunwayAccelSec = runwayAccelSec;
+            PropulsionRemSec = propulsionRemSec;
+            BrakeBuildUpSec = brakeBuildUpSec;
+            OverhangDist = overhangDist;
+            SafetyFact = safetyFact;
+
+            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
+                SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
+                BrakeBuildUpSec, OverhangDist, SafetyFact);
+        }
+
         /// <summary>
         /// 
         /// </summary>
