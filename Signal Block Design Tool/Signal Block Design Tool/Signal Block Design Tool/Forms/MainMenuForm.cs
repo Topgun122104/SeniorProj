@@ -14,7 +14,6 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void NewTrackButton_Click(object sender, EventArgs e)
         {
-
             File.CreateNewTrack();
         }
 
