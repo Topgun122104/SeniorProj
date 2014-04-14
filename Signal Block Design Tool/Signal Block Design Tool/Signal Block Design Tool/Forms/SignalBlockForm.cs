@@ -46,6 +46,8 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void dataToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+            dataViewForm.UpdateDataView();
+            dataViewForm.UpdateTreeView();
             mainMenuForm.Visible = false;
             trackViewForm.Visible = false;
             dataViewForm.Visible = true;
@@ -91,7 +93,7 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void viewHelpToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            //Goto help website
+            System.Diagnostics.Process.Start("https://sites.google.com/a/my.fit.edu/railroadblockwiki/");
         }
 
         private void aboutToolStripMenuItem_Click(object sender, System.EventArgs e)
