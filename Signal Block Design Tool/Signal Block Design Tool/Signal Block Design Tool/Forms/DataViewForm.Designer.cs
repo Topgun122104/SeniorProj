@@ -125,6 +125,9 @@
             this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.LabelEdit = true;
             this.treeView1.Location = new System.Drawing.Point(1101, 34);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(249, 604);
