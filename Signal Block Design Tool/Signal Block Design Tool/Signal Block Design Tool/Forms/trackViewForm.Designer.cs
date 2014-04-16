@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.glControl1 = new OpenTK.GLControl();
+            this.FPSLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // glControl1
@@ -43,21 +44,32 @@
             this.glControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.glControl1_Paint);
             this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
             // 
+            // FPSLabel
+            // 
+            this.FPSLabel.AutoSize = true;
+            this.FPSLabel.Location = new System.Drawing.Point(12, 639);
+            this.FPSLabel.Name = "FPSLabel";
+            this.FPSLabel.Size = new System.Drawing.Size(0, 13);
+            this.FPSLabel.TabIndex = 1;
+            // 
             // TrackViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 661);
             this.ControlBox = false;
+            this.Controls.Add(this.FPSLabel);
             this.Controls.Add(this.glControl1);
             this.Name = "TrackViewForm";
             this.Text = "TrackViewForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private OpenTK.GLControl glControl1;
+        private System.Windows.Forms.Label FPSLabel;
     }
 }

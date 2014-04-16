@@ -36,6 +36,7 @@ namespace Signal_Block_Design_Tool.Forms
         /// </summary>
         public void UpdateTreeView()
         {
+            
             ClearTreeView();
             foreach (TrackSegment t in TrackLayout.Track)
             {
@@ -62,10 +63,11 @@ namespace Signal_Block_Design_Tool.Forms
 
                 TreeNode rootNode = new TreeNode("Circuit: " + t.TrackCircuit.ToString(), children);
                 this.treeView1.Nodes.Add(rootNode);
-                 
-                
-
             }
+             
+
+
+
 
         }
         /// <summary>
@@ -84,11 +86,17 @@ namespace Signal_Block_Design_Tool.Forms
         public void UpdateDataView()
         {
             ClearDataView();
+            BindingSource trackLayoutBindingSource = new BindingSource();
+            trackLayoutBindingSource.DataSource = TrackLayout.Track;
 
-            foreach (TrackSegment t in TrackLayout.Track)
+            
+            dataGridView2.DataSource = trackLayoutBindingSource;
+            
+            foreach(TrackSegment t in TrackLayout.Track)
             {
                 this.dataGridView1.Rows.Add(t.TrackID.ToString(), t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.Headway.ToString());
             }
+
         }
     }
 }

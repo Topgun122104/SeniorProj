@@ -53,7 +53,7 @@
             this.DatabaseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.DatabaseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatabaseButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DatabaseButton.Location = new System.Drawing.Point(610, 427);
+            this.DatabaseButton.Location = new System.Drawing.Point(216, 427);
             this.DatabaseButton.Name = "DatabaseButton";
             this.DatabaseButton.Size = new System.Drawing.Size(160, 160);
             this.DatabaseButton.TabIndex = 5;
@@ -70,7 +70,7 @@
             this.ContinueButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ContinueButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ContinueButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ContinueButton.Location = new System.Drawing.Point(432, 427);
+            this.ContinueButton.Location = new System.Drawing.Point(41, 427);
             this.ContinueButton.Name = "ContinueButton";
             this.ContinueButton.Size = new System.Drawing.Size(160, 160);
             this.ContinueButton.TabIndex = 4;
@@ -87,7 +87,7 @@
             this.ImportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ImportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImportButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ImportButton.Location = new System.Drawing.Point(610, 249);
+            this.ImportButton.Location = new System.Drawing.Point(216, 249);
             this.ImportButton.Name = "ImportButton";
             this.ImportButton.Size = new System.Drawing.Size(160, 160);
             this.ImportButton.TabIndex = 3;
@@ -104,7 +104,7 @@
             this.NewTrackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.NewTrackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewTrackButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NewTrackButton.Location = new System.Drawing.Point(432, 249);
+            this.NewTrackButton.Location = new System.Drawing.Point(41, 249);
             this.NewTrackButton.Name = "NewTrackButton";
             this.NewTrackButton.Size = new System.Drawing.Size(160, 160);
             this.NewTrackButton.TabIndex = 2;

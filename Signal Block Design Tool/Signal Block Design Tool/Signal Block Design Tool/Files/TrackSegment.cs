@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
 using Signal_Block_Design_Tool.GEAlgorithms;
+using System.Windows.Forms;
 using OpenTK;
 
 namespace Signal_Block_Design_Tool.Files
 {
     public class TrackSegment : Line
-    {
+    {        
 
         /// <summary>
         /// Default constructor for a new track Segment

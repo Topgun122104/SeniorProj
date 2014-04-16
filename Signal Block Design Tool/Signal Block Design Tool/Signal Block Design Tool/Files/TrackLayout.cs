@@ -12,7 +12,7 @@ namespace Signal_Block_Design_Tool.Files
         /// 
         /// </summary>
         static List<TrackSegment> list = new List<TrackSegment>();
-
+        
         /// <summary>
         /// 
         /// </summary>

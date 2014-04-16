@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Signal_Block_Design_Tool.Files;
 using System.Diagnostics;
 using OpenTK.Graphics.OpenGL;
+
 namespace Signal_Block_Design_Tool.Forms
 {
     public partial class TrackViewForm : Form
@@ -20,6 +21,7 @@ namespace Signal_Block_Design_Tool.Forms
         private Stopwatch stopwatch;
         private double accumulator = 0;
         private int idleCounter = 0;
+        private float rotation = 0;
 
         public TrackViewForm()
         {
@@ -38,10 +40,17 @@ namespace Signal_Block_Design_Tool.Forms
             SetupViewport();
         }
 
+        private void Animate(double milliseconds)
+        {
+            float delta = (float)milliseconds / 20.0f;
+            rotation += delta;
+            glControl1.Invalidate();
+        }
         void Application_Idle(object sender, EventArgs e)
         {
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
+            Animate(milliseconds);
             Draw();
         }
 
@@ -51,7 +60,7 @@ namespace Signal_Block_Design_Tool.Forms
             accumulator += milliseconds;
             if (accumulator > 1000)
             {
-                //FPSLabel.Text = "FPS: " + idleCounter.ToString();
+                FPSLabel.Text = "FPS: " + idleCounter.ToString();
                 accumulator -= 1000;
                 idleCounter = 0;
             }
@@ -110,8 +119,20 @@ namespace Signal_Block_Design_Tool.Forms
             OpenTK.Graphics.OpenGL.GL.Clear(OpenTK.Graphics.OpenGL.ClearBufferMask.ColorBufferBit |
                OpenTK.Graphics.OpenGL.ClearBufferMask.DepthBufferBit);
 
-
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadIdentity();
             DrawBackgroundLines();
+
+
+            GL.Color3(Color.Red);
+            GL.Rotate(rotation, OpenTK.Vector3d.UnitZ);
+            OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Triangles);
+            GL.Vertex2(10, 20);
+            GL.Vertex2(100, 20);
+            GL.Vertex2(100, 50);
+
+            OpenTK.Graphics.OpenGL.GL.End();
+
 
             foreach (TrackSegment t in TrackLayout.Track)
             {
@@ -128,7 +149,7 @@ namespace Signal_Block_Design_Tool.Forms
         private static void DrawBackgroundLines()
         {
 
-
+            GL.Color3(Color.Gray);
             OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
 
             OpenTK.Graphics.OpenGL.GL.Vertex2(0, 0);
