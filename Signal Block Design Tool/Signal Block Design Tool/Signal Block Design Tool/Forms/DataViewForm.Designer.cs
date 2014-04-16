@@ -28,55 +28,120 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.TabbedControl = new System.Windows.Forms.TabControl();
+            this.CalculationsTab = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.TrackSegmentsTab = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.GeneralTab = new System.Windows.Forms.TabPage();
             this.TrackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Circuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HWC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.trackLayoutBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Headway = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabbedControl.SuspendLayout();
+            this.CalculationsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.TrackSegmentsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackLayoutBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // TabbedControl
+            // 
+            this.TabbedControl.Controls.Add(this.CalculationsTab);
+            this.TabbedControl.Controls.Add(this.TrackSegmentsTab);
+            this.TabbedControl.Controls.Add(this.GeneralTab);
+            this.TabbedControl.Location = new System.Drawing.Point(12, 12);
+            this.TabbedControl.Name = "TabbedControl";
+            this.TabbedControl.SelectedIndex = 0;
+            this.TabbedControl.Size = new System.Drawing.Size(1083, 637);
+            this.TabbedControl.TabIndex = 1;
+            // 
+            // CalculationsTab
+            // 
+            this.CalculationsTab.Controls.Add(this.treeView1);
+            this.CalculationsTab.Controls.Add(this.dataGridView1);
+            this.CalculationsTab.Location = new System.Drawing.Point(4, 22);
+            this.CalculationsTab.Name = "CalculationsTab";
+            this.CalculationsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CalculationsTab.Size = new System.Drawing.Size(1075, 611);
+            this.CalculationsTab.TabIndex = 0;
+            this.CalculationsTab.Text = "Calculations";
+            this.CalculationsTab.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowDrop = true;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TrackID,
             this.Circuit,
             this.SBD,
-            this.HWC});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
+            this.Headway});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1063, 599);
+            this.dataGridView1.Size = new System.Drawing.Size(1069, 605);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // TrackSegmentsTab
+            // 
+            this.TrackSegmentsTab.Controls.Add(this.dataGridView2);
+            this.TrackSegmentsTab.Location = new System.Drawing.Point(4, 22);
+            this.TrackSegmentsTab.Name = "TrackSegmentsTab";
+            this.TrackSegmentsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TrackSegmentsTab.Size = new System.Drawing.Size(1075, 611);
+            this.TrackSegmentsTab.TabIndex = 1;
+            this.TrackSegmentsTab.Text = "Track Segments";
+            this.TrackSegmentsTab.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(1069, 605);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // treeView1
+            // 
+            this.treeView1.AllowDrop = true;
+            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.treeView1.FullRowSelect = true;
+            this.treeView1.HotTracking = true;
+            this.treeView1.LabelEdit = true;
+            this.treeView1.Location = new System.Drawing.Point(828, 6);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(241, 599);
+            this.treeView1.TabIndex = 2;
+            // 
+            // GeneralTab
+            // 
+            this.GeneralTab.Location = new System.Drawing.Point(4, 22);
+            this.GeneralTab.Name = "GeneralTab";
+            this.GeneralTab.Padding = new System.Windows.Forms.Padding(3);
+            this.GeneralTab.Size = new System.Drawing.Size(1075, 611);
+            this.GeneralTab.TabIndex = 2;
+            this.GeneralTab.Text = "General";
+            this.GeneralTab.UseVisualStyleBackColor = true;
             // 
             // TrackID
             // 
             this.TrackID.HeaderText = "Track ID";
             this.TrackID.Name = "TrackID";
+            this.TrackID.ReadOnly = true;
+            this.TrackID.Width = 150;
             // 
             // Circuit
             // 
             this.Circuit.HeaderText = "Circuit";
             this.Circuit.Name = "Circuit";
+            this.Circuit.ReadOnly = true;
+            this.Circuit.Width = 150;
             // 
             // SBD
             // 
@@ -85,104 +150,45 @@
             this.SBD.ReadOnly = true;
             this.SBD.Width = 150;
             // 
-            // HWC
+            // Headway
             // 
-            this.HWC.HeaderText = "Headway Calculations";
-            this.HWC.Name = "HWC";
-            this.HWC.ReadOnly = true;
-            this.HWC.Width = 150;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1083, 637);
-            this.tabControl1.TabIndex = 1;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1075, 611);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dataGridView2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1075, 600);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToOrderColumns = true;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(7, 7);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.FullRowSelect = true;
-            this.treeView1.LabelEdit = true;
-            this.treeView1.Location = new System.Drawing.Point(1101, 34);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(241, 611);
-            this.treeView1.TabIndex = 2;
-            // 
-            // trackLayoutBindingSource
-            // 
-            this.trackLayoutBindingSource.DataSource = typeof(Signal_Block_Design_Tool.Files.TrackLayout);
+            this.Headway.HeaderText = "Headway";
+            this.Headway.Name = "Headway";
+            this.Headway.ReadOnly = true;
+            this.Headway.Width = 150;
             // 
             // DataViewForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1354, 661);
             this.ControlBox = false;
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.TabbedControl);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "DataViewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DataViewForm";
+            this.TabbedControl.ResumeLayout(false);
+            this.CalculationsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.TrackSegmentsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackLayoutBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.BindingSource trackLayoutBindingSource;
+        private System.Windows.Forms.TabControl TabbedControl;
+        private System.Windows.Forms.TabPage CalculationsTab;
+        private System.Windows.Forms.TabPage TrackSegmentsTab;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabPage GeneralTab;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrackID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Circuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn SBD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HWC;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Headway;
     }
 }
