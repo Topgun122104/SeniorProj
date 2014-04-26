@@ -24,7 +24,7 @@ namespace Signal_Block_Design_Tool.Files
         {
             get
             {
-                return new Vector2(startPoint.X, -startPoint.Y);
+                return new Vector2(startPoint.X, startPoint.Y);
             }
             set
             {

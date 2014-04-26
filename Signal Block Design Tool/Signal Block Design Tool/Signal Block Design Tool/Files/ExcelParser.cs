@@ -139,7 +139,7 @@ namespace Signal_Block_Design_Tool.Files
         public void FillTrack(Excel._Worksheet worksheet)
         {
             ProgressBoxForm progressBox = new ProgressBoxForm();
-             
+
             progressBox.Show();
             try
             {
@@ -192,9 +192,7 @@ namespace Signal_Block_Design_Tool.Files
                     double prop = Convert.ToDouble(range.Cells[i, 22].Value2);       // Propulsion Removal
                     int buildUp = Convert.ToInt32(range.Cells[i, 24].Value2);        // Brake Build Up
                     int overHead = Convert.ToInt32(range.Cells[i, 26].Value2);        // Overhand Distance
-                    TrackLayout.Track.Add(new TrackSegment(trackID, direction, move,
-                        circuit, 0, 0, 0, 0, brake, target, worst, entry, over, accel, reaction,
-                        brakeRate, runaway, prop, buildUp, overHead, 0));
+                    TrackLayout.Track.Add(new TrackSegment());
 
                     ExcelRow currentRow = new ExcelRow(
                      range.Cells[i, 2].Value2 != null ? Convert.ToInt32(range.Cells[i, 2].Value2) : currentSheet.getRow(currentRowInSheet - 1).TrackID,             // Track
@@ -214,7 +212,7 @@ namespace Signal_Block_Design_Tool.Files
                      Convert.ToInt32(range.Cells[i, 24].Value2),        // Brake Build Up
                      Convert.ToInt32(range.Cells[i, 26].Value2));       // Overhand Distance
                     currentSheet.addRow(currentRow);
-                   progressBox.progressBar1.PerformStep();
+                    progressBox.progressBar1.PerformStep();
 
                 }
             }

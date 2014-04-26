@@ -1,59 +1,71 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenTK.Graphics.OpenGL;
+using OpenTK;
 
 namespace Signal_Block_Design_Tool.Files
 {
     class Camera2D
     {
-
-        public enum DrawMode
+        public Vector2 _pos;
+        public Vector2 _origin;
+        public float _rotation;
+        protected float _zoom;
+        protected Transformation _transform;
+        protected struct Transformation
         {
-            NORMAL,
-            WIREFRAME,
-        }
-
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Angle { get; set; }
-
-        private DrawMode _mode;
-        public DrawMode Mode
-        {
-            get { return _mode; }
-            set
+            internal Matrix4 _matrix;
+            Vector2 _lastPositon;
+            float _lastZoom;
+            Vector2 _lastOrigin;
+            float _lastRotation;
+            internal void Update(Vector2 p, Vector2 origin, float zoom, float rotation)
             {
-                _mode = value;
-                UpdateDrawMode();
+                _lastPositon = p;
+                _lastOrigin = origin;
+                _lastZoom = zoom;
+                _lastRotation = rotation;
             }
+        };
+
+        public Camera2D()
+        {
+
         }
 
-        public Camera2D(float x = 0.0f, float y = 0.0f)
+        public Camera2D(Vector2 position, Vector2 origin)
         {
-            X = x;
-            Y = y;
-            _mode = DrawMode.NORMAL;
+            _pos = position;
+            _origin = origin;
+            _zoom = 1;
+            _rotation = 0;
         }
 
-        private void UpdateDrawMode()
+        public void setZoom(float zoom)
         {
-            switch(_mode)
-            {
-                case DrawMode.NORMAL:
-                    OpenTK.Graphics.OpenGL.GL.PolygonMode(OpenTK.Graphics.OpenGL.MaterialFace.FrontAndBack, OpenTK.Graphics.OpenGL.PolygonMode.Fill);
-                    break;
-                case DrawMode.WIREFRAME:
-                    OpenTK.Graphics.OpenGL.GL.PolygonMode(OpenTK.Graphics.OpenGL.MaterialFace.Front, OpenTK.Graphics.OpenGL.PolygonMode.Line);
-                    break;
-            }
+            _zoom = zoom;
         }
 
-        public void Update()
+        public float getZoom()
         {
-            OpenTK.Graphics.OpenGL.GL.Rotate(Angle, 0, 0, 1);
-            OpenTK.Graphics.OpenGL.GL.Translate(-X, -Y, 0);
+            return _zoom;
+        }
+
+        public Matrix4 getTransformation()
+        {
+            _transform.Update(_pos, _origin, _zoom, _rotation);
+
+            _transform._matrix = Matrix4.CreateTranslation(-_pos.X, -_pos.Y, 0) *
+                Matrix4.CreateScale(_zoom, _zoom, 1) *
+                Matrix4.CreateRotationZ(_rotation) *
+                Matrix4.CreateTranslation(_origin.X, _origin.Y, 0);
+
+            return _transform._matrix;
         }
 
     }
