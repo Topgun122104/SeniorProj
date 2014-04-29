@@ -17,6 +17,9 @@ namespace Signal_Block_Design_Tool.Files
         public float _rotation;
         protected float _zoom;
         protected Transformation _transform;
+
+        private float maxZoom = 5.0f;
+        private float minZoom = 0.5f;
         protected struct Transformation
         {
             internal Matrix4 _matrix;
@@ -24,9 +27,9 @@ namespace Signal_Block_Design_Tool.Files
             float _lastZoom;
             Vector2 _lastOrigin;
             float _lastRotation;
-            internal void Update(Vector2 p, Vector2 origin, float zoom, float rotation)
+            internal void Update(Vector2 position, Vector2 origin, float zoom, float rotation)
             {
-                _lastPositon = p;
+                _lastPositon = position;
                 _lastOrigin = origin;
                 _lastZoom = zoom;
                 _lastRotation = rotation;
@@ -49,6 +52,14 @@ namespace Signal_Block_Design_Tool.Files
         public void setZoom(float zoom)
         {
             _zoom = zoom;
+            if (_zoom <= minZoom)
+            {
+                _zoom = minZoom;
+            }
+            if (_zoom >= maxZoom)
+            {
+                _zoom = maxZoom;
+            }
         }
 
         public float getZoom()
@@ -63,10 +74,8 @@ namespace Signal_Block_Design_Tool.Files
             _transform._matrix = Matrix4.CreateTranslation(-_pos.X, -_pos.Y, 0) *
                 Matrix4.CreateScale(_zoom, _zoom, 1) *
                 Matrix4.CreateRotationZ(_rotation) *
-                Matrix4.CreateTranslation(_origin.X, _origin.Y, 0);
-
+                Matrix4.CreateTranslation(_origin.X * .5f, _origin.Y * .5f, 0);
             return _transform._matrix;
         }
-
     }
 }

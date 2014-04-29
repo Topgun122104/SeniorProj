@@ -12,13 +12,13 @@ namespace Signal_Block_Design_Tool.Forms
     {
         bool loaded = false;
         private Camera2D camera;
-        private Matrix4 matrix;
+        private bool moveCamera;
         private Stopwatch stopwatch;
         private double accumulator = 0;
         private int idleCounter = 0;
         private float rotation = 0;
-        private int WIDTH = 0;
-        private int HEIGHT = 0;
+        private int WIDTH;
+        private int HEIGHT;
         private Vector2 currentMousePosition;
         private Vector2 previousMousePosition;
         private int currentClicks;
@@ -28,7 +28,8 @@ namespace Signal_Block_Design_Tool.Forms
         public TrackViewForm()
         {
             InitializeComponent();
-            camera = new Camera2D(new OpenTK.Vector2(WIDTH / 2, HEIGHT / 2), new OpenTK.Vector2(WIDTH / 2, HEIGHT / 2));
+
+
 
             stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -43,6 +44,7 @@ namespace Signal_Block_Design_Tool.Forms
             OpenTK.Graphics.OpenGL.GL.ClearColor(Color.Black);
 
             SetupViewport();
+            camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
         }
 
         private void Animate(double milliseconds)
@@ -83,8 +85,7 @@ namespace Signal_Block_Design_Tool.Forms
         {
             WIDTH = glControl1.Width;
             HEIGHT = glControl1.Height;
-            camera._pos.X = -WIDTH / 2;
-            camera._pos.Y = -HEIGHT / 2;
+
 
         }
 
@@ -114,7 +115,7 @@ namespace Signal_Block_Design_Tool.Forms
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
             positionLabel.Text = camera._pos.ToString();
-            originLabel.Text = camera._origin.ToString();
+
             clicksLabel.Text = camera.getZoom().ToString();
 
 
@@ -182,14 +183,11 @@ namespace Signal_Block_Design_Tool.Forms
             GL.Color3(Color.Gray);
             OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
 
-            OpenTK.Graphics.OpenGL.GL.Vertex2(0, -10000);
-            OpenTK.Graphics.OpenGL.GL.Vertex2(0, 10000);
+            OpenTK.Graphics.OpenGL.GL.Vertex2(0, -100000);
+            OpenTK.Graphics.OpenGL.GL.Vertex2(0, 100000);
 
-
-
-
-            OpenTK.Graphics.OpenGL.GL.Vertex2(10000, 0);
-            OpenTK.Graphics.OpenGL.GL.Vertex2(-10000, 0);
+            OpenTK.Graphics.OpenGL.GL.Vertex2(100000, 0);
+            OpenTK.Graphics.OpenGL.GL.Vertex2(-100000, 0);
 
             OpenTK.Graphics.OpenGL.GL.End();
 
@@ -203,22 +201,27 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 return;
             }
+            if (e.KeyCode == Keys.A)
+            {
+                camera._pos.X -= 10;
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                camera._pos.X += 10;
+            }
+            else if (e.KeyCode == Keys.W)
+            {
+                camera._pos.Y -= 10;
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                camera._pos.Y += 10;
+            }
             // not sure if this is the best way.
             // seems glitchy :/
             switch (e.KeyCode)
             {
-                case Keys.A:
-                    camera._pos.X -= 10;
-                    break;
-                case Keys.D:
-                    camera._pos.X += 10;
-                    break;
-                case Keys.W:
-                    camera._pos.Y -= 10;
-                    break;
-                case Keys.S:
-                    camera._pos.Y += 10;
-                    break;
+
                 case Keys.Add:
                     camera.setZoom(camera.getZoom() + .1f);
                     break;
@@ -248,20 +251,45 @@ namespace Signal_Block_Design_Tool.Forms
         }
         private void glControl1_MouseDown(object sender, MouseEventArgs e)
         {
-            
-            if (glControl1.Focused)
+            if (e.Button == System.Windows.Forms.MouseButtons.Middle)
             {
-                if (e.Button == System.Windows.Forms.MouseButtons.Middle)
-                {
-                    currentMousePosition = new Vector2(MousePosition.X, MousePosition.Y);
-
-                    if (currentMousePosition.X > previousMousePosition.X)
-                    {
-                        camera._pos.X -= currentMousePosition.X = previousMousePosition.X;
-                    }
-                    previousMousePosition = currentMousePosition;
-                }
+                moveCamera = true;
             }
         }
+
+        private void glControl1_MouseUp(object sender, MouseEventArgs e)
+        {
+            moveCamera = false;
+        }
+
+        private void glControl1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (glControl1.Focused)
+            {
+                currentMousePosition = new Vector2(e.X, e.Y);
+                originLabel.Text = e.Location.ToString();
+                if (moveCamera)
+                {
+                    if (currentMousePosition.X > previousMousePosition.X)
+                    {
+                        camera._pos.X -= (currentMousePosition.X - previousMousePosition.X) / camera.getZoom();
+                    }
+                    if (currentMousePosition.X < previousMousePosition.X)
+                    {
+                        camera._pos.X += (previousMousePosition.X - currentMousePosition.X) / camera.getZoom();
+                    }
+                    if (currentMousePosition.Y > previousMousePosition.Y)
+                    {
+                        camera._pos.Y -= (currentMousePosition.Y - previousMousePosition.Y) / camera.getZoom();
+                    }
+                    if (currentMousePosition.Y < previousMousePosition.Y)
+                    {
+                        camera._pos.Y += (previousMousePosition.Y - currentMousePosition.Y) / camera.getZoom();
+                    }
+                }
+                previousMousePosition = currentMousePosition;
+            }
+        }
+
     }
 }
