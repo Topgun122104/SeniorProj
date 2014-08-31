@@ -25,6 +25,7 @@ namespace Signal_Block_Design_Tool.Database
                         @toDist, @worstCaseGrade, @maxEntrySpeed, @overSpeed, 
                         @vehicleAccel, @reactionTime, @brakeRate, @runwayAccelSec, 
                         @propulsion, @buildUpBrake, @overhangDist)";
+
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
             cmd.Parameters.AddWithValue("@trackNumber", obj.TrackID);
             cmd.Parameters.AddWithValue("@fromDist", obj.StartPoint);

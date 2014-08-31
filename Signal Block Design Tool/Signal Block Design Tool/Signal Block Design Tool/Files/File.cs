@@ -20,7 +20,7 @@ namespace Signal_Block_Design_Tool.Files
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             // Types of files to read
-            openFileDialog.Filter = "Comma Seperated Value (*.csv)|*.csv | Excel 97-2003 (*.xls)|*.xls | Excel Workbook (*.xlsx)|*.xlsx";
+            openFileDialog.Filter = "Tiled expot txt file (*.txt)|*.txt";
             openFileDialog.FilterIndex = 3;
             openFileDialog.RestoreDirectory = true;
 
