@@ -1,4 +1,5 @@
-﻿namespace Signal_Block_Design_Tool.Forms
+﻿
+namespace Signal_Block_Design_Tool.Forms
 {
     partial class TrackViewForm
     {
@@ -28,7 +29,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.glControl1 = new OpenTK.GLControl();
+            // TODO: Check to see if this fixes the slow rendering on some computers :/
+            this.glControl1 = new OpenTK.GLControl(new OpenTK.Graphics.GraphicsMode(32, 24, 4, 2));
             this.FPSLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.positionLabel = new System.Windows.Forms.Label();
@@ -147,6 +149,6 @@
         public System.Windows.Forms.Label clicksLabel;
 
 
-         
+
     }
 }

@@ -28,7 +28,7 @@ namespace Signal_Block_Design_Tool.Forms
         public TrackViewForm()
         {
             InitializeComponent();
-
+             
 
 
             stopwatch = new Stopwatch();
@@ -39,9 +39,12 @@ namespace Signal_Block_Design_Tool.Forms
         private void glControl1_Load(object sender, EventArgs e)
         {
             loaded = true;
+           
+
             OpenTK.Graphics.GraphicsContext.CurrentContext.SwapInterval = 100;
             Application.Idle += Application_Idle;
             OpenTK.Graphics.OpenGL.GL.ClearColor(Color.Black);
+             
 
             SetupViewport();
             camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));

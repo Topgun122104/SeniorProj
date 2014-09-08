@@ -54,7 +54,7 @@
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\DatabaseOperations.cs" />
     <Compile Include="Database\Query.cs" />
-    <Compile Include="Files\Camera2D.cs" />
+    <Compile Include="Models\Camera2D.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,13 +80,13 @@
       <DependentUpon>TrackViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GEAlgorithms\Algorithms.cs" />
-    <Compile Include="Files\ExcelParser.cs" />
-    <Compile Include="Files\ExcelRow.cs" />
-    <Compile Include="Files\ExcelSheet.cs" />
-    <Compile Include="Files\File.cs" />
-    <Compile Include="Files\Line.cs" />
-    <Compile Include="Files\TrackLayout.cs" />
-    <Compile Include="Files\TrackSegment.cs" />
+    <Compile Include="Models\ExcelParser.cs" />
+    <Compile Include="Models\ExcelRow.cs" />
+    <Compile Include="Models\ExcelSheet.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Line.cs" />
+    <Compile Include="Models\TrackLayout.cs" />
+    <Compile Include="Models\TrackSegment.cs" />
     <Compile Include="Forms\DataViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
