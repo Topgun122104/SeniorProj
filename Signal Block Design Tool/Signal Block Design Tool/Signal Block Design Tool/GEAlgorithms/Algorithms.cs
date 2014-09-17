@@ -75,7 +75,7 @@ namespace Signal_Block_Design_Tool.GEAlgorithms
         /// <sumary>
         /// Test main for safe breaking distance calculations
         /// </summary>
-        static int Main(string[] args)
+        /*static int Main(string[] args)
         {
              double test1 = SafeBrakingDistanceCalculations(48895, 49485, 1.296, 15.0, 1.0, 2.31, 4.8, 1.67, 1.2, 0.5, 1, 28, 0);
             Console.WriteLine(test1);
@@ -101,6 +101,7 @@ namespace Signal_Block_Design_Tool.GEAlgorithms
             Console.WriteLine(test11);
             return 0;
         }
+         */
          
     }
 }
