@@ -89,7 +89,7 @@ namespace Signal_Block_Design_Tool.Forms
             BindingSource trackLayoutBindingSource = new BindingSource();
             trackLayoutBindingSource.DataSource = TrackLayout.Track;
 
-            
+           
             dataGridView2.DataSource = trackLayoutBindingSource;
             
             foreach(TrackSegment t in TrackLayout.Track)

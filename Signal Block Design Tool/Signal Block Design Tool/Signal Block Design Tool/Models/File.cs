@@ -20,8 +20,8 @@ namespace Signal_Block_Design_Tool.Files
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             // Types of files to read
-            openFileDialog.Filter = "Tiled expot txt file (*.txt)|*.txt";
-            openFileDialog.FilterIndex = 3;
+            openFileDialog.Filter = "xlsx file (*.xlsx)|*.xlsx";
+            openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -33,12 +33,12 @@ namespace Signal_Block_Design_Tool.Files
                         using (myStream)
                         {
                             // if importing csv file
-                            if (openFileDialog.FilterIndex == 1)
-                            {
+                            //if (openFileDialog.FilterIndex == 1)
+                            //{
 
-                            }
+                            //}
                             // if its a excel file
-                            if (openFileDialog.FilterIndex == 3 || openFileDialog.FilterIndex == 2)
+                            if (openFileDialog.FilterIndex == 1 || openFileDialog.FilterIndex == 2)
                             {
                                 Thread t = new Thread(LoadExcelFile);
                                 t.IsBackground = true;

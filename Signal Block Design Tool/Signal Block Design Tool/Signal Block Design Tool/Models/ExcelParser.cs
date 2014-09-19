@@ -192,9 +192,9 @@ namespace Signal_Block_Design_Tool.Files
                     double prop = Convert.ToDouble(range.Cells[i, 22].Value2);       // Propulsion Removal
                     int buildUp = Convert.ToInt32(range.Cells[i, 24].Value2);        // Brake Build Up
                     int overHead = Convert.ToInt32(range.Cells[i, 26].Value2);        // Overhand Distance
-                    TrackLayout.Track.Add(new TrackSegment());
+                    //TrackLayout.Track.Add(new TrackSegment());
 
-                    ExcelRow currentRow = new ExcelRow(
+                    ExcelRow currentRow = new ExcelRow(new TrackSegment(
                      range.Cells[i, 2].Value2 != null ? Convert.ToInt32(range.Cells[i, 2].Value2) : currentSheet.getRow(currentRowInSheet - 1).TrackID,             // Track
                      range.Cells[i, 3].Value2 != null ? range.Cells[i, 3].Value2 : currentSheet.getRow(currentRowInSheet - 1).Direction,                         // Direction
                      range.Cells[i, 4].Value2 != null ? range.Cells[i, 4].Value2 : currentSheet.getRow(currentRowInSheet - 1).MoveNormRevDiv,                           // Move
@@ -210,7 +210,7 @@ namespace Signal_Block_Design_Tool.Files
                      Convert.ToDouble(range.Cells[i, 20].Value2),       // Runaway Accel
                      Convert.ToDouble(range.Cells[i, 22].Value2),       // Propulsion Removal
                      Convert.ToInt32(range.Cells[i, 24].Value2),        // Brake Build Up
-                     Convert.ToInt32(range.Cells[i, 26].Value2));       // Overhand Distance
+                     Convert.ToInt32(range.Cells[i, 26].Value2)));       // Overhand Distance
                     currentSheet.addRow(currentRow);
                     progressBox.progressBar1.PerformStep();
 
