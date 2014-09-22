@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 
+
 namespace Signal_Block_Design_Tool.Database
 {
     public class DatabaseConnection
