@@ -20,10 +20,7 @@ namespace Signal_Block_Design_Tool.Files
             : base() 
         {
             safeBreakingDistance = new List<double>();
-            headway = new List<double>();
             runtimePerformance = new List<double>();
-            clearTime = new List<double>();
-            approachLockingTime = new List<double>();
             trackID = new List<string>();
             direction = new List<string>();
             move = new List<string>();
@@ -221,16 +218,6 @@ namespace Signal_Block_Design_Tool.Files
             set { safeBreakingDistance = value; }
         }
 
-        private List<double> headway;
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<double> Headway 
-        {
-            get { return headway; }
-            set { headway = value; }
-        }
-
         private List<double> runtimePerformance;
         /// <summary>
         /// 
@@ -240,31 +227,11 @@ namespace Signal_Block_Design_Tool.Files
             get { return runtimePerformance; }
             set { runtimePerformance = value; }
         }
-
-        private List<double> clearTime;
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<double> ClearTime
-        {
-            get { return clearTime; }
-            set { clearTime = value; }
-        }
         
 
 
         /////////////////////////////////////////////////////////////////////////////
 
-
-        private List<double> approachLockingTime;
-        /// <summary>
-        /// 
-        /// </summary>
-        public List<double> ApproachLockingTime
-        {
-            get { return approachLockingTime; }
-            set { approachLockingTime = value; }
-        }
 
         private List<string> trackID;
         /// <summary>
