@@ -15,35 +15,36 @@ namespace Signal_Block_Design_Tool.Database
         /// <param name="obj"></param>
         public static void InsertIntoDatabase(DatabaseConnection conn, MySqlCommand cmd, TrackSegment obj)
         {
-
             cmd.CommandText = @"Insert into trackSegment
-                        (trackCircuit, trackNumber, fromDist, 
-                        toDist, worstCaseGrade, maxEntrySpeed, overSpeed, 
-                        vehicleAccel, reactionTime, brakeRate, runwayAccelSec, 
-                        propulsion, buildUpBrake, overhangDist)
-                        values(@trackCircuit, @trackNumber, @fromDist, 
-                        @toDist, @worstCaseGrade, @maxEntrySpeed, @overSpeed, 
-                        @vehicleAccel, @reactionTime, @brakeRate, @runwayAccelSec, 
-                        @propulsion, @buildUpBrake, @overhangDist)";
+                        (trackNumber, direction, move, trackCircuit, brakeLocation, 
+                        targetLocation, worst_case_grade_during_stop, max_entry_speed, overSpeed, 
+                        vehicleAccel, reactionTime, brakeRate, runwayAccel, 
+                        propulsion, build_up_brake, overhang)
+                        values(@trackNumber,@direction, @move, @trackCircuit, @brakeLocation, 
+                        @targetLocation, @worst_case_grade_during_stop, @max_entry_speed, @overSpeed, 
+                        @vehicleAccel, @reactionTime, @brakeRate, @runwayAccel, 
+                        @propulsion, @build_up_brake, @overhang)";
 
+            cmd.Parameters.AddWithValue("@trackNumber" , obj.TrackID);
+            cmd.Parameters.AddWithValue("@direction" ,obj.Direction);
+            cmd.Parameters.AddWithValue("@move", obj.Move);
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
-            cmd.Parameters.AddWithValue("@trackNumber", obj.TrackID);
-            cmd.Parameters.AddWithValue("@fromDist", obj.StartPoint);
-            cmd.Parameters.AddWithValue("@toDist", obj.EndPoint);
-            cmd.Parameters.AddWithValue("@worstCaseGrade", obj.GradeWorst);
-            cmd.Parameters.AddWithValue("@maxEntrySpeed", obj.SpeedMax);
+            cmd.Parameters.AddWithValue("@brakeLocation", obj.StartPoint);
+            cmd.Parameters.AddWithValue("@targetLocation", obj.EndPoint);
+            cmd.Parameters.AddWithValue("@worst_case_grade_during_stop", obj.GradeWorst);
+            cmd.Parameters.AddWithValue("@max_entry_speed", obj.SpeedMax);
             cmd.Parameters.AddWithValue("@overSpeed", obj.OverSpeed);
             cmd.Parameters.AddWithValue("@vehicleAccel", obj.VehicleAccel);
             cmd.Parameters.AddWithValue("@reactionTime", obj.ReactionTime);
             cmd.Parameters.AddWithValue("@brakeRate", obj.BrakeRate);
             cmd.Parameters.AddWithValue("@runwayAccelSec", obj.RunwayAccelSec);
             cmd.Parameters.AddWithValue("@propulsion", obj.PropulsionRemSec);
-            cmd.Parameters.AddWithValue("@buildUpBrake", obj.BrakeBuildUpSec);
-            cmd.Parameters.AddWithValue("@overhangDist", obj.OverhangDist);
+            cmd.Parameters.AddWithValue("@build_up_brake", obj.BrakeBuildUpSec);
+            cmd.Parameters.AddWithValue("@overhang", obj.OverhangDist);
             cmd.ExecuteNonQuery();
 
         }
-
+       //CHris Fix me:::::
         public static void removeFromDatabase(DatabaseConnection conn, Query q, TrackSegment obj)
         {
             StringBuilder sb = new StringBuilder();
