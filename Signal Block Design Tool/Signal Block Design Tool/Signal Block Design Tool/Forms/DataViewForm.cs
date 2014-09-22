@@ -94,7 +94,7 @@ namespace Signal_Block_Design_Tool.Forms
             
             foreach(TrackSegment t in TrackLayout.Track)
             {
-                this.dataGridView1.Rows.Add(t.TrackID.ToString(), t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.Headway.ToString());
+                this.dataGridView1.Rows.Add(t.TrackID.ToString(), t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString());
             }
 
         }

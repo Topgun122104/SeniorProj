@@ -12,33 +12,6 @@ namespace Signal_Block_Design_Tool.Files
 {
     public class TrackSegment : Line
     {
-
-        /// <summary>
-        /// Default constructor for a new track Segment
-        /// </summary>
-        public TrackSegment()
-            : base() 
-        {
-            safeBreakingDistance = new List<double>();
-            runtimePerformance = new List<double>();
-            trackID = new List<string>();
-            direction = new List<string>();
-            move = new List<string>();
-            trackCircuit = new List<string>();
-            brakeLocation = new List<int>();
-            targetLocation = new List<int>();
-            brakeBuildUpSec = new List<int>();
-            overhangDist = new List<int>();
-            gradeWorst = new List<double>();
-            speedMax = new List<double>();
-            overSpeed = new List<double>();
-            vehicleAccel = new List<double>();
-            reactionTime = new List<double>();
-            brakeRate = new List<double>();
-            runawayAccelSec = new List<double>();
-            propulsionRemSec = new List<double>();
-            safetyFact = new List<double>();
-        }
         /// <summary>
         /// Constructor for a new line
         /// Sets the thickness to 5f, and deoth to 1.0f
@@ -78,7 +51,7 @@ namespace Signal_Block_Design_Tool.Files
         /// <param name="brakeBuildUpSec">int</param>
         /// <param name="overhangDist">int</param>
         /// <param name="safetyFact">double</param>
-        /*public TrackSegment(string trackID, string direction, string move, string trackCircuit, Vector2 startPoint, Vector2 endPoint,
+        public TrackSegment(string trackID, string direction, string move, string trackCircuit, Vector2 startPoint, Vector2 endPoint,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
@@ -193,36 +166,21 @@ namespace Signal_Block_Design_Tool.Files
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
 
-         */
-        public double SafeBreakingDistanceSum
-        {
-            get
-            {
-                double sum = 0;
-                foreach (double d in SafeBreakingDistance)
-                {
-                    sum += d;
-                }
-                return sum;
-            }
-        }
-
-
-        private List<double> safeBreakingDistance;
+        private double safeBreakingDistance;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> SafeBreakingDistance
+        public double SafeBreakingDistance
         {
             get { return safeBreakingDistance; }
             set { safeBreakingDistance = value; }
         }
 
-        private List<double> runtimePerformance;
+        private double runtimePerformance;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> RuntimePerformance
+        public double RuntimePerformance
         {
             get { return runtimePerformance; }
             set { runtimePerformance = value; }
@@ -233,173 +191,173 @@ namespace Signal_Block_Design_Tool.Files
         /////////////////////////////////////////////////////////////////////////////
 
 
-        private List<string> trackID;
+        private string trackID;
         /// <summary>
         /// 
         /// </summary>
-        public List<string> TrackID
+        public string TrackID
         {
             get { return trackID; }
             set { trackID = value; }
         }
 
-        private List<string> direction;
+        private string direction;
         /// <summary>
         /// 
         /// </summary>
-        public List<string> Direction
+        public string Direction
         {
             get { return direction; }
             set { direction = value; }
         }
 
 
-        private List<string> move;
+        private string move;
         /// <summary>
         /// 
         /// </summary>
-        public List<string> Move
+        public string Move
         {
             get { return move; }
             set { move = value; }
         }
 
 
-        private List<string> trackCircuit;
+        private string trackCircuit;
         /// <summary>
         /// 
         /// </summary>
-        public List<string> TrackCircuit
+        public string TrackCircuit
         {
             get { return trackCircuit; }
             set { trackCircuit = value; }
         }
 
-        public List<int> brakeLocation;
+        public int brakeLocation;
         /// <summary>
         /// 
         /// </summary>
-        public List<int> BrakeLocation
+        public int BrakeLocation
         {
             get { return brakeLocation; }
             set { brakeLocation = value; }
         }
 
-        private List<int> targetLocation;
+        private int targetLocation;
         /// <summary>
         /// 
         /// </summary>
-        public List<int> TargetLocation
+        public int TargetLocation
         {
             get { return targetLocation; }
             set { targetLocation = value; }
         }
 
-        private List<int> brakeBuildUpSec;
+        private int brakeBuildUpSec;
         /// <summary>
         /// 
         /// </summary>
-        public List<int> BrakeBuildUpSec
+        public int BrakeBuildUpSec
         {
             get { return brakeBuildUpSec; }
             set { brakeBuildUpSec = value; }
         }
 
-        private List<int> overhangDist;
+        private int overhangDist;
         /// <summary>
         /// 
         /// </summary>
-        public List<int> OverhangDist
+        public int OverhangDist
         {
             get { return overhangDist; }
             set { overhangDist = value; }
         }
 
-        private List<double> gradeWorst;
+        private double gradeWorst;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> GradeWorst
+        public double GradeWorst
         {
             get { return gradeWorst; }
             set { gradeWorst = value; }
         }
 
-        private List<double> speedMax;
+        private double speedMax;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> SpeedMax
+        public double SpeedMax
         {
             get { return speedMax; }
             set { speedMax = value; }
         }
 
-        private List<double> overSpeed;
+        private double overSpeed;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> OverSpeed
+        public double OverSpeed
         {
             get { return overSpeed; }
             set { overSpeed = value; }
         }
 
-        private List<double> vehicleAccel;
+        private double vehicleAccel;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> VehicleAccel
+        public double VehicleAccel
         {
             get { return vehicleAccel; }
             set { vehicleAccel = value; }
         }
 
-        private List<double> reactionTime;
+        private double reactionTime;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> ReactionTime
+        public double ReactionTime
         {
             get { return reactionTime; }
             set { reactionTime = value; }
         }
 
-        private List<double> brakeRate;
+        private double brakeRate;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> BrakeRate
+        public double BrakeRate
         {
             get { return brakeRate; }
             set { brakeRate = value; }
         }
 
-        private List<double> runawayAccelSec;
+        private double runawayAccelSec;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> RunwayAccelSec
+        public double RunwayAccelSec
         {
             get { return runawayAccelSec; }
             set { runawayAccelSec = value; }
         }
 
-        private List<double> propulsionRemSec;
+        private double propulsionRemSec;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> PropulsionRemSec
+        public double PropulsionRemSec
         {
             get { return propulsionRemSec; }
             set { propulsionRemSec = value; }
         }
 
-        private List<double> safetyFact;
+        private double safetyFact;
         /// <summary>
         /// 
         /// </summary>
-        public List<double> SafetyFact
+        public double SafetyFact
         {
             get { return safetyFact; }
             set { safetyFact = value; }
