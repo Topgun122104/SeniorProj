@@ -20,7 +20,7 @@ namespace Signal_Block_Design_Tool.Files
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             // Types of files to read
-            openFileDialog.Filter = "xlsx file (*.xlsx)|*.xlsx";
+            openFileDialog.Filter = "csv file (*.csv)|*.csv";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true;
 

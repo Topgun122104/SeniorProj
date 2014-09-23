@@ -34,7 +34,7 @@ namespace Signal_Block_Design_Tool.Files
         /// <param name="brakeBuildUp"></param>
         /// <param name="overhangDist"></param>
         public ExcelRow(int track, String direction, String moveNormRevDiv, String circuit, int brakeLocation, int targetLocation, double worstCaseGrade,
-            int entrySpeed, double overSpeed, double acceleration, double reactionTime, double brakeRate, double runawayAccel, double propulsionRemoval,
+            double entrySpeed, double overSpeed, double acceleration, double reactionTime, double brakeRate, double runawayAccel, double propulsionRemoval,
             int brakeBuildUp, int overhangDist)
         {
             TrackID = track;
@@ -114,7 +114,7 @@ namespace Signal_Block_Design_Tool.Files
         /// <summary>
         /// 
         /// </summary>
-        public int EntrySpeed { get; set; }
+        public double EntrySpeed { get; set; }
         /// <summary>
         /// 
         /// </summary>
