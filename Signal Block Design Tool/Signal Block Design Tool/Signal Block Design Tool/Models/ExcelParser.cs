@@ -103,7 +103,7 @@ namespace Signal_Block_Design_Tool.Files
                                                     Convert.ToDouble(row[19]),                          // Runaway Accel
                                                     Convert.ToDouble(row[21]),                          // Propulsion Removal
                                                     Convert.ToInt32(row[23]),                           // Brake Build Up
-                                                    Convert.ToInt32(row[25]), 23, 43);                          // Overhand Distance
+                                                    Convert.ToInt32(row[25]));                          // Overhand Distance
 
 
                         TrackLayout.Track.Add(curRow);
