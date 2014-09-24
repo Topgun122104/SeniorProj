@@ -161,6 +161,8 @@ namespace Signal_Block_Design_Tool.Files
                 BrakeBuildUpSec, OverhangDist);
         }
 
+
+
         private double safeBreakingDistance;
         /// <summary>
         /// 
@@ -339,6 +341,22 @@ namespace Signal_Block_Design_Tool.Files
         }
 
         private double propulsionRemSec;
+        private int p1;
+        private string p2;
+        private string p3;
+        private string p4;
+        private int p5;
+        private int p6;
+        private double p7;
+        private double p8;
+        private double p9;
+        private double p10;
+        private double p11;
+        private double p12;
+        private double p13;
+        private double p14;
+        private int p15;
+        private int p16;
         /// <summary>
         /// 
         /// </summary>
