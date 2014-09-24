@@ -8,6 +8,20 @@ namespace Signal_Block_Design_Tool.Database
     {
 
         /// <summary>
+        ///  Clears teh database
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="cmd"></param>
+        public static void ClearDatabase(DatabaseConnection conn, MySqlCommand cmd)
+        {
+
+            cmd.CommandText = @"DELETE FROM track_segments";
+            cmd.ExecuteNonQuery();
+
+
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="conn"></param>
@@ -15,13 +29,6 @@ namespace Signal_Block_Design_Tool.Database
         /// <param name="obj"></param>
         public static void InsertIntoDatabase(DatabaseConnection conn, MySqlCommand cmd, TrackSegment obj)
         {
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> 1ff62d9bd87a5dfe71f1d35615bcd4dc74ac5efa
->>>>>>> Stashed changes
             cmd.CommandText = @"Insert into track_segments
                         (trackNumber, direction, move, trackCircuit, brakeLocation, 
                         targetLocation, worst_case_grade_during_stop, max_entry_speed, overSpeed, 
@@ -32,8 +39,8 @@ namespace Signal_Block_Design_Tool.Database
                         @vehicleAccel, @reactionTime, @brakeRate, @runwayAccel, 
                         @propulsion, @build_up_brake, @overhang)";
 
-            cmd.Parameters.AddWithValue("@trackNumber" , obj.TrackID);
-            cmd.Parameters.AddWithValue("@direction" ,obj.Direction);
+            cmd.Parameters.AddWithValue("@trackNumber", obj.TrackID);
+            cmd.Parameters.AddWithValue("@direction", obj.Direction);
             cmd.Parameters.AddWithValue("@move", obj.Move);
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
             cmd.Parameters.AddWithValue("@brakeLocation", obj.StartPoint);
@@ -51,7 +58,7 @@ namespace Signal_Block_Design_Tool.Database
             cmd.ExecuteNonQuery();
 
         }
-       //CHris Fix me:::::
+        //CHris Fix me:::::
         public static void removeFromDatabase(DatabaseConnection conn, Query q, TrackSegment obj)
         {
             StringBuilder sb = new StringBuilder();
@@ -76,7 +83,7 @@ namespace Signal_Block_Design_Tool.Database
             cmd.Parameters.AddWithValue("@propulsion", obj.PropulsionRemSec);
             cmd.Parameters.AddWithValue("@buildUpBrake", obj.BrakeBuildUpSec);
             cmd.Parameters.AddWithValue("@overhangDist", obj.OverhangDist);
-     
+
             q.runQuery(conn, cmd);
 
         }
