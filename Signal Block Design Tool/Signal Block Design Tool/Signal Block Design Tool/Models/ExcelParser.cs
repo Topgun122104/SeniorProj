@@ -87,7 +87,7 @@ namespace Signal_Block_Design_Tool.Files
                          * Brake Build up   |         23
                          * Overhang Dist    |         25
                          */
-                        ExcelRow curRow = new ExcelRow(
+                        TrackSegment curRow = new TrackSegment(
                                                     row[1] != "" ? Convert.ToInt32(row[1]) : (sheet.getRow(sheet.getCurrentRow() - 1)).TrackID,  // Track
                                                     row[2] != "" ? row[2] : (sheet.getRow(sheet.getCurrentRow() - 1)).Direction,                 // Direction
                                                     row[3] != "" ? row[3] : (sheet.getRow(sheet.getCurrentRow() - 1)).MoveNormRevDiv,            // Move
@@ -103,8 +103,10 @@ namespace Signal_Block_Design_Tool.Files
                                                     Convert.ToDouble(row[19]),                          // Runaway Accel
                                                     Convert.ToDouble(row[21]),                          // Propulsion Removal
                                                     Convert.ToInt32(row[23]),                           // Brake Build Up
-                                                    Convert.ToInt32(row[25]));                          // Overhand Distance
-                        sheet.addRow(curRow);
+                                                    Convert.ToInt32(row[25]), 23, 43);                          // Overhand Distance
+
+
+                        TrackLayout.Track.Add(curRow);
                         progressBox.progressBar1.PerformStep();
                     }
                 }

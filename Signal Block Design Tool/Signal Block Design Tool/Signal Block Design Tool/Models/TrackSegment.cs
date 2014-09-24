@@ -81,11 +81,11 @@ namespace Signal_Block_Design_Tool.Files
                 BrakeBuildUpSec, OverhangDist, SafetyFact);
         }
 
-        public TrackSegment(string trackID, string direction, string move, string trackCircuit, int startPoint, int endPoint,
+        public TrackSegment(string trackID, string direction, string move, string trackCircuit,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
-                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, int startPoint, int endPoint)
             : base(startPoint, endPoint)
         {
             TrackID = trackID;
@@ -185,7 +185,7 @@ namespace Signal_Block_Design_Tool.Files
             get { return runtimePerformance; }
             set { runtimePerformance = value; }
         }
-        
+
 
 
         /////////////////////////////////////////////////////////////////////////////
