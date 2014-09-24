@@ -84,8 +84,8 @@ namespace Signal_Block_Design_Tool.Files
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
-                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, int startPoint, int endPoint)
-            : base(startPoint, endPoint)
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist)
+            : base(0, 0)
         {
             TrackID = trackID;
             Direction = direction;
@@ -162,6 +162,8 @@ namespace Signal_Block_Design_Tool.Files
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
                 BrakeBuildUpSec, OverhangDist);
         }
+
+
 
         private double safeBreakingDistance;
         /// <summary>
@@ -341,6 +343,22 @@ namespace Signal_Block_Design_Tool.Files
         }
 
         private double propulsionRemSec;
+        private int p1;
+        private string p2;
+        private string p3;
+        private string p4;
+        private int p5;
+        private int p6;
+        private double p7;
+        private double p8;
+        private double p9;
+        private double p10;
+        private double p11;
+        private double p12;
+        private double p13;
+        private double p14;
+        private int p15;
+        private int p16;
         /// <summary>
         /// 
         /// </summary>
