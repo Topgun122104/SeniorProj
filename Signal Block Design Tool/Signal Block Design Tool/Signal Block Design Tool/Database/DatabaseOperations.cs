@@ -15,7 +15,7 @@ namespace Signal_Block_Design_Tool.Database
         /// <param name="obj"></param>
         public static void InsertIntoDatabase(DatabaseConnection conn, MySqlCommand cmd, TrackSegment obj)
         {
-            cmd.CommandText = @"Insert into trackSegment
+            cmd.CommandText = @"Insert into track_segments
                         (trackNumber, direction, move, trackCircuit, brakeLocation, 
                         targetLocation, worst_case_grade_during_stop, max_entry_speed, overSpeed, 
                         vehicleAccel, reactionTime, brakeRate, runwayAccel, 
