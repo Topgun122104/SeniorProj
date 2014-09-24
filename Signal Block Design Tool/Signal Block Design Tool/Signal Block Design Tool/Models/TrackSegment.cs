@@ -55,7 +55,7 @@ namespace Signal_Block_Design_Tool.Files
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
-                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist)
             : base(startPoint, endPoint)
         {
             TrackID = trackID;
@@ -74,11 +74,10 @@ namespace Signal_Block_Design_Tool.Files
             PropulsionRemSec = propulsionRemSec;
             BrakeBuildUpSec = brakeBuildUpSec;
             OverhangDist = overhangDist;
-            SafetyFact = safetyFact;
 
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
-                BrakeBuildUpSec, OverhangDist, SafetyFact);
+                BrakeBuildUpSec, OverhangDist);
         }
 
         public TrackSegment(string trackID, string direction, string move, string trackCircuit, int startPoint, int endPoint,
@@ -104,12 +103,11 @@ namespace Signal_Block_Design_Tool.Files
             PropulsionRemSec = propulsionRemSec;
             BrakeBuildUpSec = brakeBuildUpSec;
             OverhangDist = overhangDist;
-            SafetyFact = safetyFact;
 
 
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
-                BrakeBuildUpSec, OverhangDist, SafetyFact);
+                BrakeBuildUpSec, OverhangDist);
         }
 
         /// <summary>
@@ -159,11 +157,10 @@ namespace Signal_Block_Design_Tool.Files
             PropulsionRemSec = propulsionRemSec;
             BrakeBuildUpSec = brakeBuildUpSec;
             OverhangDist = overhangDist;
-            SafetyFact = safetyFact;
 
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
                 SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
-                BrakeBuildUpSec, OverhangDist, SafetyFact);
+                BrakeBuildUpSec, OverhangDist);
         }
 
         private double safeBreakingDistance;
@@ -352,16 +349,5 @@ namespace Signal_Block_Design_Tool.Files
             get { return propulsionRemSec; }
             set { propulsionRemSec = value; }
         }
-
-        private double safetyFact;
-        /// <summary>
-        /// 
-        /// </summary>
-        public double SafetyFact
-        {
-            get { return safetyFact; }
-            set { safetyFact = value; }
-        }
-
     }
 }
