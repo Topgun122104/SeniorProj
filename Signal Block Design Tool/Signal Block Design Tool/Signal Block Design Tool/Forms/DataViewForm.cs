@@ -59,7 +59,6 @@ namespace Signal_Block_Design_Tool.Forms
                 children[14] = new TreeNode("Propulsion Rem: " + t.PropulsionRemSec.ToString());
                 children[15] = new TreeNode("Brake Build Up: " + t.BrakeBuildUpSec.ToString());
                 children[16] = new TreeNode("Overhang Distance: " + t.OverhangDist.ToString());
-                children[17] = new TreeNode("Safety Factor: " + t.SafetyFact.ToString());
 
                 TreeNode rootNode = new TreeNode("Circuit: " + t.TrackCircuit.ToString(), children);
                 this.treeView1.Nodes.Add(rootNode);
