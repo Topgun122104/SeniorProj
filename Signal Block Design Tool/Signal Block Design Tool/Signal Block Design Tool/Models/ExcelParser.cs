@@ -54,7 +54,7 @@ namespace Signal_Block_Design_Tool.Files
                 {
                     string line = null;
                     string[] row;
-                    string id;
+                    string id = null;
                     // Get to the data
                     while (line == null || line.Split(',')[1] != "Track")
                     {
