@@ -83,8 +83,8 @@ namespace Signal_Block_Design_Tool.Files
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
-                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, int startPoint, int endPoint)
-            : base(startPoint, endPoint)
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist)
+            : base(0, 0)
         {
             TrackID = trackID;
             Direction = direction;
