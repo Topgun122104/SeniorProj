@@ -54,6 +54,7 @@ namespace Signal_Block_Design_Tool.Files
                 {
                     string line = null;
                     string[] row;
+                    string id;
                     // Get to the data
                     while (line == null || line.Split(',')[1] != "Track")
                     {
@@ -68,6 +69,12 @@ namespace Signal_Block_Design_Tool.Files
                         {
                             break;
                         }
+
+                         if(row[1] != "")
+                         {
+                              id = row[1];
+                         }
+
                         /* 
                          * Column Name      |   Column Number
                          * Track            |         1
@@ -87,8 +94,7 @@ namespace Signal_Block_Design_Tool.Files
                          * Brake Build up   |         23
                          * Overhang Dist    |         25
                          */
-                        TrackSegment curRow = new TrackSegment(
-                                                    row[1] != "" ? Convert.ToInt32(row[1]) : (sheet.getRow(sheet.getCurrentRow() - 1)).TrackID,  // Track
+                        TrackSegment curRow = new TrackSegment(id,
                                                     row[2] != "" ? row[2] : (sheet.getRow(sheet.getCurrentRow() - 1)).Direction,                 // Direction
                                                     row[3] != "" ? row[3] : (sheet.getRow(sheet.getCurrentRow() - 1)).MoveNormRevDiv,            // Move
                                                     row[4],                                             // Circuit                                             

@@ -50,7 +50,6 @@ namespace Signal_Block_Design_Tool.Files
         /// <param name="propulsionRemSec">double</param>
         /// <param name="brakeBuildUpSec">int</param>
         /// <param name="overhangDist">int</param>
-        /// <param name="safetyFact">double</param>
         public TrackSegment(string trackID, string direction, string move, string trackCircuit, Vector2 startPoint, Vector2 endPoint,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
@@ -133,12 +132,11 @@ namespace Signal_Block_Design_Tool.Files
         /// <param name="propulsionRemSec"></param>
         /// <param name="brakeBuildUpSec"></param>
         /// <param name="overhangDist"></param>
-        /// <param name="safetyFact"></param>
         public TrackSegment(string trackID, string direction, string move, string trackCircuit, int startX, int startY, int endX, int endY,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
-                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist, double safetyFact)
+                            double propulsionRemSec, int brakeBuildUpSec, int overhangDist)
             : base(new Vector2((float)startX, (float)startY), new Vector2((float)endX, (float)endY))
         {
             TrackID = trackID;
