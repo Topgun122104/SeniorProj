@@ -42,9 +42,6 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 TreeNode[] children = new TreeNode[18];
 
-                children[0] = new TreeNode("TrackID: " + t.TrackID.ToString());
-                children[1] = new TreeNode("Direction: " + t.Direction.ToString());
-                children[2] = new TreeNode("Move: " + t.Move.ToString());
                 children[3] = new TreeNode("Start Point: " + t.StartPoint.ToString());
                 children[4] = new TreeNode("End Point: " + t.EndPoint.ToString());
                 children[5] = new TreeNode("Brake Location: " + t.BrakeLocation.ToString());
@@ -93,7 +90,7 @@ namespace Signal_Block_Design_Tool.Forms
             
             foreach(TrackSegment t in TrackLayout.Track)
             {
-                this.dataGridView1.Rows.Add(t.TrackID.ToString(), t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString());
+                this.dataGridView1.Rows.Add(t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString());
             }
 
         }

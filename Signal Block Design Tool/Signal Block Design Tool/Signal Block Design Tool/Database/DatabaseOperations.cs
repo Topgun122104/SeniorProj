@@ -39,9 +39,6 @@ namespace Signal_Block_Design_Tool.Database
                         @vehicleAccel, @reactionTime, @brakeRate, @runwayAccel, 
                         @propulsion, @build_up_brake, @overhang)";
 
-            cmd.Parameters.AddWithValue("@trackNumber", obj.TrackID);
-            cmd.Parameters.AddWithValue("@direction", obj.Direction);
-            cmd.Parameters.AddWithValue("@move", obj.Move);
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
             cmd.Parameters.AddWithValue("@brakeLocation", obj.StartPoint);
             cmd.Parameters.AddWithValue("@targetLocation", obj.EndPoint);
@@ -70,7 +67,6 @@ namespace Signal_Block_Design_Tool.Database
             MySqlCommand cmd = new MySqlCommand(sb.ToString());
             cmd.CommandText = "Delete from trackSegment where trackCircuit = @trackCircuit, trackNumber = @trackCircuit, fromDist = @fromDist, toDist = @toDist, worstCaseGrade = @worstCaseGrade";
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
-            cmd.Parameters.AddWithValue("@trackNumber", obj.TrackID);
             cmd.Parameters.AddWithValue("@fromDist", obj.StartPoint);
             cmd.Parameters.AddWithValue("@toDist", obj.EndPoint);
             cmd.Parameters.AddWithValue("@worstCaseGrade", obj.GradeWorst);
