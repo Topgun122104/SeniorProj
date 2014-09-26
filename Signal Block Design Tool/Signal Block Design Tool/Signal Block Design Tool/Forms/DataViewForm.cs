@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Signal_Block_Design_Tool.Files;
-
 namespace Signal_Block_Design_Tool.Forms
 {
     public partial class DataViewForm : Form
@@ -20,7 +19,6 @@ namespace Signal_Block_Design_Tool.Forms
         {
             InitializeComponent();
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -28,20 +26,17 @@ namespace Signal_Block_Design_Tool.Forms
         {
             this.treeView1.DataBindings.Clear();
             this.treeView1.Nodes.Clear();
-
         }
-
         /// <summary>
         /// 
         /// </summary>
         public void UpdateTreeView()
         {
-            
+
             ClearTreeView();
             foreach (TrackSegment t in TrackLayout.Track)
             {
                 TreeNode[] children = new TreeNode[14];
-
                 children[0] = new TreeNode("Start Point: " + t.StartPoint.ToString());
                 children[1] = new TreeNode("End Point: " + t.EndPoint.ToString());
                 children[2] = new TreeNode("Brake Location: " + t.BrakeLocation.ToString());
@@ -56,14 +51,9 @@ namespace Signal_Block_Design_Tool.Forms
                 children[11] = new TreeNode("Propulsion Rem: " + t.PropulsionRemSec.ToString());
                 children[12] = new TreeNode("Brake Build Up: " + t.BrakeBuildUpSec.ToString());
                 children[13] = new TreeNode("Overhang Distance: " + t.OverhangDist.ToString());
-
                 TreeNode rootNode = new TreeNode("Circuit: " + t.TrackCircuit.ToString(), children);
                 this.treeView1.Nodes.Add(rootNode);
             }
-             
-
-
-
 
         }
         /// <summary>
@@ -71,10 +61,8 @@ namespace Signal_Block_Design_Tool.Forms
         /// </summary>
         public void ClearDataView()
         {
-
             this.dataGridView1.DataBindings.Clear();
             this.dataGridView1.Rows.Clear();
-
         }
         /// <summary>
         /// 
@@ -96,42 +84,36 @@ namespace Signal_Block_Design_Tool.Forms
             dataGridView2.Columns[10].Name = "Brake Build Up: ";
             dataGridView2.Columns[11].Name = "Overhang Distance: ";
             dataGridView2.Columns[12].Name = "Is Safe: ";
-
             dataGridView1.ColumnCount = 3;
             dataGridView1.Columns[0].Name = "Track Circuit";
             dataGridView1.Columns[1].Name = "Calculated Safe Breaking Distance";
             dataGridView1.Columns[2].Name = "Available Distance";
-
             int rowNum = 0;
             int rowIndex = 1;
-            foreach(TrackSegment t in TrackLayout.Track)
+            foreach (TrackSegment t in TrackLayout.Track)
             {
-                 this.dataGridView2.Rows.Add(t.BrakeLocation.ToString(), t.TargetLocation.ToString(),
-                 t.GradeWorst.ToString(), t.SpeedMax.ToString(), t.OverSpeed.ToString(), t.VehicleAccel.ToString(), t.ReactionTime.ToString(),
-                 t.BrakeRate.ToString(), t.RunwayAccelSec.ToString(), t.PropulsionRemSec.ToString(), t.BrakeBuildUpSec.ToString(), t.OverhangDist.ToString(), t.IsSafe.ToString());
-                 
-                 this.dataGridView1.Rows.Add(t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.SafeBreakingDistanceRequired.ToString());
-                 rowNum++;
-            }
+                this.dataGridView2.Rows.Add(t.BrakeLocation.ToString(), t.TargetLocation.ToString(),
+                t.GradeWorst.ToString(), t.SpeedMax.ToString(), t.OverSpeed.ToString(), t.VehicleAccel.ToString(), t.ReactionTime.ToString(),
+                t.BrakeRate.ToString(), t.RunwayAccelSec.ToString(), t.PropulsionRemSec.ToString(), t.BrakeBuildUpSec.ToString(), t.OverhangDist.ToString(), t.IsSafe.ToString());
 
+                this.dataGridView1.Rows.Add(t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.SafeBreakingDistanceRequired.ToString());
+                rowNum++;
+            }
             String badRows = null;
 
-            
             for (int i = 0; i < rowNum; i++)
             {            //Here 2 cell is target value and 1 cell is Volume
-                 if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")// Or your condition 
-                 {
-                      badRows += rowIndex + ", ";
-                 }
-                 rowIndex++;
+                if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")// Or your condition 
+                {
+                    badRows += rowIndex + ", ";
+                }
+                rowIndex++;
             }
-
             if (badRows != null)
             {
-                 badRows = badRows.Substring(0, badRows.Length - 2);
-                 MessageBox.Show("The following rows have unsafe conditions:\n" + badRows, "Critical Error!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
-
+                badRows = badRows.Substring(0, badRows.Length - 2);
+                MessageBox.Show("The following rows have unsafe conditions:\n" + badRows, "Critical Error!",
+                   MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
     }

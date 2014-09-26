@@ -193,11 +193,11 @@ namespace Signal_Block_Design_Tool.Forms
         private void DrawText(TrackSegment segment, int i)
         {
 
-            printer.Begin();
-            GL.Translate(segment.BrakeLocation, i * 10 + 4, 0);
-            printer.Print(segment.TrackCircuit.ToString(), displayFont, Color.Blue);
+            //printer.Begin();
+            //GL.Translate(segment.BrakeLocation, i * 10 + 4, 0);
+            //printer.Print(segment.TrackCircuit.ToString(), displayFont, Color.Blue);
 
-            printer.End();
+            //printer.End();
         }
 
         private void DrawTriangle()
