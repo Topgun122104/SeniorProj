@@ -159,7 +159,7 @@ namespace Signal_Block_Design_Tool.Files
                 ProgressBoxForm progress = new ProgressBoxForm();
                 progress.Show();
 
-                MySqlCommand cmd = new MySqlCommand();
+                
                 DatabaseConnection conn = new DatabaseConnection(
                     "andrew.cs.fit.edu",
                     3306,
@@ -170,7 +170,7 @@ namespace Signal_Block_Design_Tool.Files
 
                 foreach (TrackSegment t in TrackLayout.Track)
                 {
-                    DatabaseOperations.InsertIntoDatabase(conn, cmd, t);
+                    DatabaseOperations.InsertIntoDatabase(conn, t);
                     progress.progressBar1.PerformStep();
                 }
                 progress.Close();

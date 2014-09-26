@@ -27,18 +27,11 @@ namespace Signal_Block_Design_Tool.Database
         /// <param name="conn"></param>
         /// <param name="cmd"></param>
         /// <param name="obj"></param>
-        public static void InsertIntoDatabase(DatabaseConnection conn, MySqlCommand cmd, TrackSegment obj)
+        public static void InsertIntoDatabase(DatabaseConnection conn,TrackSegment obj)
         {
-            cmd.CommandText = @"Insert into track_segments
-                        (trackNumber, direction, move, trackCircuit, brakeLocation, 
-                        targetLocation, worst_case_grade_during_stop, max_entry_speed, overSpeed, 
-                        vehicleAccel, reactionTime, brakeRate, runwayAccel, 
-                        propulsion, build_up_brake, overhang)
-                        values(@trackNumber,@direction, @move, @trackCircuit, @brakeLocation, 
-                        @targetLocation, @worst_case_grade_during_stop, @max_entry_speed, @overSpeed, 
-                        @vehicleAccel, @reactionTime, @brakeRate, @runwayAccel, 
-                        @propulsion, @build_up_brake, @overhang)";
-
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText =
+                @"Insert into track_segments (trackCircuit, brakeLocation, targetLocation, worst_case_grade_during_stop, max_entry_speed, overSpeed, vehicleAccel, reactionTime, brakeRate, runwayAccel, propulsion, build_up_brake, overhang) VALUES (@trackCircuit, @brakeLocation, @targetLocation, @worst_case_grade_during_stop, @max_entry_speed, @overSpeed, @vehicleAccel, @reactionTime, @brakeRate, @runwayAccel, @propulsion, @build_up_brake, @overhang)";
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
             cmd.Parameters.AddWithValue("@brakeLocation", obj.StartPoint);
             cmd.Parameters.AddWithValue("@targetLocation", obj.EndPoint);
@@ -48,10 +41,11 @@ namespace Signal_Block_Design_Tool.Database
             cmd.Parameters.AddWithValue("@vehicleAccel", obj.VehicleAccel);
             cmd.Parameters.AddWithValue("@reactionTime", obj.ReactionTime);
             cmd.Parameters.AddWithValue("@brakeRate", obj.BrakeRate);
-            cmd.Parameters.AddWithValue("@runwayAccelSec", obj.RunwayAccelSec);
+            cmd.Parameters.AddWithValue("@runwayAccel", obj.RunwayAccelSec);
             cmd.Parameters.AddWithValue("@propulsion", obj.PropulsionRemSec);
             cmd.Parameters.AddWithValue("@build_up_brake", obj.BrakeBuildUpSec);
             cmd.Parameters.AddWithValue("@overhang", obj.OverhangDist);
+            cmd.Connection = conn.getConnection();
             cmd.ExecuteNonQuery();
 
         }
