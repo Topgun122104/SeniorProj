@@ -71,9 +71,7 @@ namespace Signal_Block_Design_Tool.Files
             BrakeBuildUpSec = brakeBuildUpSec;
             OverhangDist = overhangDist;
 
-            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
-                SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
-                BrakeBuildUpSec, OverhangDist);
+            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(this);
         }
 
         public TrackSegment(string trackCircuit,
@@ -98,9 +96,7 @@ namespace Signal_Block_Design_Tool.Files
             OverhangDist = overhangDist;
 
 
-            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
-                SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
-                BrakeBuildUpSec, OverhangDist);
+            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(this);
         }
 
         /// <summary>
@@ -147,9 +143,7 @@ namespace Signal_Block_Design_Tool.Files
             BrakeBuildUpSec = brakeBuildUpSec;
             OverhangDist = overhangDist;
 
-            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(BrakeLocation, TargetLocation, GradeWorst,
-                SpeedMax, OverSpeed, VehicleAccel, ReactionTime, BrakeRate, RunwayAccelSec, PropulsionRemSec,
-                BrakeBuildUpSec, OverhangDist);
+            SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(this);
         }
 
 
@@ -162,6 +156,13 @@ namespace Signal_Block_Design_Tool.Files
         {
             get { return safeBreakingDistance; }
             set { safeBreakingDistance = value; }
+        }
+
+        private bool isSafe;
+         public bool IsSafe
+        {
+             get { return isSafe; }
+             set { isSafe = value; }
         }
 
         private double runtimePerformance;
@@ -300,22 +301,7 @@ namespace Signal_Block_Design_Tool.Files
         }
 
         private double propulsionRemSec;
-        private int p1;
-        private string p2;
-        private string p3;
-        private string p4;
-        private int p5;
-        private int p6;
-        private double p7;
-        private double p8;
-        private double p9;
-        private double p10;
-        private double p11;
-        private double p12;
-        private double p13;
-        private double p14;
-        private int p15;
-        private int p16;
+
         /// <summary>
         /// 
         /// </summary>

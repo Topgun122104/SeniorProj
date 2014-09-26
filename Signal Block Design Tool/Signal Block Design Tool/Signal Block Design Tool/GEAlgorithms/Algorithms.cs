@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Signal_Block_Design_Tool.Files;
 
 namespace Signal_Block_Design_Tool.GEAlgorithms
 {
@@ -31,37 +32,35 @@ namespace Signal_Block_Design_Tool.GEAlgorithms
         /// <param name="overhangDist"></param>
         /// <param name="safetyFact"></param>
         /// <returns></returns>
-        public static double SafeBrakingDistanceCalculations(int brakeLocation, int targetLocation, double gradeWorst,
-                                              double speedMax, double overspeed, double vehicleAccel,
-                                              double reactionTime, double brakeRate, double runwayAccelSec,
-                                              double propulsionRemSec, int brakeBuildUpSec, int overhangDist)
+        public static double SafeBrakingDistanceCalculations(TrackSegment obj)
         {
-            double availStopDist = Math.Abs(targetLocation - brakeLocation);
+             double availStopDist = Math.Abs(obj.TargetLocation - obj.brakeLocation);
             //Console.WriteLine(availStopDist);
-            double overspeedTotal = overspeed + speedMax;
+             double overspeedTotal = obj.OverSpeed + obj.SpeedMax;
             //Console.WriteLine(overspeedTotal);
-            double velocityFinal = (vehicleAccel * 1.2) + overspeedTotal;
+             double velocityFinal = (obj.VehicleAccel * 1.2) + overspeedTotal;
             //Console.WriteLine(velocityFinal);
-            double reactionDist = reactionTime * overspeedTotal * 1.467;
+             double reactionDist = obj.ReactionTime * overspeedTotal * 1.467;
             //Console.WriteLine(reactionDist);
-            double negGradeAdjBrakeDist = 0.733 * velocityFinal * velocityFinal / (brakeRate + (0.219 * gradeWorst));
+             double negGradeAdjBrakeDist = 0.733 * velocityFinal * velocityFinal / (obj.BrakeRate + (0.219 * obj.GradeWorst));
             //Console.WriteLine(negGradeAdjBrakeDist);
-            double posGradeAdjBrakeDist = 0.733 * velocityFinal * velocityFinal / (brakeRate - (0.219 * gradeWorst));
+             double posGradeAdjBrakeDist = 0.733 * velocityFinal * velocityFinal / (obj.BrakeRate - (0.219 * obj.GradeWorst));
             //Console.WriteLine(posGradeAdjBrakeDist);
-            double runwayAccelFt = 1.467 * (0.5 * vehicleAccel * runwayAccelSec + overspeedTotal) * runwayAccelSec;
+             double runwayAccelFt = 1.467 * (0.5 * obj.VehicleAccel * obj.RunwayAccelSec + overspeedTotal) * obj.RunwayAccelSec;
             //Console.WriteLine(runwayAccelFt);
-            double propulsionRemFt = velocityFinal * 1.467 * propulsionRemSec;
+             double propulsionRemFt = velocityFinal * 1.467 * obj.PropulsionRemSec;
             //Console.WriteLine(propulsionRemFt);
-            double brakeBuildUpFt = velocityFinal * 1.467 * brakeBuildUpSec;
+             double brakeBuildUpFt = velocityFinal * 1.467 * obj.BrakeBuildUpSec;
             //Console.WriteLine(brakeBuildUpFt);
-            double SBD = Math.Round(reactionDist + runwayAccelFt + propulsionRemFt + brakeBuildUpFt + negGradeAdjBrakeDist + overhangDist, 1);
+             double SBD = Math.Round(reactionDist + runwayAccelFt + propulsionRemFt + brakeBuildUpFt + negGradeAdjBrakeDist + obj.OverhangDist, 1);
             bool isSafe = SBD < availStopDist;
             if (!isSafe)
             {
-                 string response = "This is an unsafe condition!\n\n There are " + Math.Abs(SBD - availStopDist) + 
-                      " feet lees then required for a safe breaking condition";
-                 MessageBox.Show(response, "Cirtical Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 return SBD;
+                 obj.IsSafe = false;
+            }
+            else
+            {
+                 obj.IsSafe = true;
             }
             return SBD;
         }
