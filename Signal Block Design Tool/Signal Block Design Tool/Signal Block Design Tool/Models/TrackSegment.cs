@@ -158,6 +158,13 @@ namespace Signal_Block_Design_Tool.Files
             set { safeBreakingDistance = value; }
         }
 
+        private double sbdRequired;
+         public double SafeBreakingDistanceRequired
+        {
+             get { return sbdRequired; }
+              set{ sbdRequired = value; }
+        }
+
         private bool isSafe;
          public bool IsSafe
         {

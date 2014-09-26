@@ -90,7 +90,19 @@ namespace Signal_Block_Design_Tool.Forms
             
             foreach(TrackSegment t in TrackLayout.Track)
             {
-                this.dataGridView1.Rows.Add(t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString());
+                 foreach (DataGridViewRow Myrow in dataGridView2.Rows)
+                 {            //Here 2 cell is target value and 1 cell is Volume
+                      if (Myrow.Cells[1].Value.ToString() == "False")// Or your condition 
+                      {
+                           dataGridView2.RowsDefaultCellStyle.BackColor = Color.Red;
+
+                      }
+                 }
+                 dataGridView1.ColumnCount = 3;
+                 dataGridView1.Columns[0].Name = "Track Circuit";
+                 dataGridView1.Columns[1].Name = "Calculated Safe Breaking Distance";
+                 dataGridView1.Columns[2].Name = "Available Distance";
+                 this.dataGridView1.Rows.Add(t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.SafeBreakingDistanceRequired.ToString());
             }
 
         }

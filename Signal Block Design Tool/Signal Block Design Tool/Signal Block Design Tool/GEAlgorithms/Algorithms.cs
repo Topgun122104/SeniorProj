@@ -62,6 +62,7 @@ namespace Signal_Block_Design_Tool.GEAlgorithms
             {
                  obj.IsSafe = true;
             }
+            obj.SafeBreakingDistanceRequired = availStopDist;
             return SBD;
         }
 
