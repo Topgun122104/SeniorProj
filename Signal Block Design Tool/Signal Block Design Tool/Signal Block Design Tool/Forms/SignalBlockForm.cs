@@ -32,7 +32,7 @@ namespace Signal_Block_Design_Tool.Forms
             dataViewForm = new DataViewForm();
             dataViewForm.MdiParent = this;
             dataViewForm.WindowState = FormWindowState.Maximized;
-             
+
             dataViewForm.Show();
             dataViewForm.Visible = false;
 

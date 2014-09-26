@@ -23,12 +23,12 @@ namespace Signal_Block_Design_Tool.Forms
         private Vector2 previousMousePosition;
         private int currentClicks;
         private int previousClicks;
-
-
+        private Font displayFont;
+        OpenTK.Graphics.TextPrinter printer;
         public TrackViewForm()
         {
             InitializeComponent();
-             
+
 
 
             stopwatch = new Stopwatch();
@@ -39,15 +39,22 @@ namespace Signal_Block_Design_Tool.Forms
         private void glControl1_Load(object sender, EventArgs e)
         {
             loaded = true;
-           
 
-            OpenTK.Graphics.GraphicsContext.CurrentContext.SwapInterval = 100;
+            displayFont = new Font(FontFamily.GenericSansSerif, 10.0f);
+            OpenTK.Graphics.GraphicsContext.CurrentContext.SwapInterval = 1000;
             Application.Idle += Application_Idle;
             OpenTK.Graphics.OpenGL.GL.ClearColor(Color.Black);
-             
+            printer = new OpenTK.Graphics.TextPrinter(OpenTK.Graphics.TextQuality.High);
 
             SetupViewport();
-            camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
+            if (TrackLayout.Track.Count > 0)
+            {
+                camera = new Camera2D(new OpenTK.Vector2(TrackLayout.Track[0].BrakeLocation, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
+            }
+            else
+            {
+                camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
+            }
         }
 
         private void Animate(double milliseconds)
@@ -56,6 +63,7 @@ namespace Signal_Block_Design_Tool.Forms
             rotation += delta;
             glControl1.Invalidate();
         }
+
         void Application_Idle(object sender, EventArgs e)
         {
             double milliseconds = ComputeTimeSlice();
@@ -70,6 +78,7 @@ namespace Signal_Block_Design_Tool.Forms
             accumulator += milliseconds;
             if (accumulator > 1000)
             {
+
                 FPSLabel.Text = "FPS: " + idleCounter.ToString();
                 accumulator -= 1000;
                 idleCounter = 0;
@@ -144,8 +153,18 @@ namespace Signal_Block_Design_Tool.Forms
 
             DrawBackgroundLines();
 
+            int i = 0;
 
-            DrawTriangle();
+            foreach (TrackSegment segment in TrackLayout.Track)
+            {
+
+                DrawTrackSegment(segment, i);
+                DrawText(segment, i);
+                i++;
+            }
+
+
+            //DrawTriangle();
 
             OpenTK.Graphics.OpenGL.GL.End();
 
@@ -153,14 +172,14 @@ namespace Signal_Block_Design_Tool.Forms
 
 
 
-            foreach (TrackSegment t in TrackLayout.Track)
-            {
+            //foreach (TrackSegment t in TrackLayout.Track)
+            //{
 
-                OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
-                GL.Vertex2(t.StartPoint.X / 1000, 10);
-                GL.Vertex2(t.EndPoint.X / 1000, 10);
-                OpenTK.Graphics.OpenGL.GL.End();
-            }
+            //    OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
+            //    GL.Vertex2(t.StartPoint.X / 1000, 10);
+            //    GL.Vertex2(t.EndPoint.X / 1000, 10);
+            //    OpenTK.Graphics.OpenGL.GL.End();
+            //}
 
 
             // Swap the buffers 
@@ -168,6 +187,17 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 glControl1.SwapBuffers();
             }
+        }
+
+
+        private void DrawText(TrackSegment segment, int i)
+        {
+
+            printer.Begin();
+            GL.Translate(segment.BrakeLocation, i * 10 + 4, 0);
+            printer.Print(segment.TrackCircuit.ToString(), displayFont, Color.Blue);
+
+            printer.End();
         }
 
         private void DrawTriangle()
@@ -180,10 +210,33 @@ namespace Signal_Block_Design_Tool.Forms
             GL.Vertex2(100, 50);
         }
 
-        private static void DrawBackgroundLines()
+        private void DrawTrackSegment(TrackSegment segment, int i)
+        {
+            DrawLine(segment.BrakeLocation, i * 10, segment.TargetLocation, i * 10);
+            DrawLine(segment.BrakeLocation, i * 10 + 3, segment.BrakeLocation, i * 10 - 3);
+            DrawLine(segment.TargetLocation, i * 10 + 3, segment.TargetLocation, i * 10 - 3);
+
+        }
+        private void DrawLine(int startX, int startY, int stopX, int stopY)
+        {
+            GL.Color3(Color.Red);
+            GL.LineWidth(2.5f);
+            GL.Enable(EnableCap.LineSmooth);
+            OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
+            OpenTK.Graphics.OpenGL.GL.Vertex2(startX, startY);
+            OpenTK.Graphics.OpenGL.GL.Vertex2(stopX, stopY);
+
+            OpenTK.Graphics.OpenGL.GL.End();
+
+
+
+        }
+        private void DrawBackgroundLines()
         {
 
             GL.Color3(Color.Gray);
+            GL.LineWidth(1f);
+            GL.Enable(EnableCap.LineSmooth);
             OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
 
             OpenTK.Graphics.OpenGL.GL.Vertex2(0, -100000);
@@ -254,7 +307,7 @@ namespace Signal_Block_Design_Tool.Forms
         }
         private void glControl1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Middle)
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
                 moveCamera = true;
             }
