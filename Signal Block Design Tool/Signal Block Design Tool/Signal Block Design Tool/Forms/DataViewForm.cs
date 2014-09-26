@@ -82,29 +82,57 @@ namespace Signal_Block_Design_Tool.Forms
         public void UpdateDataView()
         {
             ClearDataView();
-            BindingSource trackLayoutBindingSource = new BindingSource();
-            trackLayoutBindingSource.DataSource = TrackLayout.Track;
+            dataGridView2.ColumnCount = 13;
+            dataGridView2.Columns[0].Name = "Brake Location: ";
+            dataGridView2.Columns[1].Name = "Target Location: ";
+            dataGridView2.Columns[2].Name = "Grade Worst: ";
+            dataGridView2.Columns[3].Name = "Speed Max: ";
+            dataGridView2.Columns[4].Name = "Overspeed: ";
+            dataGridView2.Columns[5].Name = "Vehicle Accel: ";
+            dataGridView2.Columns[6].Name = "Reaction Time: ";
+            dataGridView2.Columns[7].Name = "Brake Rate: ";
+            dataGridView2.Columns[8].Name = "Runaway Accel: ";
+            dataGridView2.Columns[9].Name = "Propulsion Rem: ";
+            dataGridView2.Columns[10].Name = "Brake Build Up: ";
+            dataGridView2.Columns[11].Name = "Overhang Distance: ";
+            dataGridView2.Columns[12].Name = "Is Safe: ";
 
-           
-            dataGridView2.DataSource = trackLayoutBindingSource;
-            
+            dataGridView1.ColumnCount = 3;
+            dataGridView1.Columns[0].Name = "Track Circuit";
+            dataGridView1.Columns[1].Name = "Calculated Safe Breaking Distance";
+            dataGridView1.Columns[2].Name = "Available Distance";
+
+            int rowNum = 0;
+            int rowIndex = 1;
             foreach(TrackSegment t in TrackLayout.Track)
             {
-                 foreach (DataGridViewRow Myrow in dataGridView2.Rows)
-                 {            //Here 2 cell is target value and 1 cell is Volume
-                      if (Myrow.Cells[1].Value.ToString() == "False")// Or your condition 
-                      {
-                           dataGridView2.RowsDefaultCellStyle.BackColor = Color.Red;
-
-                      }
-                 }
-                 dataGridView1.ColumnCount = 3;
-                 dataGridView1.Columns[0].Name = "Track Circuit";
-                 dataGridView1.Columns[1].Name = "Calculated Safe Breaking Distance";
-                 dataGridView1.Columns[2].Name = "Available Distance";
+                 this.dataGridView2.Rows.Add(t.BrakeLocation.ToString(), t.TargetLocation.ToString(),
+                 t.GradeWorst.ToString(), t.SpeedMax.ToString(), t.OverSpeed.ToString(), t.VehicleAccel.ToString(), t.ReactionTime.ToString(),
+                 t.BrakeRate.ToString(), t.RunwayAccelSec.ToString(), t.PropulsionRemSec.ToString(), t.BrakeBuildUpSec.ToString(), t.OverhangDist.ToString(), t.IsSafe.ToString());
+                 
                  this.dataGridView1.Rows.Add(t.TrackCircuit.ToString(), t.SafeBreakingDistance.ToString(), t.SafeBreakingDistanceRequired.ToString());
+                 rowNum++;
             }
 
+            String badRows = null;
+
+            
+            for (int i = 0; i < rowNum; i++)
+            {            //Here 2 cell is target value and 1 cell is Volume
+                 if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")// Or your condition 
+                 {
+                      badRows += rowIndex + ", ";
+                 }
+                 rowIndex++;
+            }
+
+            if (badRows != null)
+            {
+                 badRows = badRows.Substring(0, badRows.Length - 2);
+                 MessageBox.Show("The following rows have unsafe conditions:\n" + badRows, "Critical Error!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+            }
         }
     }
 }
