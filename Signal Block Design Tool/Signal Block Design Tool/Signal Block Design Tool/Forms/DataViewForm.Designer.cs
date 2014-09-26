@@ -32,10 +32,8 @@
             this.CalculationsTab = new System.Windows.Forms.TabPage();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.TrackID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Circuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SBD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Headway = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrackSegmentsTab = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.GeneralTab = new System.Windows.Forms.TabPage();
@@ -87,22 +85,13 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TrackID,
             this.Circuit,
-            this.SBD,
-            this.Headway});
+            this.SBD});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1069, 605);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // TrackID
-            // 
-            this.TrackID.HeaderText = "Track ID";
-            this.TrackID.Name = "TrackID";
-            this.TrackID.ReadOnly = true;
-            this.TrackID.Width = 150;
             // 
             // Circuit
             // 
@@ -117,13 +106,6 @@
             this.SBD.Name = "SBD";
             this.SBD.ReadOnly = true;
             this.SBD.Width = 150;
-            // 
-            // Headway
-            // 
-            this.Headway.HeaderText = "Headway";
-            this.Headway.Name = "Headway";
-            this.Headway.ReadOnly = true;
-            this.Headway.Width = 150;
             // 
             // TrackSegmentsTab
             // 
@@ -186,9 +168,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage GeneralTab;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrackID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Circuit;
         private System.Windows.Forms.DataGridViewTextBoxColumn SBD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Headway;
     }
 }

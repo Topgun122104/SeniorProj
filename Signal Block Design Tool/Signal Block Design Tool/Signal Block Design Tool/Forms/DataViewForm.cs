@@ -40,22 +40,22 @@ namespace Signal_Block_Design_Tool.Forms
             ClearTreeView();
             foreach (TrackSegment t in TrackLayout.Track)
             {
-                TreeNode[] children = new TreeNode[18];
+                TreeNode[] children = new TreeNode[14];
 
-                children[3] = new TreeNode("Start Point: " + t.StartPoint.ToString());
-                children[4] = new TreeNode("End Point: " + t.EndPoint.ToString());
-                children[5] = new TreeNode("Brake Location: " + t.BrakeLocation.ToString());
-                children[6] = new TreeNode("Target Location: " + t.TargetLocation.ToString());
-                children[7] = new TreeNode("Grade Worst: " + t.GradeWorst.ToString());
-                children[8] = new TreeNode("Speed Max: " + t.SpeedMax.ToString());
-                children[9] = new TreeNode("Overspeed: " + t.OverSpeed.ToString());
-                children[10] = new TreeNode("Vehicle Accel: " + t.VehicleAccel.ToString());
-                children[11] = new TreeNode("Reaction Time: " + t.ReactionTime.ToString());
-                children[12] = new TreeNode("Brake Rate: " + t.BrakeRate.ToString());
-                children[13] = new TreeNode("Runaway Accel: " + t.RunwayAccelSec.ToString());
-                children[14] = new TreeNode("Propulsion Rem: " + t.PropulsionRemSec.ToString());
-                children[15] = new TreeNode("Brake Build Up: " + t.BrakeBuildUpSec.ToString());
-                children[16] = new TreeNode("Overhang Distance: " + t.OverhangDist.ToString());
+                children[0] = new TreeNode("Start Point: " + t.StartPoint.ToString());
+                children[1] = new TreeNode("End Point: " + t.EndPoint.ToString());
+                children[2] = new TreeNode("Brake Location: " + t.BrakeLocation.ToString());
+                children[3] = new TreeNode("Target Location: " + t.TargetLocation.ToString());
+                children[4] = new TreeNode("Grade Worst: " + t.GradeWorst.ToString());
+                children[5] = new TreeNode("Speed Max: " + t.SpeedMax.ToString());
+                children[6] = new TreeNode("Overspeed: " + t.OverSpeed.ToString());
+                children[7] = new TreeNode("Vehicle Accel: " + t.VehicleAccel.ToString());
+                children[8] = new TreeNode("Reaction Time: " + t.ReactionTime.ToString());
+                children[9] = new TreeNode("Brake Rate: " + t.BrakeRate.ToString());
+                children[10] = new TreeNode("Runaway Accel: " + t.RunwayAccelSec.ToString());
+                children[11] = new TreeNode("Propulsion Rem: " + t.PropulsionRemSec.ToString());
+                children[12] = new TreeNode("Brake Build Up: " + t.BrakeBuildUpSec.ToString());
+                children[13] = new TreeNode("Overhang Distance: " + t.OverhangDist.ToString());
 
                 TreeNode rootNode = new TreeNode("Circuit: " + t.TrackCircuit.ToString(), children);
                 this.treeView1.Nodes.Add(rootNode);
