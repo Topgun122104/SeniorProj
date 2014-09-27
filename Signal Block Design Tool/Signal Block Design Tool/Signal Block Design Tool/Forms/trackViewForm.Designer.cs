@@ -29,8 +29,7 @@ namespace Signal_Block_Design_Tool.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            // TODO: Check to see if this fixes the slow rendering on some computers :/
-            this.glControl1 = new OpenTK.GLControl(new OpenTK.Graphics.GraphicsMode(32, 24, 4, 2));
+            this.glControl1 = new OpenTK.GLControl();
             this.FPSLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.positionLabel = new System.Windows.Forms.Label();

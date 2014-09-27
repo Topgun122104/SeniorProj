@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Signal_Block_Design_Tool.Forms
 {
+    #region INITIALIZE
     public partial class TrackViewForm : Form
     {
         bool loaded = false;
@@ -24,13 +25,15 @@ namespace Signal_Block_Design_Tool.Forms
         private int currentClicks;
         private int previousClicks;
         private Font displayFont;
+        private const int TRACKOFFSET = 25;
+        private const int ENDTRACKSIZE = 3;
         OpenTK.Graphics.TextPrinter printer;
+
+
         public TrackViewForm()
         {
+
             InitializeComponent();
-
-
-
             stopwatch = new Stopwatch();
             stopwatch.Start();
 
@@ -97,8 +100,6 @@ namespace Signal_Block_Design_Tool.Forms
         {
             WIDTH = glControl1.Width;
             HEIGHT = glControl1.Height;
-
-
         }
 
         private void glControl1_Resize(object sender, EventArgs e)
@@ -109,7 +110,9 @@ namespace Signal_Block_Design_Tool.Forms
             }
 
         }
+    #endregion
 
+        #region MAIN_LOOP
         private void glControl1_Paint(object sender, PaintEventArgs e)
         {
             if (!loaded)
@@ -119,7 +122,9 @@ namespace Signal_Block_Design_Tool.Forms
             Update(stopwatch);
             Draw();
         }
+        #endregion
 
+        #region UPDATE
 
         private void Update(Stopwatch stopwatch)
         {
@@ -127,12 +132,13 @@ namespace Signal_Block_Design_Tool.Forms
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
             positionLabel.Text = camera._pos.ToString();
-
             clicksLabel.Text = camera.getZoom().ToString();
 
 
-
         }
+        #endregion
+
+        #region DRAW
         private void Draw()
         {
             GL.MatrixMode(MatrixMode.Projection);
@@ -140,7 +146,7 @@ namespace Signal_Block_Design_Tool.Forms
             GL.LoadIdentity();
             GL.Ortho(0, WIDTH, HEIGHT, 0, 0, 4.0);
             GL.MatrixMode(MatrixMode.Modelview);
-
+            GL.Enable(EnableCap.Texture2D);
             GL.PushMatrix();
             GL.LoadIdentity();
 
@@ -157,30 +163,13 @@ namespace Signal_Block_Design_Tool.Forms
 
             foreach (TrackSegment segment in TrackLayout.Track)
             {
-
                 DrawTrackSegment(segment, i);
-                DrawText(segment, i);
+                DrawString("test", new OpenTK.Vector2(segment.BrakeLocation / 1000, 0));
                 i++;
             }
 
 
-            //DrawTriangle();
-
             OpenTK.Graphics.OpenGL.GL.End();
-
-
-
-
-
-            //foreach (TrackSegment t in TrackLayout.Track)
-            //{
-
-            //    OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
-            //    GL.Vertex2(t.StartPoint.X / 1000, 10);
-            //    GL.Vertex2(t.EndPoint.X / 1000, 10);
-            //    OpenTK.Graphics.OpenGL.GL.End();
-            //}
-
 
             // Swap the buffers 
             if (glControl1.Focused)
@@ -190,67 +179,66 @@ namespace Signal_Block_Design_Tool.Forms
         }
 
 
-        private void DrawText(TrackSegment segment, int i)
+        #endregion
+
+        #region DRAW_HELPERS
+        public void DrawString(string s, OpenTK.Vector2 position)
         {
-
-            //printer.Begin();
-            //GL.Translate(segment.BrakeLocation, i * 10 + 4, 0);
-            //printer.Print(segment.TrackCircuit.ToString(), displayFont, Color.Blue);
-
-            //printer.End();
+            printer.Begin();
+            GL.Color3(Color.Black);
+            GL.Translate(position.X, position.Y, 0);
+            printer.Print(s, displayFont, Color.White);
+            printer.End();
         }
 
-        private void DrawTriangle()
-        {
-            GL.Color3(Color.Red);
-            GL.Rotate(rotation, OpenTK.Vector3d.UnitZ);
-            OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Triangles);
-            GL.Vertex2(10, 20);
-            GL.Vertex2(100, 20);
-            GL.Vertex2(100, 50);
-        }
+
 
         private void DrawTrackSegment(TrackSegment segment, int i)
         {
-            DrawLine(segment.BrakeLocation, i * 10, segment.TargetLocation, i * 10);
-            DrawLine(segment.BrakeLocation, i * 10 + 3, segment.BrakeLocation, i * 10 - 3);
-            DrawLine(segment.TargetLocation, i * 10 + 3, segment.TargetLocation, i * 10 - 3);
+            if (!segment.IsSafe)
+            {
+                GL.Color3(Color.Red);
+            }
+            else
+            {
+                GL.Color3(Color.Blue);
+            }
+            DrawLine(segment.BrakeLocation, i * TRACKOFFSET, segment.TargetLocation, i * TRACKOFFSET);
+            DrawLine(segment.BrakeLocation, i * TRACKOFFSET + ENDTRACKSIZE, segment.BrakeLocation, i * TRACKOFFSET - ENDTRACKSIZE);
+            DrawLine(segment.TargetLocation, i * TRACKOFFSET + ENDTRACKSIZE, segment.TargetLocation, i * TRACKOFFSET - ENDTRACKSIZE);
 
         }
         private void DrawLine(int startX, int startY, int stopX, int stopY)
         {
-            GL.Color3(Color.Red);
+
             GL.LineWidth(2.5f);
             GL.Enable(EnableCap.LineSmooth);
             OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
             OpenTK.Graphics.OpenGL.GL.Vertex2(startX, startY);
             OpenTK.Graphics.OpenGL.GL.Vertex2(stopX, stopY);
-
             OpenTK.Graphics.OpenGL.GL.End();
-
-
 
         }
         private void DrawBackgroundLines()
         {
-
             GL.Color3(Color.Gray);
             GL.LineWidth(1f);
             GL.Enable(EnableCap.LineSmooth);
             OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
-
             OpenTK.Graphics.OpenGL.GL.Vertex2(0, -100000);
             OpenTK.Graphics.OpenGL.GL.Vertex2(0, 100000);
-
             OpenTK.Graphics.OpenGL.GL.Vertex2(100000, 0);
             OpenTK.Graphics.OpenGL.GL.Vertex2(-100000, 0);
-
             OpenTK.Graphics.OpenGL.GL.End();
-
         }
 
-
-
+        #endregion
+        #region INPUT
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
             if (!loaded)
@@ -346,6 +334,6 @@ namespace Signal_Block_Design_Tool.Forms
                 previousMousePosition = currentMousePosition;
             }
         }
-
+        #endregion
     }
 }
