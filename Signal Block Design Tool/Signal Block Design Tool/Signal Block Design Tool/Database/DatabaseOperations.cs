@@ -8,7 +8,7 @@ namespace Signal_Block_Design_Tool.Database
     {
 
         /// <summary>
-        ///  Clears teh database
+        ///  Clears the database
         /// </summary>
         /// <param name="conn"></param>
         /// <param name="cmd"></param>
@@ -16,6 +16,7 @@ namespace Signal_Block_Design_Tool.Database
         {
 
             cmd.CommandText = @"DELETE FROM track_segments";
+            cmd.Connection = conn.getConnection();
             cmd.ExecuteNonQuery();
 
 

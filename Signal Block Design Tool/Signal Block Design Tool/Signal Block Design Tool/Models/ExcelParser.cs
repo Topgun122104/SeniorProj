@@ -92,16 +92,16 @@ namespace Signal_Block_Design_Tool.Files
                                                     row[4],                                             // Circuit                                             
                                                     Convert.ToInt32(row[5]),                            // Brake Location
                                                     Convert.ToInt32(row[6]),                            // Target Location
-                                                    Convert.ToDouble(row[8]),                           // Worst Grade
-                                                    Convert.ToDouble(row[9]),                           // Entry Speed
-                                                    Convert.ToDouble(row[10]),                          // Overspeed
-                                                    Convert.ToDouble(row[12]),                          // Acceleration
-                                                    Convert.ToDouble(row[14]),                          // Reaction Time
-                                                    Convert.ToDouble(row[16]),                          // Brake Rate
-                                                    Convert.ToDouble(row[19]),                          // Runaway Accel
-                                                    Convert.ToDouble(row[21]),                          // Propulsion Removal
-                                                    Convert.ToInt32(row[23]),                           // Brake Build Up
-                                                    Convert.ToInt32(row[25]));                          // Overhand Distance
+                                                    Convert.ToDouble(row[7]),                           // Worst Grade
+                                                    Convert.ToDouble(row[8]),                           // Entry Speed
+                                                    Convert.ToDouble(row[9]),                          // Overspeed
+                                                    Convert.ToDouble(row[10]),                          // Acceleration
+                                                    Convert.ToDouble(row[11]),                          // Reaction Time
+                                                    Convert.ToDouble(row[12]),                          // Brake Rate
+                                                    Convert.ToDouble(row[13]),                          // Runaway Accel
+                                                    Convert.ToDouble(row[14]),                          // Propulsion Removal
+                                                    Convert.ToInt32(row[15]),                           // Brake Build Up
+                                                    Convert.ToInt32(row[16]));                          // Overhand Distance
 
 
                         TrackLayout.Track.Add(curRow);

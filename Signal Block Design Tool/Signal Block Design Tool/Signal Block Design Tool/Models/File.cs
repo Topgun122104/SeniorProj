@@ -71,12 +71,8 @@ namespace Signal_Block_Design_Tool.Files
 
                 Query q = new Query();
                 List<string> list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '921T'");
-                string text = "";
-                for (int i = 0; i < list.Count; i++)
-                {
-                    text += list[i] + "\n";
-                }
-                MessageBox.Show(text);
+                TrackSegment ts = new TrackSegment(list[0].ToString(), Convert.ToInt32(list[1].ToString()), Convert.ToInt32(list[2].ToString()), Convert.ToDouble(list[3].ToString()), Convert.ToDouble(list[4].ToString()), Convert.ToDouble(list[5].ToString()), Convert.ToDouble(list[6].ToString()), Convert.ToDouble(list[7].ToString()), Convert.ToDouble(list[8].ToString()), Convert.ToDouble(list[9].ToString()), Convert.ToDouble(list[10].ToString()), Convert.ToInt32(list[11].ToString()), Convert.ToInt32(list[12].ToString()));
+                TrackLayout.Track.Add(ts);
             }
         }
 

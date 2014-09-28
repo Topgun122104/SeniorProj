@@ -102,8 +102,8 @@ namespace Signal_Block_Design_Tool.Forms
             String badRows = null;
 
             for (int i = 0; i < rowNum; i++)
-            {            //Here 2 cell is target value and 1 cell is Volume
-                if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")// Or your condition 
+            {
+                if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")
                 {
                     badRows += rowIndex + ", ";
                 }
