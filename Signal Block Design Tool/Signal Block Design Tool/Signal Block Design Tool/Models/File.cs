@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Signal_Block_Design_Tool.Database;
 using Signal_Block_Design_Tool.Forms;
+using Signal_Block_Design_Tool.Misc;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -70,9 +71,34 @@ namespace Signal_Block_Design_Tool.Files
                     databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
 
                 Query q = new Query();
-                List<string> list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '921T'");
-                TrackSegment ts = new TrackSegment(list[0].ToString(), Convert.ToInt32(list[1].ToString()), Convert.ToInt32(list[2].ToString()), Convert.ToDouble(list[3].ToString()), Convert.ToDouble(list[4].ToString()), Convert.ToDouble(list[5].ToString()), Convert.ToDouble(list[6].ToString()), Convert.ToDouble(list[7].ToString()), Convert.ToDouble(list[8].ToString()), Convert.ToDouble(list[9].ToString()), Convert.ToDouble(list[10].ToString()), Convert.ToInt32(list[11].ToString()), Convert.ToInt32(list[12].ToString()));
-                TrackLayout.Track.Add(ts);
+                List<string> list;
+
+                String p = Prompt.ShowDialog("Enter A Track Circuit\n\n Type 'ALL' to Display Every Track Circuit", "Track Information Needed!");
+                p = p.ToUpper();
+                if(p == "ALL")
+                {
+                     list = q.runQuery(conn, "select * from trackSegment");
+                }
+                else
+                {
+                    list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '" + p + "'");
+                }
+
+                int numRows = list.Count / 15;
+                TrackSegment ts;
+                for (int i = 0; i < numRows; i++)
+                {
+                     ts = new TrackSegment(list[0].ToString(), Convert.ToInt32(list[2].ToString()), Convert.ToInt32(list[3].ToString()), Convert.ToDouble(list[4].ToString()), 
+                          Convert.ToDouble(list[5].ToString()), Convert.ToDouble(list[6].ToString()), Convert.ToDouble(list[7].ToString()), Convert.ToDouble(list[8].ToString()),
+                          Convert.ToDouble(list[9].ToString()), Convert.ToDouble(list[10].ToString()), Convert.ToDouble(list[11].ToString()), Convert.ToInt32(list[12].ToString()),
+                          Convert.ToInt32(list[13].ToString()));
+                     TrackLayout.Track.Add(ts);
+
+                     for(int j = 0; j < 15; j++)
+                     {
+                          list.RemoveAt(0);
+                     }
+                }
             }
         }
 

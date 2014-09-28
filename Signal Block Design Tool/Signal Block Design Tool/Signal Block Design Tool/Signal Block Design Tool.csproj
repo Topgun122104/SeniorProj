@@ -60,6 +60,7 @@
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\DatabaseOperations.cs" />
     <Compile Include="Database\Query.cs" />
+    <Compile Include="Misc\Prompt.cs" />
     <Compile Include="Models\Camera2D.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>

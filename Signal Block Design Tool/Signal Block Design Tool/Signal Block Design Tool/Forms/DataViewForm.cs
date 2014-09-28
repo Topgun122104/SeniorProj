@@ -70,20 +70,21 @@ namespace Signal_Block_Design_Tool.Forms
         public void UpdateDataView()
         {
             ClearDataView();
-            dataGridView2.ColumnCount = 13;
-            dataGridView2.Columns[0].Name = "Brake Location: ";
-            dataGridView2.Columns[1].Name = "Target Location: ";
-            dataGridView2.Columns[2].Name = "Grade Worst: ";
-            dataGridView2.Columns[3].Name = "Speed Max: ";
-            dataGridView2.Columns[4].Name = "Overspeed: ";
-            dataGridView2.Columns[5].Name = "Vehicle Accel: ";
-            dataGridView2.Columns[6].Name = "Reaction Time: ";
-            dataGridView2.Columns[7].Name = "Brake Rate: ";
-            dataGridView2.Columns[8].Name = "Runaway Accel: ";
-            dataGridView2.Columns[9].Name = "Propulsion Rem: ";
-            dataGridView2.Columns[10].Name = "Brake Build Up: ";
-            dataGridView2.Columns[11].Name = "Overhang Distance: ";
-            dataGridView2.Columns[12].Name = "Is Safe: ";
+            dataGridView2.ColumnCount = 14;
+            dataGridView1.Columns[0].Name = "TrackCircuit";
+            dataGridView2.Columns[1].Name = "Brake Location: ";
+            dataGridView2.Columns[2].Name = "Target Location: ";
+            dataGridView2.Columns[3].Name = "Grade Worst: ";
+            dataGridView2.Columns[4].Name = "Speed Max: ";
+            dataGridView2.Columns[5].Name = "Overspeed: ";
+            dataGridView2.Columns[6].Name = "Vehicle Accel: ";
+            dataGridView2.Columns[7].Name = "Reaction Time: ";
+            dataGridView2.Columns[8].Name = "Brake Rate: ";
+            dataGridView2.Columns[9].Name = "Runaway Accel: ";
+            dataGridView2.Columns[10].Name = "Propulsion Rem: ";
+            dataGridView2.Columns[11].Name = "Brake Build Up: ";
+            dataGridView2.Columns[12].Name = "Overhang Distance: ";
+            dataGridView2.Columns[13].Name = "Is Safe: ";
             dataGridView1.ColumnCount = 3;
             dataGridView1.Columns[0].Name = "Track Circuit";
             dataGridView1.Columns[1].Name = "Calculated Safe Breaking Distance";
@@ -92,7 +93,7 @@ namespace Signal_Block_Design_Tool.Forms
             int rowIndex = 1;
             foreach (TrackSegment t in TrackLayout.Track)
             {
-                this.dataGridView2.Rows.Add(t.BrakeLocation.ToString(), t.TargetLocation.ToString(),
+                this.dataGridView2.Rows.Add(t.TrackCircuit.ToString(), t.BrakeLocation.ToString(), t.TargetLocation.ToString(),
                 t.GradeWorst.ToString(), t.SpeedMax.ToString(), t.OverSpeed.ToString(), t.VehicleAccel.ToString(), t.ReactionTime.ToString(),
                 t.BrakeRate.ToString(), t.RunwayAccelSec.ToString(), t.PropulsionRemSec.ToString(), t.BrakeBuildUpSec.ToString(), t.OverhangDist.ToString(), t.IsSafe.ToString());
 
