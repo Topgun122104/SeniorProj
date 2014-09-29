@@ -56,6 +56,20 @@ namespace Signal_Block_Design_Tool.Files
             }
         }
 
+         public static void ClearDataBase()
+        {
+             DialogResult result = MessageBox.Show("Are you sure you want to delete the contents of the database?", "Are you sure...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); 
+              if(result == DialogResult.Yes)
+              {
+                   LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
+                   Database.DatabaseConnection conn = new Database.DatabaseConnection(databaseForm.ServerNameBox.Text,
+                   Convert.ToUInt32(databaseForm.PortBox.Text), databaseForm.DatabaseNameBox.Text,
+                   databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
+                   conn.openConnection();
+                   Database.DatabaseOperations.ClearDatabase(conn);
+              }
+        }
+
 
         /// <summary>
         /// 

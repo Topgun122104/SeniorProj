@@ -11,15 +11,12 @@ namespace Signal_Block_Design_Tool.Database
         ///  Clears the database
         /// </summary>
         /// <param name="conn"></param>
-        /// <param name="cmd"></param>
-        public static void ClearDatabase(DatabaseConnection conn, MySqlCommand cmd)
+        public static void ClearDatabase(DatabaseConnection conn)
         {
-
-            cmd.CommandText = @"DELETE FROM track_segments";
+            MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn.getConnection();
+            cmd.CommandText = @"DELETE FROM track_segments";
             cmd.ExecuteNonQuery();
-
-
         }
 
         /// <summary>

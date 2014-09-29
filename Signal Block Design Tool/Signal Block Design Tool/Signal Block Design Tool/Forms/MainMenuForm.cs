@@ -38,12 +38,6 @@ namespace Signal_Block_Design_Tool.Forms
             this.NewTrackButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
         }
 
-
-        private void ImportButton_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
         private void ImportButton_MouseLeave(object sender, EventArgs e)
         {
             this.ImportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
@@ -77,6 +71,16 @@ namespace Signal_Block_Design_Tool.Forms
         private void ImportButton_MouseEnter(object sender, EventArgs e)
         {
             this.ImportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(130)))), ((int)(((byte)(206)))));
+        }
+
+        private void ClearDataBase_Click(object sender, EventArgs e)
+        {
+             File.ClearDataBase();
+        }
+
+        private void ClearDataBase_MouseEnter(object sender, EventArgs e)
+        {
+             this.ImportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(130)))), ((int)(((byte)(206)))));
         }
     }
 }
