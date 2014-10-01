@@ -141,7 +141,7 @@ namespace Signal_Block_Design_Tool.Forms
         #region DRAW
         private void Draw()
         {
-            GL.MatrixMode(MatrixMode.Projection);
+            ///GL.MatrixMode(MatrixMode.Modelview);
             GL.PushMatrix();
             GL.LoadIdentity();
             GL.Ortho(0, WIDTH, HEIGHT, 0, 0, 4.0);
@@ -164,7 +164,8 @@ namespace Signal_Block_Design_Tool.Forms
             foreach (TrackSegment segment in TrackLayout.Track)
             {
                 DrawTrackSegment(segment, i);
-                DrawString("test", new OpenTK.Vector2(segment.BrakeLocation / 1000, 0));
+
+                DrawString("test", new OpenTK.Vector2(segment.BrakeLocation / 1000, i * 10));
                 i++;
             }
 

@@ -51,6 +51,7 @@ namespace Signal_Block_Design_Tool.Forms
             dataViewForm.UpdateTreeView();
             mainMenuForm.Visible = false;
             trackViewForm.Visible = false;
+            dataViewForm.WindowState = FormWindowState.Maximized;
             dataViewForm.Visible = true;
         }
 
@@ -58,6 +59,7 @@ namespace Signal_Block_Design_Tool.Forms
         {
             mainMenuForm.Visible = false;
             dataViewForm.Visible = false;
+            trackViewForm.WindowState = FormWindowState.Maximized;
             trackViewForm.Visible = true;
         }
 
@@ -116,6 +118,13 @@ namespace Signal_Block_Design_Tool.Forms
         private void fromDatabaseToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
             File.LoadFromDatabase();
+        }
+
+        private void mainMenuToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            mainMenuForm.Visible = true;
+            dataViewForm.Visible = false;
+            trackViewForm.Visible = false;
         }
 
 
