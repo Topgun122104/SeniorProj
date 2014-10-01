@@ -91,12 +91,13 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void saveToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+
             File.SaveTrack();
         }
 
         private void viewHelpToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://sites.google.com/a/my.fit.edu/railroadblockwiki/");
+            System.Diagnostics.Process.Start("https://github.com/Topgun122104/SeniorProj/wiki");
         }
 
         private void aboutToolStripMenuItem_Click(object sender, System.EventArgs e)
@@ -107,6 +108,11 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void newTrackToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
+            AddNewTrackForm trackForm = new AddNewTrackForm();
+            if ((trackForm.ShowDialog(this)) == System.Windows.Forms.DialogResult.OK)
+            {
+                //TrackLayout.Track.Add(new TrackSegment(tra)
+            }
 
         }
 

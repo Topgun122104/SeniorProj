@@ -57,9 +57,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\ConfigManager.cs" />
     <Compile Include="Database\DatabaseConnection.cs" />
     <Compile Include="Database\DatabaseOperations.cs" />
     <Compile Include="Database\Query.cs" />
+    <Compile Include="Forms\AddNewTrackForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddNewTrackForm.Designer.cs">
+      <DependentUpon>AddNewTrackForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ErrorForm.Designer.cs">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogManager\Logger.cs" />
     <Compile Include="Misc\Prompt.cs" />
     <Compile Include="Models\Camera2D.cs" />
     <Compile Include="Forms\AboutForm.cs">
@@ -124,8 +138,14 @@
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddNewTrackForm.resx">
+      <DependentUpon>AddNewTrackForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DataViewForm.resx">
       <DependentUpon>DataViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ErrorForm.resx">
+      <DependentUpon>ErrorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadFromDatabaseForm.resx">
       <DependentUpon>LoadFromDatabaseForm.cs</DependentUpon>

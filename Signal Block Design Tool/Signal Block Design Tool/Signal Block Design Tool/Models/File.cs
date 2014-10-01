@@ -33,12 +33,7 @@ namespace Signal_Block_Design_Tool.Files
                     {
                         using (myStream)
                         {
-                            // if importing csv file
-                            //if (openFileDialog.FilterIndex == 1)
-                            //{
 
-                            //}
-                            // if its a excel file
                             if (openFileDialog.FilterIndex == 1 || openFileDialog.FilterIndex == 2)
                             {
                                 Thread t = new Thread(LoadExcelFile);
@@ -51,23 +46,30 @@ namespace Signal_Block_Design_Tool.Files
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    LogManager.Logger.Log(ex);
                 }
             }
         }
 
-         public static void ClearDataBase()
+        public static void ClearDataBase()
         {
-             DialogResult result = MessageBox.Show("Are you sure you want to delete the contents of the database?", "Are you sure...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); 
-              if(result == DialogResult.Yes)
-              {
-                   LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
-                   Database.DatabaseConnection conn = new Database.DatabaseConnection(databaseForm.ServerNameBox.Text,
-                   Convert.ToUInt32(databaseForm.PortBox.Text), databaseForm.DatabaseNameBox.Text,
-                   databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
-                   conn.openConnection();
-                   Database.DatabaseOperations.ClearDatabase(conn);
-              }
+            DialogResult result = MessageBox.Show("Are you sure you want to delete the contents of the database?", "Are you sure...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
+                    Database.DatabaseConnection conn = new Database.DatabaseConnection(databaseForm.ServerNameBox.Text,
+                    Convert.ToUInt32(databaseForm.PortBox.Text), databaseForm.DatabaseNameBox.Text,
+                    databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
+                    conn.openConnection();
+                    Database.DatabaseOperations.ClearDatabase(conn);
+                }
+                catch (Exception ex)
+                {
+                    LogManager.Logger.Log(ex);
+                }
+            }
         }
 
 
@@ -79,39 +81,46 @@ namespace Signal_Block_Design_Tool.Files
             LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
             if (databaseForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                // TODO: Set up the database
-                Database.DatabaseConnection conn = new Database.DatabaseConnection(databaseForm.ServerNameBox.Text,
-                    Convert.ToUInt32(databaseForm.PortBox.Text), databaseForm.DatabaseNameBox.Text,
-                    databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
-
-                Query q = new Query();
-                List<string> list;
-
-                String p = Prompt.ShowDialog("Enter A Track Circuit\n\n Type 'ALL' to Display Every Track Circuit", "Track Information Needed!");
-                p = p.ToUpper();
-                if(p == "ALL")
+                try
                 {
-                     list = q.runQuery(conn, "select * from trackSegment");
+                    // TODO: Set up the database
+                    Database.DatabaseConnection conn = new Database.DatabaseConnection(databaseForm.ServerNameBox.Text,
+                        Convert.ToUInt32(databaseForm.PortBox.Text), databaseForm.DatabaseNameBox.Text,
+                        databaseForm.UserNameBox.Text, databaseForm.PasswordBox.Text);
+
+                    Query q = new Query();
+                    List<string> list;
+
+                    String p = Prompt.ShowDialog("Enter A Track Circuit\n\n Type 'ALL' to Display Every Track Circuit", "Track Information Needed!");
+                    p = p.ToUpper();
+                    if (p == "ALL")
+                    {
+                        list = q.runQuery(conn, "select * from trackSegment");
+                    }
+                    else
+                    {
+                        list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '" + p + "'");
+                    }
+
+                    int numRows = list.Count / 15;
+                    TrackSegment ts;
+                    for (int i = 0; i < numRows; i++)
+                    {
+                        ts = new TrackSegment(list[0].ToString(), Convert.ToInt32(list[2].ToString()), Convert.ToInt32(list[3].ToString()), Convert.ToDouble(list[4].ToString()),
+                             Convert.ToDouble(list[5].ToString()), Convert.ToDouble(list[6].ToString()), Convert.ToDouble(list[7].ToString()), Convert.ToDouble(list[8].ToString()),
+                             Convert.ToDouble(list[9].ToString()), Convert.ToDouble(list[10].ToString()), Convert.ToDouble(list[11].ToString()), Convert.ToInt32(list[12].ToString()),
+                             Convert.ToInt32(list[13].ToString()));
+                        TrackLayout.Track.Add(ts);
+
+                        for (int j = 0; j < 15; j++)
+                        {
+                            list.RemoveAt(0);
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '" + p + "'");
-                }
-
-                int numRows = list.Count / 15;
-                TrackSegment ts;
-                for (int i = 0; i < numRows; i++)
-                {
-                     ts = new TrackSegment(list[0].ToString(), Convert.ToInt32(list[2].ToString()), Convert.ToInt32(list[3].ToString()), Convert.ToDouble(list[4].ToString()), 
-                          Convert.ToDouble(list[5].ToString()), Convert.ToDouble(list[6].ToString()), Convert.ToDouble(list[7].ToString()), Convert.ToDouble(list[8].ToString()),
-                          Convert.ToDouble(list[9].ToString()), Convert.ToDouble(list[10].ToString()), Convert.ToDouble(list[11].ToString()), Convert.ToInt32(list[12].ToString()),
-                          Convert.ToInt32(list[13].ToString()));
-                     TrackLayout.Track.Add(ts);
-
-                     for(int j = 0; j < 15; j++)
-                     {
-                          list.RemoveAt(0);
-                     }
+                    LogManager.Logger.Log(ex);
                 }
             }
         }
@@ -128,16 +137,22 @@ namespace Signal_Block_Design_Tool.Files
                 // TODO: need to do error checking on the input to make sure that all the 
                 // fields are filled out.
                 // Do we do this with a bunch of if statements?
-
-                TrackLayout.Customer = newTrackLayout.ProjectNameBox.Text;
-                TrackLayout.ProjectName = newTrackLayout.ProjectNameBox.Text;
-                TrackLayout.Contract = newTrackLayout.ContractBox.Text;
-                TrackLayout.Preparer = newTrackLayout.PreparerBox.Text;
-                TrackLayout.MaxSpeed = Convert.ToDouble(newTrackLayout.MaxSpeedBox.Text);
-                TrackLayout.TrainType = newTrackLayout.TypeBox.Text;
-                TrackLayout.Tonnage = Convert.ToDouble(newTrackLayout.TonnageBox.Text);
-                TrackLayout.MaxBlockLength = Convert.ToDouble(newTrackLayout.MaxBlockLengthBox.Text);
-                TrackLayout.BreakingCharacteristics = newTrackLayout.BreakingCharacteristicsBox.Text;
+                try
+                {
+                    TrackLayout.Customer = newTrackLayout.ProjectNameBox.Text;
+                    TrackLayout.ProjectName = newTrackLayout.ProjectNameBox.Text;
+                    TrackLayout.Contract = newTrackLayout.ContractBox.Text;
+                    TrackLayout.Preparer = newTrackLayout.PreparerBox.Text;
+                    TrackLayout.MaxSpeed = Convert.ToDouble(newTrackLayout.MaxSpeedBox.Text);
+                    TrackLayout.TrainType = newTrackLayout.TypeBox.Text;
+                    TrackLayout.Tonnage = Convert.ToDouble(newTrackLayout.TonnageBox.Text);
+                    TrackLayout.MaxBlockLength = Convert.ToDouble(newTrackLayout.MaxBlockLengthBox.Text);
+                    TrackLayout.BreakingCharacteristics = newTrackLayout.BreakingCharacteristicsBox.Text;
+                }
+                catch (Exception ex)
+                {
+                    LogManager.Logger.Log(ex);
+                }
             }
         }
 
@@ -169,7 +184,7 @@ namespace Signal_Block_Design_Tool.Files
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    LogManager.Logger.Log(ex);
                 }
             }
         }
@@ -179,7 +194,22 @@ namespace Signal_Block_Design_Tool.Files
         /// </summary>
         public static void SaveTrack()
         {
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
 
+                    foreach (TrackSegment track in TrackLayout.Track)
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogManager.Logger.Log(ex);
+                }
+            }
         }
 
         /// <summary>
@@ -195,13 +225,13 @@ namespace Signal_Block_Design_Tool.Files
                 ProgressBoxForm progress = new ProgressBoxForm();
                 progress.Show();
 
-                
+
                 DatabaseConnection conn = new DatabaseConnection(
-                    "andrew.cs.fit.edu",
-                    3306,
-                    "signalblockdesign",
-                    "signalblockdesig",
-                    "E2SnzbV922m6R51");
+                    Config.ConfigManager.Database,
+                    Config.ConfigManager.Port,
+                    Config.ConfigManager.DatabaseName,
+                    Config.ConfigManager.UserName,
+                    Config.ConfigManager.Password);
                 conn.openConnection();
 
                 foreach (TrackSegment t in TrackLayout.Track)
@@ -214,7 +244,7 @@ namespace Signal_Block_Design_Tool.Files
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: Could not load into database. Original error: " + ex.Message);
+                LogManager.Logger.Log(ex);
             }
             parser.cleanUp();
         }

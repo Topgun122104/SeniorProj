@@ -74,6 +74,23 @@ namespace Signal_Block_Design_Tool.Files
             SafeBreakingDistance = Algorithms.SafeBrakingDistanceCalculations(this);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="trackCircuit"></param>
+        /// <param name="brakeLocation"></param>
+        /// <param name="targetLocation"></param>
+        /// <param name="gradeWorst"></param>
+        /// <param name="speedMax"></param>
+        /// <param name="overSpeed"></param>
+        /// <param name="vehicleAccel"></param>
+        /// <param name="reactionTime"></param>
+        /// <param name="brakeRate"></param>
+        /// <param name="runwayAccelSec"></param>
+        /// <param name="propulsionRemSec"></param>
+        /// <param name="brakeBuildUpSec"></param>
+        /// <param name="overhangDist"></param>
         public TrackSegment(string trackCircuit,
                             int brakeLocation, int targetLocation, double gradeWorst,
                              double speedMax, double overSpeed, double vehicleAccel,
