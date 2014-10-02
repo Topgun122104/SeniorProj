@@ -80,7 +80,11 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void ClearDataBase_MouseEnter(object sender, EventArgs e)
         {
-             this.ImportButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(130)))), ((int)(((byte)(206)))));
+             this.ClearDataBaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(130)))), ((int)(((byte)(206)))));
+        }
+        private void ClearDataBase_MouseLeave(object sender, EventArgs e)
+        {
+            this.ClearDataBaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(116)))), ((int)(((byte)(186)))));
         }
     }
 }
