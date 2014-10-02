@@ -141,7 +141,7 @@ namespace Signal_Block_Design_Tool.Forms
         #region DRAW
         private void Draw()
         {
-            ///GL.MatrixMode(MatrixMode.Modelview);
+            GL.MatrixMode(MatrixMode.Projection);
             GL.PushMatrix();
             GL.LoadIdentity();
             GL.Ortho(0, WIDTH, HEIGHT, 0, 0, 4.0);
@@ -159,14 +159,11 @@ namespace Signal_Block_Design_Tool.Forms
 
             DrawBackgroundLines();
 
-            int i = 0;
-
+            int t = 0;
             foreach (TrackSegment segment in TrackLayout.Track)
             {
-                DrawTrackSegment(segment, i);
-
-                DrawString("test", new OpenTK.Vector2(segment.BrakeLocation / 1000, i * 10));
-                i++;
+                DrawTrackSegment(segment, t);
+                t++;
             }
 
 
@@ -183,14 +180,14 @@ namespace Signal_Block_Design_Tool.Forms
         #endregion
 
         #region DRAW_HELPERS
-        public void DrawString(string s, OpenTK.Vector2 position)
-        {
-            printer.Begin();
-            GL.Color3(Color.Black);
-            GL.Translate(position.X, position.Y, 0);
-            printer.Print(s, displayFont, Color.White);
-            printer.End();
-        }
+        //public void DrawString(string s, OpenTK.Vector2 position)
+        //{
+        //    printer.Begin();
+        //    GL.Color3(Color.Black);
+        //    GL.Translate(position.X, position.Y, 0);
+        //    printer.Print(s, displayFont, Color.White);
+        //    printer.End();
+        //}
 
 
 

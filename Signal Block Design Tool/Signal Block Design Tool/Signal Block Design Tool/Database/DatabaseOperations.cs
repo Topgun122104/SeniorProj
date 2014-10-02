@@ -25,7 +25,7 @@ namespace Signal_Block_Design_Tool.Database
         /// <param name="conn"></param>
         /// <param name="cmd"></param>
         /// <param name="obj"></param>
-        public static void InsertIntoDatabase(DatabaseConnection conn,TrackSegment obj)
+        public static void InsertIntoDatabase(DatabaseConnection conn, TrackSegment obj)
         {
             MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText =

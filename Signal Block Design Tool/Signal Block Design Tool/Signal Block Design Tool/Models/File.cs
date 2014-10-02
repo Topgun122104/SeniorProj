@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace Signal_Block_Design_Tool.Files
 {
@@ -51,6 +54,9 @@ namespace Signal_Block_Design_Tool.Files
             }
         }
 
+        /// <summary>
+        ///  
+        /// </summary>
         public static void ClearDataBase()
         {
             DialogResult result = MessageBox.Show("Are you sure you want to delete the contents of the database?", "Are you sure...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -93,13 +99,13 @@ namespace Signal_Block_Design_Tool.Files
 
                     String p = Prompt.ShowDialog("Enter A Track Circuit\n\n Type 'ALL' to Display Every Track Circuit", "Track Information Needed!");
                     p = p.ToUpper();
-                    if (p == "ALL")
+                    if (p.Trim().ToUpper() == "ALL")
                     {
-                        list = q.runQuery(conn, "select * from trackSegment");
+                        list = q.runQuery(conn, "SELECT * FROM trackSegment");
                     }
                     else
                     {
-                        list = q.runQuery(conn, "select * from trackSegment where trackCircuit = '" + p + "'");
+                        list = q.runQuery(conn, "SELECT * FROM trackSegment where trackCircuit = '" + p.Trim() + "'");
                     }
 
                     int numRows = list.Count / 15;
@@ -157,17 +163,14 @@ namespace Signal_Block_Design_Tool.Files
         }
 
         /// <summary>
-        /// 
+        /// Load a saved track 
         /// </summary>
         public static void LoadTrack()
         {
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            // example files
-
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.Filter = "xml files (*.xml)|*.xml*";
+            openFileDialog1.FilterIndex = 0;
             openFileDialog1.RestoreDirectory = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -176,33 +179,98 @@ namespace Signal_Block_Design_Tool.Files
                 {
                     if ((myStream = openFileDialog1.OpenFile()) != null)
                     {
+                        ProgressBoxForm progress = new ProgressBoxForm();
+
+                        progress.Show();
                         using (myStream)
                         {
-                            // Insert code to read the stream here.
+
+                            XDocument segment = XDocument.Load(openFileDialog1.FileName);
+                            var result = from q in segment.Descendants("TrackSegment")
+                                         select new TrackSegment
+                                         {
+                                             TrackCircuit = q.Element("Circuit").Value,
+                                             BrakeLocation = int.Parse(q.Element("BrakeLocation").Value),
+                                             TargetLocation = int.Parse(q.Element("TargetLocation").Value),
+                                             GradeWorst = double.Parse(q.Element("GradeWorst").Value),
+                                             SpeedMax = double.Parse(q.Element("SpeedMax").Value),
+                                             OverSpeed = double.Parse(q.Element("OverSpeed").Value),
+                                             VehicleAccel = double.Parse(q.Element("VehicleAccel").Value),
+                                             ReactionTime = double.Parse(q.Element("ReactionTime").Value),
+                                             BrakeRate = double.Parse(q.Element("BrakeRate").Value),
+                                             RunwayAccelSec = double.Parse(q.Element("RunwayAccelSec").Value),
+                                             PropulsionRemSec = double.Parse(q.Element("PropulsionRemSec").Value),
+                                             BrakeBuildUpSec = int.Parse(q.Element("BrakeBuildUpSec").Value),
+                                             OverhangDist = int.Parse(q.Element("OverhangDist").Value),
+                                         };
+                            foreach (var item in result)
+                            {
+                                TrackLayout.Track.Add(item);
+
+                                progress.progressBar1.Increment(result.Count());
+                                Thread.Sleep(100);
+                            }
+
+
                         }
+                        progress.Close();
                     }
+
                 }
                 catch (Exception ex)
                 {
                     LogManager.Logger.Log(ex);
                 }
+
             }
         }
 
         /// <summary>
-        /// 
+        /// Save a track to a file
         /// </summary>
         public static void SaveTrack()
         {
             SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "xml files (*.xml)|*.xml*";
+            save.FilterIndex = 0;
+            save.RestoreDirectory = true;
             if (save.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-
-                    foreach (TrackSegment track in TrackLayout.Track)
+                    XmlWriterSettings settings = new XmlWriterSettings();
+                    settings.Indent = true;
+                    settings.IndentChars = "  ";
+                    settings.NewLineChars = "\r\n";
+                    settings.NewLineHandling = NewLineHandling.Replace;
+                    using (XmlWriter writer = XmlWriter.Create(save.FileName, settings))
                     {
+                        writer.WriteStartDocument();
+                        writer.WriteStartElement("TrackLayout");
 
+                        foreach (TrackSegment track in TrackLayout.Track)
+                        {
+                            writer.WriteStartElement("TrackSegment");
+
+                            writer.WriteElementString("Circuit", track.TrackCircuit.ToString());
+                            writer.WriteElementString("BrakeLocation", track.BrakeLocation.ToString());
+                            writer.WriteElementString("TargetLocation", track.TargetLocation.ToString());
+                            writer.WriteElementString("GradeWorst", track.GradeWorst.ToString());
+                            writer.WriteElementString("SpeedMax", track.SpeedMax.ToString());
+                            writer.WriteElementString("OverSpeed", track.OverSpeed.ToString());
+                            writer.WriteElementString("VehicleAccel", track.VehicleAccel.ToString());
+                            writer.WriteElementString("ReactionTime", track.ReactionTime.ToString());
+                            writer.WriteElementString("BrakeRate", track.BrakeRate.ToString());
+                            writer.WriteElementString("RunwayAccelSec", track.RunwayAccelSec.ToString());
+                            writer.WriteElementString("PropulsionRemSec", track.PropulsionRemSec.ToString());
+                            writer.WriteElementString("BrakeBuildUpSec", track.BrakeBuildUpSec.ToString());
+                            writer.WriteElementString("OverhangDist", track.OverhangDist.ToString());
+
+                            writer.WriteEndElement();
+                        }
+
+                        writer.WriteEndElement();
+                        writer.WriteEndDocument();
                     }
                 }
                 catch (Exception ex)
@@ -212,8 +280,10 @@ namespace Signal_Block_Design_Tool.Files
             }
         }
 
+
+
         /// <summary>
-        /// 
+        /// Loads a track from an excel file
         /// </summary>
         /// <param name="filename"></param>
         private static void LoadExcelFile(object filename)
@@ -224,7 +294,6 @@ namespace Signal_Block_Design_Tool.Files
             {
                 ProgressBoxForm progress = new ProgressBoxForm();
                 progress.Show();
-
 
                 DatabaseConnection conn = new DatabaseConnection(
                     Config.ConfigManager.Database,
@@ -237,7 +306,7 @@ namespace Signal_Block_Design_Tool.Files
                 foreach (TrackSegment t in TrackLayout.Track)
                 {
                     DatabaseOperations.InsertIntoDatabase(conn, t);
-                    progress.progressBar1.PerformStep();
+                    progress.progressBar1.Increment(1 / TrackLayout.Track.Count);
                 }
                 progress.Close();
                 conn.closeConnection();

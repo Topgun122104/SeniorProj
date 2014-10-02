@@ -7,11 +7,20 @@ using OpenTK.Graphics.OpenGL;
 using Signal_Block_Design_Tool.GEAlgorithms;
 using System.Windows.Forms;
 using OpenTK;
+using System.Linq;
 
 namespace Signal_Block_Design_Tool.Files
 {
     public class TrackSegment : Line
     {
+
+        /// <summary>
+        /// Empty constructor :O
+        /// </summary>
+        public TrackSegment()
+        {
+
+        }
         /// <summary>
         /// Constructor for a new line
         /// Sets the thickness to 5f, and deoth to 1.0f
@@ -168,25 +177,32 @@ namespace Signal_Block_Design_Tool.Files
         private double safeBreakingDistance;
         /// <summary>
         /// 
-        /// </summary>
+        /// </summary>  
         public double SafeBreakingDistance
         {
-            get { return safeBreakingDistance; }
+            get { return Algorithms.SafeBrakingDistanceCalculations(this); }
             set { safeBreakingDistance = value; }
         }
 
         private double sbdRequired;
-         public double SafeBreakingDistanceRequired
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double SafeBreakingDistanceRequired
         {
-             get { return sbdRequired; }
-              set{ sbdRequired = value; }
+            get { return sbdRequired; }
+            set { sbdRequired = value; }
         }
 
         private bool isSafe;
-         public bool IsSafe
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsSafe
         {
-             get { return isSafe; }
-             set { isSafe = value; }
+            get { return (SafeBreakingDistance < SafeBreakingDistanceRequired); }
+            set { isSafe = value; }
         }
 
         private double runtimePerformance;
@@ -198,8 +214,6 @@ namespace Signal_Block_Design_Tool.Files
             get { return runtimePerformance; }
             set { runtimePerformance = value; }
         }
-
-
 
         /////////////////////////////////////////////////////////////////////////////
 
