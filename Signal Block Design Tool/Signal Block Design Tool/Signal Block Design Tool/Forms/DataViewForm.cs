@@ -104,10 +104,13 @@ namespace Signal_Block_Design_Tool.Forms
 
             for (int i = 0; i < rowNum; i++)
             {
-                if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")
+                if (dataGridView2.Rows[i].Cells[13].Value.ToString() == "False")
                 {
                     badRows += rowIndex + ", ";
-                    dataGridView2.Rows[i].Cells[0].Style.SelectionBackColor = Color.Red;
+                    for (int j = 0; j < 14; j++)
+                    {
+                         dataGridView2.Rows[i].Cells[j].Style.BackColor = Color.Red;
+                    }         
                 }
                 rowIndex++;
             }
