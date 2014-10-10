@@ -107,6 +107,7 @@ namespace Signal_Block_Design_Tool.Forms
                 if (dataGridView2.Rows[i].Cells[12].Value.ToString() == "False")
                 {
                     badRows += rowIndex + ", ";
+                    dataGridView2.Rows[i].Cells[0].Style.SelectionBackColor = Color.Red;
                 }
                 rowIndex++;
             }
