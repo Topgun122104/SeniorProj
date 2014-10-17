@@ -105,7 +105,7 @@ namespace Signal_Block_Design_Tool.Files
                              double speedMax, double overSpeed, double vehicleAccel,
                             double reactionTime, double brakeRate, double runwayAccelSec,
                             double propulsionRemSec, int brakeBuildUpSec, int overhangDist)
-            : base(0, 0)
+            : base(brakeLocation, targetLocation)
         {
             TrackCircuit = trackCircuit;
             BrakeLocation = brakeLocation;

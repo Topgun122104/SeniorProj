@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 namespace Signal_Block_Design_Tool.Forms
 {
+
     #region INITIALIZE
     public partial class TrackViewForm : Form
     {
@@ -32,24 +33,18 @@ namespace Signal_Block_Design_Tool.Forms
 
         public TrackViewForm()
         {
-
             InitializeComponent();
             stopwatch = new Stopwatch();
             stopwatch.Start();
-
-
         }
 
         private void glControl1_Load(object sender, EventArgs e)
         {
             loaded = true;
-
             displayFont = new Font(FontFamily.GenericSansSerif, 10.0f);
             OpenTK.Graphics.GraphicsContext.CurrentContext.SwapInterval = 1000;
             Application.Idle += Application_Idle;
             OpenTK.Graphics.OpenGL.GL.ClearColor(Color.Black);
-
-
 
             SetupViewport();
             if (TrackLayout.Track.Count > 0)
@@ -60,15 +55,15 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
             }
-            writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
+           // writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
 
-            writer.AddLine("FPS " + idleCounter.ToString(), new PointF(10, 10), Brushes.Red);
+            //writer.AddLine("FPS " + idleCounter.ToString(), new PointF(10, 10), Brushes.Red);
 
-            for (int i = 0; i < TrackLayout.Track.Count; i++)
-            {
-                writer.AddLine(TrackLayout.Track[i].TrackCircuit.ToString(), new PointF(TrackLayout.Track[i].brakeLocation, i * 15), Brushes.Red);
-            }
-            writer.UpdateText();
+            //for (int i = 0; i < TrackLayout.Track.Count; i++)
+            //{
+            //    writer.AddLine(TrackLayout.Track[i].TrackCircuit.ToString(), new PointF(TrackLayout.Track[i].brakeLocation, i * 15), Brushes.Red);
+            //}
+            
         }
 
         private void Animate(double milliseconds)
@@ -92,10 +87,9 @@ namespace Signal_Block_Design_Tool.Forms
             accumulator += milliseconds;
             if (accumulator > 1000)
             {
-
                 // Update the frames per second display
                 FPSLabel.Text = "FPS: " + idleCounter.ToString();
-                writer.Update(0, "FPS: " + idleCounter.ToString());
+                //writer.Update(0, "FPS: " + idleCounter.ToString());
                 accumulator -= 1000;
                 idleCounter = 0;
             }
@@ -145,12 +139,12 @@ namespace Signal_Block_Design_Tool.Forms
             Accumulate(milliseconds);
             positionLabel.Text = camera._pos.ToString();
             clicksLabel.Text = camera.getZoom().ToString();
-
+           // writer.UpdateText();
         }
         #endregion
 
         #region DRAW
-        private void Draw()
+        public void Draw()
         {
             GL.MatrixMode(MatrixMode.Projection);
             GL.PushMatrix();
@@ -176,9 +170,9 @@ namespace Signal_Block_Design_Tool.Forms
                 DrawTrackSegment(segment, t);
                 t++;
             }
-            //writer.Draw();
-
+           
             OpenTK.Graphics.OpenGL.GL.End();
+            //writer.Draw(camera);
 
 
             // Swap the buffers 
@@ -194,6 +188,11 @@ namespace Signal_Block_Design_Tool.Forms
         #region DRAW_HELPERS
 
 
+        /// <summary>
+        /// Draws the track segment to the screen
+        /// </summary>
+        /// <param name="segment">The track segment to draw</param>
+        /// <param name="i">The Y off set for the track segment</param>
         private void DrawTrackSegment(TrackSegment segment, int i)
         {
             if (!segment.IsSafe)
@@ -209,16 +208,22 @@ namespace Signal_Block_Design_Tool.Forms
             DrawLine(segment.TargetLocation, i * TRACKOFFSET + ENDTRACKSIZE, segment.TargetLocation, i * TRACKOFFSET - ENDTRACKSIZE);
 
         }
+
+        /// <summary>
+        /// Draws a basic line to the screen
+        /// </summary>
+        /// <param name="startX"></param>
+        /// <param name="startY"></param>
+        /// <param name="stopX"></param>
+        /// <param name="stopY"></param>
         private void DrawLine(int startX, int startY, int stopX, int stopY)
         {
-
             GL.LineWidth(2.5f);
             GL.Enable(EnableCap.LineSmooth);
             OpenTK.Graphics.OpenGL.GL.Begin(PrimitiveType.Lines);
             OpenTK.Graphics.OpenGL.GL.Vertex2(startX, startY);
             OpenTK.Graphics.OpenGL.GL.Vertex2(stopX, stopY);
             OpenTK.Graphics.OpenGL.GL.End();
-
         }
         private void DrawBackgroundLines()
         {
@@ -266,7 +271,6 @@ namespace Signal_Block_Design_Tool.Forms
             // seems glitchy :/
             switch (e.KeyCode)
             {
-
                 case Keys.Add:
                     camera.setZoom(camera.getZoom() + .1f);
                     break;
@@ -290,8 +294,6 @@ namespace Signal_Block_Design_Tool.Forms
                 camera.setZoom(camera.getZoom() - .1f);
                 currentClicks = 0;
             }
-
-
             previousClicks = currentClicks;
         }
         private void glControl1_MouseDown(object sender, MouseEventArgs e)
@@ -346,19 +348,38 @@ namespace Signal_Block_Design_Tool.Forms
             camera._pos = new Vector2(center, 0);
         }
 
+        /// <summary>
+        /// Returns the maximum number for the track segments
+        /// </summary>
+        /// <returns></returns>
         private int GetMaximum()
         {
             if (TrackLayout.Track.Count == 0)
             {
-                 return (0);
+                return (0);
             }
             else
             {
-                // get the maximum number from the brake locations
-                return (0);
+                int min = Int32.MaxValue;
+                foreach (TrackSegment track in TrackLayout.Track)
+                {
+                    if (track.BrakeLocation < min)
+                    {
+                        min = track.BrakeLocation;
+                    }
+                    if (track.TargetLocation < min)
+                    {
+                        min = track.TargetLocation;
+                    }
+                }
+                return (min);
             }
         }
 
+        /// <summary>
+        /// Returns the minimum number for the track segments
+        /// </summary>
+        /// <returns></returns>
         private int GetMinimum()
         {
             if (TrackLayout.Track.Count == 0)
@@ -367,8 +388,19 @@ namespace Signal_Block_Design_Tool.Forms
             }
             else
             {
-                // get the minium number from the brake locations
-                return (0);
+                int max = Int32.MinValue;
+                foreach (TrackSegment track in TrackLayout.Track)
+                {
+                    if (track.BrakeLocation > max)
+                    {
+                        max = track.BrakeLocation;
+                    }
+                    if (track.TargetLocation > max)
+                    {
+                        max = track.TargetLocation;
+                    }
+                }
+                return (max);
             }
         }
 

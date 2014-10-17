@@ -10,7 +10,7 @@ using OpenTK;
 
 namespace Signal_Block_Design_Tool.Files
 {
-    class Camera2D
+    public class Camera2D
     {
         public Vector2 _pos;
         public Vector2 _origin;

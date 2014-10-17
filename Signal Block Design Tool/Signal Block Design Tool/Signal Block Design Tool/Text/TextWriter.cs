@@ -64,7 +64,7 @@ namespace Signal_Block_Design_Tool.Text
         {
             if (_textureId > 0)
             {
-                OpenTK.Graphics.GL.DeleteTexture(_textureId);
+                GL.DeleteTexture(_textureId);
             }
         }
 
@@ -90,7 +90,7 @@ namespace Signal_Block_Design_Tool.Text
             {
                 using (Graphics graphics = Graphics.FromImage(TextBitmap))
                 {
-                    graphics.Clear(Color.Black);
+                    graphics.Clear(Color.Transparent);
                     graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
                     for (int i = 0; i < _lines.Count; i++)
                     {
@@ -105,16 +105,17 @@ namespace Signal_Block_Design_Tool.Text
             TextBitmap.UnlockBits(data);
         }
 
-        public void Draw()
+        public void Draw(Camera2D camera)
         {
-            //OpenTK.Graphics.GL.PushMatrix();
-            //OpenTK.Graphics.GL.LoadIdentity();
+            OpenTK.Graphics.GL.PushMatrix();
+            OpenTK.Graphics.GL.LoadIdentity();
 
-            //Matrix4 ortho_projection = camera.getTransformation();
-            // OpenTK.Graphics.GL.MatrixMode(OpenTK.Graphics.MatrixMode.Projection);
+            Matrix4 projection = camera.getTransformation();
+            OpenTK.Graphics.GL.MatrixMode(OpenTK.Graphics.MatrixMode.Projection);
 
-            //OpenTK.Graphics.GL.PushMatrix();//
-            // OpenTK.Graphics.GL.LoadMatrix(ref ortho_projection);
+            OpenTK.Graphics.GL.PushMatrix();
+            OpenTK.Graphics.GL.LoadMatrix(ref projection);
+
 
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.One, BlendingFactorDest.DstColor);
@@ -122,7 +123,7 @@ namespace Signal_Block_Design_Tool.Text
             GL.BindTexture(TextureTarget.Texture2D, _textureId);
 
 
-            GL.Begin(BeginMode.Quads);
+            GL.Begin(PrimitiveType.Quads);
             GL.TexCoord2(0, 0);
             GL.Vertex2(0, 0);
             GL.TexCoord2(1, 0);
@@ -137,7 +138,7 @@ namespace Signal_Block_Design_Tool.Text
             GL.Disable(EnableCap.Blend);
             GL.Disable(EnableCap.Texture2D);
 
-            //GL.MatrixMode(MatrixMode.Modelview);
+            GL.MatrixMode(MatrixMode.Modelview);
             GL.PopMatrix();
         }
 
