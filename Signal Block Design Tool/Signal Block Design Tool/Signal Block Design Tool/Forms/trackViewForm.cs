@@ -27,7 +27,7 @@ namespace Signal_Block_Design_Tool.Forms
         private Font displayFont;
         private const int TRACKOFFSET = 25;
         private const int ENDTRACKSIZE = 3;
-        OpenTK.Graphics.TextPrinter printer;
+        private Text.TextWriter writer;
 
 
         public TrackViewForm()
@@ -36,6 +36,7 @@ namespace Signal_Block_Design_Tool.Forms
             InitializeComponent();
             stopwatch = new Stopwatch();
             stopwatch.Start();
+
 
         }
 
@@ -47,7 +48,8 @@ namespace Signal_Block_Design_Tool.Forms
             OpenTK.Graphics.GraphicsContext.CurrentContext.SwapInterval = 1000;
             Application.Idle += Application_Idle;
             OpenTK.Graphics.OpenGL.GL.ClearColor(Color.Black);
-            printer = new OpenTK.Graphics.TextPrinter(OpenTK.Graphics.TextQuality.High);
+
+
 
             SetupViewport();
             if (TrackLayout.Track.Count > 0)
@@ -58,6 +60,15 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
             }
+            writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
+
+            writer.AddLine("FPS " + idleCounter.ToString(), new PointF(10, 10), Brushes.Red);
+
+            for (int i = 0; i < TrackLayout.Track.Count; i++)
+            {
+                writer.AddLine(TrackLayout.Track[i].TrackCircuit.ToString(), new PointF(TrackLayout.Track[i].brakeLocation, i * 15), Brushes.Red);
+            }
+            writer.UpdateText();
         }
 
         private void Animate(double milliseconds)
@@ -82,7 +93,9 @@ namespace Signal_Block_Design_Tool.Forms
             if (accumulator > 1000)
             {
 
+                // Update the frames per second display
                 FPSLabel.Text = "FPS: " + idleCounter.ToString();
+                writer.Update(0, "FPS: " + idleCounter.ToString());
                 accumulator -= 1000;
                 idleCounter = 0;
             }
@@ -128,12 +141,10 @@ namespace Signal_Block_Design_Tool.Forms
 
         private void Update(Stopwatch stopwatch)
         {
-
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
             positionLabel.Text = camera._pos.ToString();
             clicksLabel.Text = camera.getZoom().ToString();
-
 
         }
         #endregion
@@ -157,7 +168,7 @@ namespace Signal_Block_Design_Tool.Forms
             OpenTK.Matrix4 mat = camera.getTransformation();
             GL.MultMatrix(ref mat);
 
-            DrawBackgroundLines();
+            //DrawBackgroundLines();
 
             int t = 0;
             foreach (TrackSegment segment in TrackLayout.Track)
@@ -165,9 +176,10 @@ namespace Signal_Block_Design_Tool.Forms
                 DrawTrackSegment(segment, t);
                 t++;
             }
-
+            //writer.Draw();
 
             OpenTK.Graphics.OpenGL.GL.End();
+
 
             // Swap the buffers 
             if (glControl1.Focused)
@@ -180,15 +192,6 @@ namespace Signal_Block_Design_Tool.Forms
         #endregion
 
         #region DRAW_HELPERS
-        //public void DrawString(string s, OpenTK.Vector2 position)
-        //{
-        //    printer.Begin();
-        //    GL.Color3(Color.Black);
-        //    GL.Translate(position.X, position.Y, 0);
-        //    printer.Print(s, displayFont, Color.White);
-        //    printer.End();
-        //}
-
 
 
         private void DrawTrackSegment(TrackSegment segment, int i)
@@ -333,5 +336,43 @@ namespace Signal_Block_Design_Tool.Forms
             }
         }
         #endregion
+
+        private void GoToTrackButton_Click(object sender, EventArgs e)
+        {
+            int min = GetMinimum();
+            int max = GetMaximum();
+            float center = (min + max) / 2;
+
+            camera._pos = new Vector2(center, 0);
+        }
+
+        private int GetMaximum()
+        {
+            if (TrackLayout.Track.Count == 0)
+            {
+                 return (0);
+            }
+            else
+            {
+                // get the maximum number from the brake locations
+                return (0);
+            }
+        }
+
+        private int GetMinimum()
+        {
+            if (TrackLayout.Track.Count == 0)
+            {
+                return (0);
+            }
+            else
+            {
+                // get the minium number from the brake locations
+                return (0);
+            }
+        }
+
+
+
     }
 }

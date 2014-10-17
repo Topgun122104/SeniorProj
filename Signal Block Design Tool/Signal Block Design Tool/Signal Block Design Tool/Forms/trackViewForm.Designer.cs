@@ -37,6 +37,7 @@ namespace Signal_Block_Design_Tool.Forms
             this.originLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.clicksLabel = new System.Windows.Forms.Label();
+            this.GoTrackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // glControl1
@@ -115,12 +116,23 @@ namespace Signal_Block_Design_Tool.Forms
             this.clicksLabel.Size = new System.Drawing.Size(0, 13);
             this.clicksLabel.TabIndex = 7;
             // 
+            // GoTrackButton
+            // 
+            this.GoTrackButton.Location = new System.Drawing.Point(1203, 134);
+            this.GoTrackButton.Name = "GoTrackButton";
+            this.GoTrackButton.Size = new System.Drawing.Size(75, 23);
+            this.GoTrackButton.TabIndex = 8;
+            this.GoTrackButton.Text = "Go to track";
+            this.GoTrackButton.UseVisualStyleBackColor = true;
+            this.GoTrackButton.Click += new System.EventHandler(this.GoToTrackButton_Click);
+            // 
             // TrackViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1344, 661);
             this.ControlBox = false;
+            this.Controls.Add(this.GoTrackButton);
             this.Controls.Add(this.clicksLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.originLabel);
@@ -146,6 +158,7 @@ namespace Signal_Block_Design_Tool.Forms
         public System.Windows.Forms.Label originLabel;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label clicksLabel;
+        private System.Windows.Forms.Button GoTrackButton;
 
 
 
