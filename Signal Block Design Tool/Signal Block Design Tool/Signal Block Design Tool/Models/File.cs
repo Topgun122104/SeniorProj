@@ -101,7 +101,7 @@ namespace Signal_Block_Design_Tool.Files
                     p = p.ToUpper();
                     if (p.Trim().ToUpper() == "ALL")
                     {
-                        list = q.runQuery(conn, "SELECT * FROM trackSegment");
+                        list = q.runQuery(conn, "SELECT * FROM track_segments");
                     }
                     else
                     {
