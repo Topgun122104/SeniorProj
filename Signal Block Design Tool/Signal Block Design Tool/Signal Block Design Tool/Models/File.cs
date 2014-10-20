@@ -105,7 +105,7 @@ namespace Signal_Block_Design_Tool.Files
                     }
                     else
                     {
-                        list = q.runQuery(conn, "SELECT * FROM trackSegment where trackCircuit = '" + p.Trim() + "'");
+                        list = q.runQuery(conn, "SELECT * FROM track_segments where trackCircuit = '" + p.Trim() + "'");
                     }
 
                     int numRows = list.Count / 15;
