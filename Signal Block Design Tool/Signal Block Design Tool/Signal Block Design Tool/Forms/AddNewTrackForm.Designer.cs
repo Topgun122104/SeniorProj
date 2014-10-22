@@ -367,7 +367,7 @@
                this.MinimizeBox = false;
                this.Name = "AddNewTrackForm";
                this.ShowIcon = false;
-               this.Text = "Add Track Segement";
+               this.Text = "Add Track Segment";
                this.ResumeLayout(false);
                this.PerformLayout();
 

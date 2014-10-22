@@ -132,30 +132,8 @@ namespace Signal_Block_Design_Tool.Files
         /// </summary>
         public static void CreateNewTrack()
         {
-            NewTrackLayoutForm newTrackLayout = new NewTrackLayoutForm();
-            if (newTrackLayout.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-
-                // TODO: need to do error checking on the input to make sure that all the 
-                // fields are filled out.
-                // Do we do this with a bunch of if statements?
-                try
-                {
-                    TrackLayout.Customer = newTrackLayout.ProjectNameBox.Text;
-                    TrackLayout.ProjectName = newTrackLayout.ProjectNameBox.Text;
-                    TrackLayout.Contract = newTrackLayout.ContractBox.Text;
-                    TrackLayout.Preparer = newTrackLayout.PreparerBox.Text;
-                    TrackLayout.MaxSpeed = Convert.ToDouble(newTrackLayout.MaxSpeedBox.Text);
-                    TrackLayout.TrainType = newTrackLayout.TypeBox.Text;
-                    TrackLayout.Tonnage = Convert.ToDouble(newTrackLayout.TonnageBox.Text);
-                    TrackLayout.MaxBlockLength = Convert.ToDouble(newTrackLayout.MaxBlockLengthBox.Text);
-                    TrackLayout.BreakingCharacteristics = newTrackLayout.BreakingCharacteristicsBox.Text;
-                }
-                catch (Exception ex)
-                {
-                    LogManager.Logger.Log(ex);
-                }
-            }
+            AddNewTrackForm newTrackLayout = new AddNewTrackForm();
+            newTrackLayout.ShowDialog();
         }
 
         /// <summary>

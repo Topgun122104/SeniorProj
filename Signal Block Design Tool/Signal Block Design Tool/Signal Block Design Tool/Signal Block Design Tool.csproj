@@ -88,12 +88,6 @@
     <Compile Include="Forms\LoadFromDatabaseForm.Designer.cs">
       <DependentUpon>LoadFromDatabaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewTrackLayoutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NewTrackLayoutForm.Designer.cs">
-      <DependentUpon>NewTrackLayoutForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\TrackViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,9 +147,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewTrackLayoutForm.resx">
-      <DependentUpon>NewTrackLayoutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProgressBoxForm.resx">
       <DependentUpon>ProgressBoxForm.cs</DependentUpon>
