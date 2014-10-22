@@ -20,6 +20,7 @@ namespace Signal_Block_Design_Tool.Files
         /// </summary>
         public static void ImportFromFile()
         {
+            TrackLayout.Track.Clear();
             Stream myStream = null;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
@@ -84,6 +85,7 @@ namespace Signal_Block_Design_Tool.Files
         /// </summary>
         public static void LoadFromDatabase()
         {
+            TrackLayout.Track.Clear();
             LoadFromDatabaseForm databaseForm = new LoadFromDatabaseForm();
             if (databaseForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
