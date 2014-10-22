@@ -65,6 +65,9 @@ namespace Signal_Block_Design_Tool.Forms
         {
             this.dataGridView1.DataBindings.Clear();
             this.dataGridView1.Rows.Clear();
+            this.dataGridView2.DataBindings.Clear();
+            this.dataGridView2.Rows.Clear();
+
         }
         /// <summary>
         /// 
@@ -111,12 +114,12 @@ namespace Signal_Block_Design_Tool.Forms
                 {
                     for (int j = 0; j < 16; j++)
                     {
-                         dataGridView2.Rows[i].Cells[j].Style.BackColor = Color.Red;
+                         dataGridView2.Rows[i].Cells[j].Style.BackColor = Color.Pink;
                     }  
                      
                     for(int j = 0; j < 3; j++)
                     {
-                         dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Red;
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Pink;
                     }
                 }
                 rowIndex++;

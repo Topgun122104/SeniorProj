@@ -107,14 +107,17 @@ namespace Signal_Block_Design_Tool.Text
 
         public void Draw(Camera2D camera)
         {
-            OpenTK.Graphics.GL.PushMatrix();
-            OpenTK.Graphics.GL.LoadIdentity();
+            GL.PushMatrix();
+            GL.LoadIdentity();
 
-            Matrix4 projection = camera.getTransformation();
-            OpenTK.Graphics.GL.MatrixMode(OpenTK.Graphics.MatrixMode.Projection);
+            Matrix4 ortho_projection = Matrix4.CreateOrthographicOffCenter(0, _clientSize.Width, _clientSize.Height, 0, -1, 1);
+            GL.MatrixMode(MatrixMode.Projection);
 
-            OpenTK.Graphics.GL.PushMatrix();
-            OpenTK.Graphics.GL.LoadMatrix(ref projection);
+            // Matrix4 projection = camera.getTransformation();
+            //OpenTK.Graphics.GL.MatrixMode(OpenTK.Graphics.MatrixMode.Projection);
+
+            GL.PushMatrix();
+            GL.LoadMatrix(ref ortho_projection);
 
 
             GL.Enable(EnableCap.Blend);
@@ -140,8 +143,8 @@ namespace Signal_Block_Design_Tool.Text
 
             GL.MatrixMode(MatrixMode.Modelview);
             GL.PopMatrix();
+
+
         }
-
-
     }
 }

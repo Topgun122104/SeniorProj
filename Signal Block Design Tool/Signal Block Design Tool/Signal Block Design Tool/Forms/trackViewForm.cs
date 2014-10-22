@@ -55,7 +55,9 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 camera = new Camera2D(new OpenTK.Vector2(0, 0), new OpenTK.Vector2(WIDTH, HEIGHT));
             }
-           // writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
+
+
+            // writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
 
             //writer.AddLine("FPS " + idleCounter.ToString(), new PointF(10, 10), Brushes.Red);
 
@@ -63,7 +65,7 @@ namespace Signal_Block_Design_Tool.Forms
             //{
             //    writer.AddLine(TrackLayout.Track[i].TrackCircuit.ToString(), new PointF(TrackLayout.Track[i].brakeLocation, i * 15), Brushes.Red);
             //}
-            
+
         }
 
         private void Animate(double milliseconds)
@@ -89,7 +91,7 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 // Update the frames per second display
                 FPSLabel.Text = "FPS: " + idleCounter.ToString();
-                //writer.Update(0, "FPS: " + idleCounter.ToString());
+                // writer.Update(0, "FPS: " + idleCounter.ToString());
                 accumulator -= 1000;
                 idleCounter = 0;
             }
@@ -139,7 +141,7 @@ namespace Signal_Block_Design_Tool.Forms
             Accumulate(milliseconds);
             positionLabel.Text = camera._pos.ToString();
             clicksLabel.Text = camera.getZoom().ToString();
-           // writer.UpdateText();
+            //writer.UpdateText();
         }
         #endregion
 
@@ -170,8 +172,9 @@ namespace Signal_Block_Design_Tool.Forms
                 DrawTrackSegment(segment, t);
                 t++;
             }
-           
+
             OpenTK.Graphics.OpenGL.GL.End();
+
             //writer.Draw(camera);
 
 
@@ -346,6 +349,7 @@ namespace Signal_Block_Design_Tool.Forms
             float center = (min + max) / 2;
 
             camera._pos = new Vector2(center, 0);
+            this.Update();
         }
 
         /// <summary>
