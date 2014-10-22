@@ -57,14 +57,14 @@ namespace Signal_Block_Design_Tool.Forms
             }
 
 
-            // writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
+            writer = new Signal_Block_Design_Tool.Text.TextWriter(new Rectangle(0, 0, WIDTH, HEIGHT).Size, new Rectangle(0, 0, WIDTH, HEIGHT).Size);
 
-            //writer.AddLine("FPS " + idleCounter.ToString(), new PointF(10, 10), Brushes.Red);
+            writer.AddLine("FPS " + idleCounter.ToString(), new PointF(10, 10), Brushes.Red);
 
-            //for (int i = 0; i < TrackLayout.Track.Count; i++)
-            //{
-            //    writer.AddLine(TrackLayout.Track[i].TrackCircuit.ToString(), new PointF(TrackLayout.Track[i].brakeLocation, i * 15), Brushes.Red);
-            //}
+            for (int i = 0; i < TrackLayout.Track.Count; i++)
+            {
+                writer.AddLine(TrackLayout.Track[i].TrackCircuit.ToString(), new PointF(TrackLayout.Track[i].brakeLocation, i * 15), Brushes.Red);
+            }
 
         }
 
@@ -91,7 +91,7 @@ namespace Signal_Block_Design_Tool.Forms
             {
                 // Update the frames per second display
                 FPSLabel.Text = "FPS: " + idleCounter.ToString();
-                // writer.Update(0, "FPS: " + idleCounter.ToString());
+                writer.Update(0, "FPS: " + idleCounter.ToString());
                 accumulator -= 1000;
                 idleCounter = 0;
             }
@@ -141,7 +141,7 @@ namespace Signal_Block_Design_Tool.Forms
             Accumulate(milliseconds);
             positionLabel.Text = camera._pos.ToString();
             clicksLabel.Text = camera.getZoom().ToString();
-            //writer.UpdateText();
+            writer.UpdateText();
         }
         #endregion
 
@@ -175,7 +175,7 @@ namespace Signal_Block_Design_Tool.Forms
 
             OpenTK.Graphics.OpenGL.GL.End();
 
-            //writer.Draw(camera);
+            writer.Draw(camera);
 
 
             // Swap the buffers 
