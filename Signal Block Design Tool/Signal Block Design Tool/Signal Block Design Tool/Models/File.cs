@@ -98,7 +98,6 @@ namespace Signal_Block_Design_Tool.Files
                     List<string> list;
 
                     String p = Prompt.ShowDialog("Enter A Track Circuit\n\n Type 'ALL' to Display Every Track Circuit", "Track Information Needed!");
-                    p = p.ToUpper();
                     if (p.Trim().ToUpper() == "ALL")
                     {
                         list = q.runQuery(conn, "SELECT * FROM track_segments");
@@ -108,20 +107,16 @@ namespace Signal_Block_Design_Tool.Files
                         list = q.runQuery(conn, "SELECT * FROM track_segments where trackCircuit = '" + p.Trim() + "'");
                     }
 
-                    int numRows = list.Count / 15;
+                    int numRows = list.Count / 16;
                     TrackSegment ts;
                     for (int i = 0; i < numRows; i++)
                     {
-                        ts = new TrackSegment(list[0].ToString(), Convert.ToInt32(list[2].ToString()), Convert.ToInt32(list[3].ToString()), Convert.ToDouble(list[4].ToString()),
-                             Convert.ToDouble(list[5].ToString()), Convert.ToDouble(list[6].ToString()), Convert.ToDouble(list[7].ToString()), Convert.ToDouble(list[8].ToString()),
-                             Convert.ToDouble(list[9].ToString()), Convert.ToDouble(list[10].ToString()), Convert.ToDouble(list[11].ToString()), Convert.ToInt32(list[12].ToString()),
-                             Convert.ToInt32(list[13].ToString()));
+                        var offset = 16*i;
+                        ts = new TrackSegment(list[offset + 3].ToString(), Convert.ToInt32(list[offset + 4].ToString()), Convert.ToInt32(list[offset + 5].ToString()), Convert.ToDouble(list[offset + 6].ToString()),
+                             Convert.ToDouble(list[offset + 7].ToString()), Convert.ToDouble(list[offset + 8].ToString()), Convert.ToDouble(list[offset + 9].ToString()), Convert.ToDouble(list[offset + 10].ToString()),
+                             Convert.ToDouble(list[offset + 11].ToString()), Convert.ToDouble(list[offset + 12].ToString()), Convert.ToDouble(list[offset + 13].ToString()), Convert.ToInt32(list[offset + 14].ToString()),
+                             Convert.ToInt32(list[offset + 15].ToString()));
                         TrackLayout.Track.Add(ts);
-
-                        for (int j = 0; j < 15; j++)
-                        {
-                            list.RemoveAt(0);
-                        }
                     }
                 }
                 catch (Exception ex)

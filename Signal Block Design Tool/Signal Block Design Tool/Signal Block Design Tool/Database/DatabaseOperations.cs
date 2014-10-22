@@ -31,8 +31,8 @@ namespace Signal_Block_Design_Tool.Database
             cmd.CommandText =
                 @"Insert into track_segments (trackCircuit, brakeLocation, targetLocation, worst_case_grade_during_stop, max_entry_speed, overSpeed, vehicleAccel, reactionTime, brakeRate, runwayAccel, propulsion, build_up_brake, overhang) VALUES (@trackCircuit, @brakeLocation, @targetLocation, @worst_case_grade_during_stop, @max_entry_speed, @overSpeed, @vehicleAccel, @reactionTime, @brakeRate, @runwayAccel, @propulsion, @build_up_brake, @overhang)";
             cmd.Parameters.AddWithValue("@trackCircuit", obj.TrackCircuit);
-            cmd.Parameters.AddWithValue("@brakeLocation", obj.StartPoint);
-            cmd.Parameters.AddWithValue("@targetLocation", obj.EndPoint);
+            cmd.Parameters.AddWithValue("@brakeLocation", obj.BrakeLocation);
+            cmd.Parameters.AddWithValue("@targetLocation", obj.TargetLocation);
             cmd.Parameters.AddWithValue("@worst_case_grade_during_stop", obj.GradeWorst);
             cmd.Parameters.AddWithValue("@max_entry_speed", obj.SpeedMax);
             cmd.Parameters.AddWithValue("@overSpeed", obj.OverSpeed);
