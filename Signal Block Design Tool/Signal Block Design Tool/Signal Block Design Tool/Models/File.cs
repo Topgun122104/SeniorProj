@@ -113,11 +113,23 @@ namespace Signal_Block_Design_Tool.Files
                     for (int i = 0; i < numRows; i++)
                     {
                         var offset = 15*i;
+                        bool exists = false;
                         ts = new TrackSegment(list[offset + 0].ToString(), list[offset + 1].ToString(), list[offset + 2].ToString(), Convert.ToInt32(list[offset + 3].ToString()), Convert.ToInt32(list[offset + 4].ToString()), Convert.ToDouble(list[offset + 5].ToString()),
                              Convert.ToDouble(list[offset + 6].ToString()), Convert.ToDouble(list[offset + 7].ToString()), Convert.ToDouble(list[offset + 8].ToString()), Convert.ToDouble(list[offset + 9].ToString()),
                              Convert.ToDouble(list[offset + 10].ToString()), Convert.ToDouble(list[offset + 11].ToString()), Convert.ToDouble(list[offset + 12].ToString()), Convert.ToInt32(list[offset + 13].ToString()),
                              Convert.ToInt32(list[offset + 14].ToString()));
-                        TrackLayout.Track.Add(ts);
+                         foreach(TrackSegment segment in TrackLayout.Track)
+                         {
+                              if (ts.IsSame(segment)) 
+                              {
+                                   exists = true;
+                              }
+                         }
+                         if(!exists)
+                         {
+                              TrackLayout.Track.Add(ts);
+                         }
+                       
                     }
                 }
                 catch (Exception ex)

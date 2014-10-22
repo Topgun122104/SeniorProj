@@ -7,7 +7,6 @@ using OpenTK.Graphics.OpenGL;
 using Signal_Block_Design_Tool.GEAlgorithms;
 using System.Windows.Forms;
 using OpenTK;
-using System.Linq;
 
 namespace Signal_Block_Design_Tool.Files
 {
@@ -366,6 +365,16 @@ namespace Signal_Block_Design_Tool.Files
         {
             get { return propulsionRemSec; }
             set { propulsionRemSec = value; }
+        }
+
+        public bool IsSame(TrackSegment ts)
+        {
+             return (this.BrakeBuildUpSec == ts.BrakeBuildUpSec) && (this.BrakeLocation == ts.BrakeLocation)
+                  && (this.BrakeRate == ts.BrakeRate) && (this.Direction == ts.Direction) && (this.GradeWorst == ts.GradeWorst) 
+                  && (this.Move == ts.Move) && (this.OverhangDist == ts.OverhangDist) && (this.OverSpeed == ts.OverSpeed) 
+                  && (this.PropulsionRemSec == ts.PropulsionRemSec) && (this.ReactionTime == ts.ReactionTime) 
+                  && (this.RunwayAccelSec == ts.RunwayAccelSec) && (this.SpeedMax == ts.SpeedMax) && (this.TargetLocation == ts.TargetLocation)
+                  && (this.TrackCircuit == ts.TrackCircuit) && (this.VehicleAccel == ts.VehicleAccel);
         }
     }
 }
