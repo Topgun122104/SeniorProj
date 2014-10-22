@@ -107,15 +107,16 @@ namespace Signal_Block_Design_Tool.Files
                         list = q.runQuery(conn, "SELECT * FROM track_segments where trackCircuit = '" + p.Trim() + "'");
                     }
 
-                    int numRows = list.Count / 16;
+                    int numRows = list.Count / 15;
                     TrackSegment ts;
+                    
                     for (int i = 0; i < numRows; i++)
                     {
-                        var offset = 16*i;
-                        ts = new TrackSegment(list[offset + 1].ToString(), list[offset + 2].ToString(), list[offset + 3].ToString(), Convert.ToInt32(list[offset + 4].ToString()), Convert.ToInt32(list[offset + 5].ToString()), Convert.ToDouble(list[offset + 6].ToString()),
-                             Convert.ToDouble(list[offset + 7].ToString()), Convert.ToDouble(list[offset + 8].ToString()), Convert.ToDouble(list[offset + 9].ToString()), Convert.ToDouble(list[offset + 10].ToString()),
-                             Convert.ToDouble(list[offset + 11].ToString()), Convert.ToDouble(list[offset + 12].ToString()), Convert.ToDouble(list[offset + 13].ToString()), Convert.ToInt32(list[offset + 14].ToString()),
-                             Convert.ToInt32(list[offset + 15].ToString()));
+                        var offset = 15*i;
+                        ts = new TrackSegment(list[offset + 0].ToString(), list[offset + 1].ToString(), list[offset + 2].ToString(), Convert.ToInt32(list[offset + 3].ToString()), Convert.ToInt32(list[offset + 4].ToString()), Convert.ToDouble(list[offset + 5].ToString()),
+                             Convert.ToDouble(list[offset + 6].ToString()), Convert.ToDouble(list[offset + 7].ToString()), Convert.ToDouble(list[offset + 8].ToString()), Convert.ToDouble(list[offset + 9].ToString()),
+                             Convert.ToDouble(list[offset + 10].ToString()), Convert.ToDouble(list[offset + 11].ToString()), Convert.ToDouble(list[offset + 12].ToString()), Convert.ToInt32(list[offset + 13].ToString()),
+                             Convert.ToInt32(list[offset + 14].ToString()));
                         TrackLayout.Track.Add(ts);
                     }
                 }
