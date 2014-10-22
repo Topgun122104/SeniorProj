@@ -62,6 +62,8 @@ namespace Signal_Block_Design_Tool.Files
                     // Parse the data
                     while ((line = file.ReadLine()) != null)
                     {
+                        string tempDir = null;
+                        string tempMove = null;
                         row = line.Split(',');
                         // If this cell does not have data then there is no more data.
                         if (row[4] == "")
@@ -69,11 +71,21 @@ namespace Signal_Block_Design_Tool.Files
                             break;
                         }
 
+                        if (row[2] != null)
+                        {
+                             tempDir = row[2];
+                        }
+
+                         if(row[3] != null)
+                         {
+                              tempMove = row[3];
+                         }
+
                         /* 
                          * Column Name      |   Column Number
-                         * Track            |         1
-                         * Direction        |         2
-                         * Move             |         3
+                         * Direction        |         1
+                         * Move             |         2
+                         * Track            |         3
                          * Circuit          |         4
                          * Brake Location   |         5
                          * Target Location  |         6
@@ -88,7 +100,9 @@ namespace Signal_Block_Design_Tool.Files
                          * Brake Build up   |         23
                          * Overhang Dist    |         25
                          */
-                        TrackSegment curRow = new TrackSegment(                                         
+                        TrackSegment curRow = new TrackSegment( 
+                                                    tempDir,
+                                                    tempMove,           
                                                     row[4],                                             // Circuit                                             
                                                     Convert.ToInt32(row[5]),                            // Brake Location
                                                     Convert.ToInt32(row[6]),                            // Target Location
