@@ -114,12 +114,12 @@ namespace Signal_Block_Design_Tool.Forms
                 {
                     for (int j = 0; j < 16; j++)
                     {
-                         dataGridView2.Rows[i].Cells[j].Style.BackColor = Color.Pink;
+                        dataGridView2.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(255, 70, 63);
                     }  
                      
                     for(int j = 0; j < 3; j++)
                     {
-                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.Pink;
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.FromArgb(255, 70, 63);
                     }
                 }
                 rowIndex++;
