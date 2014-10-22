@@ -54,16 +54,17 @@ namespace Signal_Block_Design_Tool.Files
                 {
                     string line = null;
                     string[] row;
+                    string tempDir = null;
+                    string tempMove = null;
                     // Get to the data
                     while (line == null || line.Split(',')[1] != "Track")
                     {
                         line = file.ReadLine();
                     }
+                    
                     // Parse the data
                     while ((line = file.ReadLine()) != null)
-                    {
-                        string tempDir = null;
-                        string tempMove = null;
+                    {  
                         row = line.Split(',');
                         // If this cell does not have data then there is no more data.
                         if (row[4] == "")
@@ -71,12 +72,12 @@ namespace Signal_Block_Design_Tool.Files
                             break;
                         }
 
-                        if (row[2] != null)
+                        if (row[2] != "")
                         {
                              tempDir = row[2];
                         }
 
-                         if(row[3] != null)
+                         if(row[3] != "")
                          {
                               tempMove = row[3];
                          }
