@@ -16,5 +16,9 @@ namespace Signal_Block_Design_Tool.Forms
         {
             InitializeComponent();
         }
+        private void OK_Click(object sender, EventArgs e)
+        {
+        }
+
     }
 }

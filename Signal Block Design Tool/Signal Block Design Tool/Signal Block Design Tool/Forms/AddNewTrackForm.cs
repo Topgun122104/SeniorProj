@@ -23,6 +23,8 @@ namespace Signal_Block_Design_Tool.Forms
         {
             TrackLayout.Track.Add(new TrackSegment
             {
+                Direction = this.DirectionBox.Text,
+                Move = this.MoveBox.Text,
                 TrackCircuit = this.TrackCircuitBox.Text,
                 BrakeLocation = int.Parse(this.BrakeLocationBox.Text),
                 TargetLocation = int.Parse(this.TargetLocationBox.Text),
