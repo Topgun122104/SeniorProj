@@ -294,7 +294,9 @@ namespace Signal_Block_Design_Tool.Files
                 foreach (TrackSegment t in TrackLayout.Track)
                 {
                     DatabaseOperations.InsertIntoDatabase(conn, t);
-                    progress.progressBar1.Increment(1 / TrackLayout.Track.Count);
+                    progress.progressBar1.Maximum = TrackLayout.Track.Count;
+                    progress.progressBar1.Step = 1 / TrackLayout.Track.Count;
+                    progress.progressBar1.PerformStep();
                 }
                 progress.Close();
                 conn.closeConnection();
