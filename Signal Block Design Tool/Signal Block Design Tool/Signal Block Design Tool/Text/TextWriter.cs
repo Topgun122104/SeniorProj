@@ -113,7 +113,7 @@ namespace Signal_Block_Design_Tool.Text
             Matrix4 ortho_projection = Matrix4.CreateOrthographicOffCenter(0, _clientSize.Width, _clientSize.Height, 0, -1, 1);
             GL.MatrixMode(MatrixMode.Projection);
 
-            // Matrix4 projection = camera.getTransformation();
+            //Matrix4 projection = camera.getTransformation();
             //OpenTK.Graphics.GL.MatrixMode(OpenTK.Graphics.MatrixMode.Projection);
 
             GL.PushMatrix();

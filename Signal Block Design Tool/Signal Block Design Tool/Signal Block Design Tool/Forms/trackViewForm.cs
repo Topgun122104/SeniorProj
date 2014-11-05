@@ -28,7 +28,7 @@ namespace Signal_Block_Design_Tool.Forms
         private Font displayFont;
         private const int TRACKOFFSET = 25;
         private const int ENDTRACKSIZE = 3;
-        //private Text.TextWriter writer;
+        // private Text.TextWriter writer;
 
 
         public TrackViewForm()
@@ -90,8 +90,8 @@ namespace Signal_Block_Design_Tool.Forms
             if (accumulator > 1000)
             {
                 // Update the frames per second display
-                FPSLabel.Text = "FPS: " + idleCounter.ToString();
-               // writer.Update(0, "FPS: " + idleCounter.ToString());
+
+                //writer.Update(0, "FPS: " + idleCounter.ToString());
                 accumulator -= 1000;
                 idleCounter = 0;
             }
@@ -139,9 +139,8 @@ namespace Signal_Block_Design_Tool.Forms
         {
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
-            positionLabel.Text = camera._pos.ToString();
-            clicksLabel.Text = camera.getZoom().ToString();
-           // writer.UpdateText();
+
+            //writer.UpdateText();
         }
         #endregion
 
@@ -175,7 +174,7 @@ namespace Signal_Block_Design_Tool.Forms
 
             OpenTK.Graphics.OpenGL.GL.End();
 
-          //  writer.Draw(camera);
+            //writer.Draw(camera);
 
 
             // Swap the buffers 
@@ -317,7 +316,7 @@ namespace Signal_Block_Design_Tool.Forms
             if (glControl1.Focused)
             {
                 currentMousePosition = new Vector2(e.X, e.Y);
-                originLabel.Text = e.Location.ToString();
+
                 if (moveCamera)
                 {
                     if (currentMousePosition.X > previousMousePosition.X)

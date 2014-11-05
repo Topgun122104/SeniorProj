@@ -1,4 +1,5 @@
 ﻿
+using OpenTK.Graphics;
 namespace Signal_Block_Design_Tool.Forms
 {
     partial class TrackViewForm
@@ -29,16 +30,19 @@ namespace Signal_Block_Design_Tool.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.glControl1 = new OpenTK.GLControl();
-            this.FPSLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.positionLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.originLabel = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.clicksLabel = new System.Windows.Forms.Label();
             this.GoTrackButton = new System.Windows.Forms.Button();
+            this.glControl1 = new OpenTK.GLControl(new GraphicsMode(32, 24, 8, 4), 3, 1, GraphicsContextFlags.ForwardCompatible);
             this.SuspendLayout();
+            // 
+            // GoTrackButton
+            // 
+            this.GoTrackButton.Location = new System.Drawing.Point(1257, 13);
+            this.GoTrackButton.Name = "GoTrackButton";
+            this.GoTrackButton.Size = new System.Drawing.Size(75, 23);
+            this.GoTrackButton.TabIndex = 8;
+            this.GoTrackButton.Text = "Go to track";
+            this.GoTrackButton.UseVisualStyleBackColor = true;
+            this.GoTrackButton.Click += new System.EventHandler(this.GoToTrackButton_Click);
             // 
             // glControl1
             // 
@@ -57,75 +61,6 @@ namespace Signal_Block_Design_Tool.Forms
             this.glControl1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.glControl1_MouseWheel);
             this.glControl1.Resize += new System.EventHandler(this.glControl1_Resize);
             // 
-            // FPSLabel
-            // 
-            this.FPSLabel.AutoSize = true;
-            this.FPSLabel.Location = new System.Drawing.Point(12, 639);
-            this.FPSLabel.Name = "FPSLabel";
-            this.FPSLabel.Size = new System.Drawing.Size(0, 13);
-            this.FPSLabel.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1162, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Camera Position :";
-            // 
-            // positionLabel
-            // 
-            this.positionLabel.AutoSize = true;
-            this.positionLabel.Location = new System.Drawing.Point(1251, 31);
-            this.positionLabel.Name = "positionLabel";
-            this.positionLabel.Size = new System.Drawing.Size(0, 13);
-            this.positionLabel.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1166, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Mouse Position :";
-            // 
-            // originLabel
-            // 
-            this.originLabel.AutoSize = true;
-            this.originLabel.Location = new System.Drawing.Point(1251, 57);
-            this.originLabel.Name = "originLabel";
-            this.originLabel.Size = new System.Drawing.Size(0, 13);
-            this.originLabel.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1162, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Zoom";
-            // 
-            // clicksLabel
-            // 
-            this.clicksLabel.AutoSize = true;
-            this.clicksLabel.Location = new System.Drawing.Point(1200, 85);
-            this.clicksLabel.Name = "clicksLabel";
-            this.clicksLabel.Size = new System.Drawing.Size(0, 13);
-            this.clicksLabel.TabIndex = 7;
-            // 
-            // GoTrackButton
-            // 
-            this.GoTrackButton.Location = new System.Drawing.Point(1203, 134);
-            this.GoTrackButton.Name = "GoTrackButton";
-            this.GoTrackButton.Size = new System.Drawing.Size(75, 23);
-            this.GoTrackButton.TabIndex = 8;
-            this.GoTrackButton.Text = "Go to track";
-            this.GoTrackButton.UseVisualStyleBackColor = true;
-            this.GoTrackButton.Click += new System.EventHandler(this.GoToTrackButton_Click);
-            // 
             // TrackViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,32 +68,17 @@ namespace Signal_Block_Design_Tool.Forms
             this.ClientSize = new System.Drawing.Size(1344, 661);
             this.ControlBox = false;
             this.Controls.Add(this.GoTrackButton);
-            this.Controls.Add(this.clicksLabel);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.originLabel);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.positionLabel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.FPSLabel);
             this.Controls.Add(this.glControl1);
             this.Name = "TrackViewForm";
             this.Text = "TrackViewForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private OpenTK.GLControl glControl1;
-        private System.Windows.Forms.Label FPSLabel;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label positionLabel;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Label originLabel;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.Label clicksLabel;
         private System.Windows.Forms.Button GoTrackButton;
+        private OpenTK.GLControl glControl1;
 
 
 
