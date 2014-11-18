@@ -133,6 +133,16 @@ namespace Signal_Block_Design_Tool.Forms
             trackViewForm.Visible = false;
         }
 
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
 
 
     }

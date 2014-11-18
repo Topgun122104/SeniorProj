@@ -73,6 +73,12 @@
     <Compile Include="Forms\ErrorForm.Designer.cs">
       <DependentUpon>ErrorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProgressBoxForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProgressBoxForm.Designer.cs">
+      <DependentUpon>ProgressBoxForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogManager\Logger.cs" />
     <Compile Include="Misc\Prompt.cs" />
     <Compile Include="Models\Camera2D.cs" />
@@ -113,12 +119,6 @@
     </Compile>
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ProgressBoxForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ProgressBoxForm.Designer.cs">
-      <DependentUpon>ProgressBoxForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SignalBlockForm.cs">
       <SubType>Form</SubType>

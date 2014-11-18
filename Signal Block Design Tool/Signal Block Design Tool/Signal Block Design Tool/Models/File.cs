@@ -281,6 +281,7 @@ namespace Signal_Block_Design_Tool.Files
             try
             {
                 ProgressBoxForm progress = new ProgressBoxForm();
+                progress.CurCircuit.Text = "";
                 progress.Show();
 
                 DatabaseConnection conn = new DatabaseConnection(
@@ -291,13 +292,20 @@ namespace Signal_Block_Design_Tool.Files
                     Config.ConfigManager.Password);
                 conn.openConnection();
 
+                progress.progressBar1.Maximum = TrackLayout.Track.Count - 1;
+                progress.progressBar1.Step = 1;
+                int current = 1;
+                Cursor.Current = Cursors.WaitCursor;
                 foreach (TrackSegment t in TrackLayout.Track)
                 {
                     DatabaseOperations.InsertIntoDatabase(conn, t);
-                    progress.progressBar1.Maximum = TrackLayout.Track.Count;
-                    progress.progressBar1.Step = 1 / TrackLayout.Track.Count;
                     progress.progressBar1.PerformStep();
+                    progress.CurCircuit.Text = "Currently processing Track Circuit " + current + " of " + TrackLayout.Track.Count + "...";
+                    current++;
+                    progress.CurCircuit.Refresh();
+                    Thread.Sleep(500);
                 }
+                Cursor.Current = Cursors.Default;
                 progress.Close();
                 conn.closeConnection();
             }

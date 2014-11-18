@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Signal_Block_Design_Tool.Forms
 {
-    public partial class ProgressBoxForm : Form
-    {
-        public ProgressBoxForm()
-        {
-            InitializeComponent();
-        }
-    }
+     public partial class ProgressBoxForm : Form
+     {
+          public ProgressBoxForm()
+          {
+               InitializeComponent();
+          }
+     }
 }
+
