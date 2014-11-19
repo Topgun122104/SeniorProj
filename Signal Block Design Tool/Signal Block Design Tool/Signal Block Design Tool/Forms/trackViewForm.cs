@@ -140,7 +140,7 @@ namespace Signal_Block_Design_Tool.Forms
             double milliseconds = ComputeTimeSlice();
             Accumulate(milliseconds);
 
-            //writer.UpdateText();
+            // writer.UpdateText();
         }
         #endregion
 
