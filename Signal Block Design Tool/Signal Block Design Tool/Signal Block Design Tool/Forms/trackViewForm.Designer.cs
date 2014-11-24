@@ -31,7 +31,7 @@ namespace Signal_Block_Design_Tool.Forms
         private void InitializeComponent()
         {
             this.GoTrackButton = new System.Windows.Forms.Button();
-            this.glControl1 = new OpenTK.GLControl(new GraphicsMode(32, 24, 8, 4), 3, 1, GraphicsContextFlags.ForwardCompatible);
+            this.glControl1 = new OpenTK.GLControl(new GraphicsMode(32, 24, 8, 4), 4, 0, GraphicsContextFlags.ForwardCompatible);
             this.SuspendLayout();
             // 
             // GoTrackButton
